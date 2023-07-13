@@ -293,25 +293,17 @@ for key in servicetrafficlights.keys():
         print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
     # we reorder the stop list
     servicetrafficlights[key][:] = [servicetrafficlights[key][i] for i in ord_index]
-
-print(stationdefinition)
-print(servicedefinition)
-print(traffic_lights)
-print(servicetrafficlights)
-print(servicebreaks)
-print(servicestarts)
-print(serviceends)
-print(servicechanges)
-
+    
+print("Parsed all the layout and traffic light information, writting the configuration files")
 # After we have all the information, we proceed to create all the lane files
 for service in lanes.keys():
     # we export the lane file
-    name = os.path.join(os.pardir,'conf',f'lanes_{service}.txt')
+    name = os.path.join(wd, os.pardir,'conf',f'lanes_{service}.txt')
     np.savetxt(name, lanes[service], fmt = '%d')
     
     # we now calculate the speed
     V = (vmax)*np.ones(np.shape(lanes[service]))  # by default the maximal speed is the same along the entire corridor
-    name = os.path.join(os.pardir,'conf',f'V_{service}.txt')
+    name = os.path.join(wd, os.pardir,'conf',f'V_{service}.txt')
     np.savetxt(name, V, fmt = '%d')
     
     # Now we create the leftchange file, containing the information regarding the posibility to change the lane to the left, this is increasing the lane. 0 means change is not possible, 1 means change is possible
@@ -331,9 +323,9 @@ for service in lanes.keys():
     RC[mask] = 0
     
     # We now print the results
-    name = os.path.join(os.pardir,'conf',f'LC_{service}.txt')
+    name = os.path.join(wd, os.pardir,'conf',f'LC_{service}.txt')
     np.savetxt(name, LC, fmt = '%d')
-    name = os.path.join(os.pardir,'conf',f'RC_{service}.txt')
+    name = os.path.join(wd, os.pardir,'conf',f'RC_{service}.txt')
     np.savetxt(name, RC, fmt = '%d')
     
     # We now calculate the end of lane
@@ -351,7 +343,7 @@ for service in lanes.keys():
                 endF = True
                 endPos = j - 1
     
-    name = os.path.join(os.pardir,'conf',f'EL_{service}.txt')
+    name = os.path.join(wd, os.pardir,'conf',f'EL_{service}.txt')
     np.savetxt(name, EL, fmt = '%d')
     
 #################################################################
@@ -359,13 +351,13 @@ for service in lanes.keys():
 # the list of stations
 stations = np.array(list(stationdefinition.keys()))
 # we export the station list
-name = os.path.join(os.pardir,'conf','station_list.txt')
+name = os.path.join(wd, os.pardir,'conf','station_list.txt')
 np.savetxt(name,  np.hstack( ( np.arange(len(stations), dtype = int).reshape(-1,1), stations.reshape(-1,1) ) ) , fmt = '%s %s')
 
 # we now create the station definition file
 # the format of the file is as follows
 # station index - [position, biarticulated capability] (over all docking bays)
-name = os.path.join(os.pardir,'conf','station_definition.txt')
+name = os.path.join(wd, os.pardir,'conf','station_definition.txt')
 text = ''
 for i, station in enumerate(stations):
     text = text + f'{i}'
@@ -382,13 +374,13 @@ with open(name, 'w') as deffile:
 # the list of services
 services = np.array(list(servicedefinition.keys()))
 # we export the service list
-name = os.path.join(os.pardir,'conf','service_list.txt')
+name = os.path.join(wd, os.pardir,'conf','service_list.txt')
 np.savetxt(name,  np.hstack( ( np.arange(len(services), dtype = int).reshape(-1,1), services.reshape(-1,1) ) ) , fmt = '%s %s')
 
 # for each service we create the service definition file as a series with the station and docking bay information
 # the format of the file is as follows
 # service index - service start - service end - [station index, docking bay index] (over all stops of the service)
-name = os.path.join(os.pardir,'conf','service_definition.txt')
+name = os.path.join(wd, os.pardir,'conf','service_definition.txt')
 text = ''
 for i, service in enumerate(services):
     text = text + f'{i} {servicestarts[service]} {serviceends[service]}'
@@ -403,7 +395,7 @@ with open(name, 'w') as deffile:
 # we now create a file specifying the service breaks
 # the format of the file is as follows
 # service index - [origin pos, origin lane, destination pos, destination lane] (over all the breaks)
-name = os.path.join(os.pardir,'conf','service_breaks.txt')
+name = os.path.join(wd, os.pardir,'conf','service_breaks.txt')
 text = ''
 for i, service in enumerate(services):
     text = text + f'{i}'
@@ -416,7 +408,51 @@ for i, service in enumerate(services):
 # we export the file
 with open(name, 'w') as breakfile:
     breakfile.write(text)
-    
+
+
+#################################################################
+############# now we start building the traffic light information
+tlights = np.array(list(traffic_lights.keys()))
+# we export the traffic lights list the format of this list is as follows
+# traffic_light_index - traffic_light_name - Ndirections - [list of directions] - [list of positions] - [list of lenghts] - Nphases - [phase duration, phase configuration] (over all the phases) 
+name = os.path.join(wd, os.pardir,'conf','traffic_light_list.txt')
+text = ''
+
+for i, tl in enumerate(tlights):
+    text = text + f'{i} {tl} {len(traffic_lights[tl]["dir"])}'
+    for dir in traffic_lights[tl]['dir']:
+        text = text + f' {dir}'
+    for pos in traffic_lights[tl]['pos']:
+        text = text + f' {pos}'
+    for length in traffic_lights[tl]['lengths']:
+        text = text + f' {length}'
+    text = text + f' {len(traffic_lights[tl]["phases"])}'
+    for phase in traffic_lights[tl]["phases"]:
+        text = text + f' {phase[0]}'
+        for conf in phase[1]:
+            text = text + f' {conf}'
+    text = text + '\n'
+
+with open(name, 'w') as tlfile:
+    tlfile.write(text)    
+
+
 # we now create a file specifying the traffic lights for each service
 # the format of the file is as follows
 # service index - [traffic light index, direction] (over all the traffic lights)
+name = os.path.join(wd, os.pardir,'conf','service_traffic_lights.txt')
+text = ''
+for i, service in enumerate(services):
+    text = text + f'{i}'
+    if service in servicetrafficlights.keys():
+        for tlname, dir in servicetrafficlights[service]:
+            tlindex = np.where (tlname == tlights)[0][0]
+            text = text + f' {tlindex} {dir}'
+        text = text + '\n'
+    else:
+        text = text + '\n'
+
+with open (name, 'w') as tlservfile:
+    tlservfile.write(text)
+    
+print("All the configuration files have been properly written")
