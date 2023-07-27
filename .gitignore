@@ -1,3 +1,7 @@
+# configuration folders
+.vscode/
+layout/__pycache__/
+
 # Prerequisites
 *.d
 
