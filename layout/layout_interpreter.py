@@ -26,6 +26,7 @@ for index, row in traffic_lights_df.iterrows():
     traffic_lights[tlname]['lengths'] = [int(info.strip()) for info in row['length'].split('-')] # we read all the lengths
     if (len(traffic_lights[tlname]['dir'])!=len(traffic_lights[tlname]['lengths'])): # we check that the number of directions and lengths is the same
         print(f"Warning!! Traffic light {tlname} has a different number of directions than lengths")
+    traffic_lights[tlname]['offset'] = row['offset']
     phase = 0
     traffic_lights[tlname]['phases'] = []   # we create a list of phases
     while(type(row[f'phase_{phase}'])==str):   # we only scan until a phase is not a string
@@ -203,10 +204,11 @@ for key in servicebreaks.keys():
         # the service breaks are reordered using ord_index
         servicebreaks[key][:] = [servicebreaks[key][i] for i in ord_index]
 
+track_index = {}
 # we now proceed to sort the stations
 for key in servicedefinition.keys():
     ord_index = [] # the list with the organized index
-    track_index = [] # a list with the section number 
+    track_index[key] = [] # a list with the section number 
     breaksexists = False # By default there are no breaks
     # we create an array of stops
     stops = np.array([stationdefinition[servicedefinition[key][i][0]][servicedefinition[key][i][1]] for i in range(len(servicedefinition[key]))] )
@@ -230,7 +232,7 @@ for key in servicedefinition.keys():
             track = i
             break
     ord_index.append(next_index)
-    track_index.append(track)
+    track_index[key].append(track)
     # we repeat this process until all stations are covered
     while (len(ord_index) < len(servicedefinition[key])):
         next_index += 1
@@ -241,17 +243,18 @@ for key in servicedefinition.keys():
                 if (track == len(breaks)):
                     breaksexists = False
         ord_index.append(next_index)
-        track_index.append(track)
+        track_index[key].append(track)
     if (len(ord_index)!= len(set(ord_index))):
         print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
     # we reorder the stop list
     servicedefinition[key][:] = [servicedefinition[key][i] for i in ord_index]
 
 
+track_index_tl = {}
 # now we proced to sort the traffic_lights
 for key in servicetrafficlights.keys():
     ord_index = [] # the list with the organized index
-    track_index = [] # a list with the section number 
+    track_index_tl[key] = [] # a list with the section number 
     breaksexists = False # By default there are no breaks
     # we create an array with the position of all traffic lights
     tlights = np.array([traffic_lights[name]['pos'][np.where(np.array(traffic_lights[name]['dir'])==dir)[0][0]] for name, dir in servicetrafficlights[key]] )
@@ -276,7 +279,7 @@ for key in servicetrafficlights.keys():
             track = i
             break
     ord_index.append(next_index)
-    track_index.append(track)
+    track_index_tl[key].append(track)
     # we repeat this process until all traffic lights are covered
     while (len(ord_index) < len(servicetrafficlights[key])):
         next_index += 1
@@ -287,13 +290,14 @@ for key in servicetrafficlights.keys():
                 if (track == len(breaks)):
                     breaksexists = False
         ord_index.append(next_index)
-        track_index.append(track)
+        track_index_tl[key].append(track)
     #print(key, ord_index, track_index)
     if (len(ord_index)!= len(set(ord_index))):
         print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
     # we reorder the stop list
     servicetrafficlights[key][:] = [servicetrafficlights[key][i] for i in ord_index]
-    
+
+
 print("Parsed all the layout and traffic light information, writting the configuration files")
 # After we have all the information, we proceed to create all the lane files
 for service in lanes.keys():
@@ -384,9 +388,11 @@ name = os.path.join(wd, os.pardir,'conf','service_definition.txt')
 text = ''
 for i, service in enumerate(services):
     text = text + f'{i} {servicestarts[service]} {serviceends[service]}'
-    for station, dock in servicedefinition[service]:
+    for j in range(len(servicedefinition[service])):
+        station, dock = servicedefinition[service][j]
+        track = track_index[service][j]
         index = np.where(stations == station)[0][0]
-        text = text + f' {index} {dock}'
+        text = text + f' {index} {dock} {track}'
     text = text + '\n'
 # we export the file
 with open(name, 'w') as deffile:
@@ -414,12 +420,12 @@ with open(name, 'w') as breakfile:
 ############# now we start building the traffic light information
 tlights = np.array(list(traffic_lights.keys()))
 # we export the traffic lights list the format of this list is as follows
-# traffic_light_index - traffic_light_name - Ndirections - [list of directions] - [list of positions] - [list of lenghts] - Nphases - [phase duration, phase configuration] (over all the phases) 
+# traffic_light_index - traffic_light_name - offset -  Ndirections - [list of directions] - [list of positions] - [list of lenghts] - Nphases - [phase duration, phase configuration] (over all the phases) 
 name = os.path.join(wd, os.pardir,'conf','traffic_light_list.txt')
 text = ''
 
 for i, tl in enumerate(tlights):
-    text = text + f'{i} {tl} {len(traffic_lights[tl]["dir"])}'
+    text = text + f'{i} {tl} {traffic_lights[tl]["offset"]} {len(traffic_lights[tl]["dir"])}'
     for dir in traffic_lights[tl]['dir']:
         text = text + f' {dir}'
     for pos in traffic_lights[tl]['pos']:
@@ -436,7 +442,7 @@ for i, tl in enumerate(tlights):
 with open(name, 'w') as tlfile:
     tlfile.write(text)    
 
-
+print(traffic_lights)
 # we now create a file specifying the traffic lights for each service
 # the format of the file is as follows
 # service index - [traffic light index, direction] (over all the traffic lights)
@@ -445,9 +451,12 @@ text = ''
 for i, service in enumerate(services):
     text = text + f'{i}'
     if service in servicetrafficlights.keys():
-        for tlname, dir in servicetrafficlights[service]:
+        for j in range(len(servicetrafficlights[service])):
+            tlname, dir = servicetrafficlights[service][j]
+            track = track_index_tl[service][j]
             tlindex = np.where (tlname == tlights)[0][0]
-            text = text + f' {tlindex} {dir}'
+            dirindex = np.where (dir == np.array(traffic_lights[tlname]['dir']))[0][0]
+            text = text + f' {tlindex} {dirindex} {track}'
         text = text + '\n'
     else:
         text = text + '\n'
