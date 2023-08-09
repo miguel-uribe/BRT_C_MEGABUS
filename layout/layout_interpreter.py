@@ -37,7 +37,7 @@ for index, row in traffic_lights_df.iterrows():
         traffic_lights[tlname]['phases'].append((duration, scheme))
         if (len(traffic_lights[tlname]['dir'])!=len(scheme)):
             print(f"Warning!!! Traffic light {tlname} has a scheme with a different number of elements than the number of possible directions")
-        
+    # We create the list of positions, it is initialized with None values
     traffic_lights[tlname]['pos'] = [None]*len(traffic_lights[tlname]['dir'])
 
 
@@ -244,6 +244,7 @@ for key in servicedefinition.keys():
                     breaksexists = False
         ord_index.append(next_index)
         track_index[key].append(track)
+        
     if (len(ord_index)!= len(set(ord_index))):
         print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
     # we reorder the stop list

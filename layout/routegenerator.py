@@ -108,3 +108,18 @@ for i in range(len(stations)):
         odfile.write(f'{i} {j} {destinations[j]}\n')
         
 odfile.close()
+
+###############
+## Input vector
+
+# Printing the input vector
+filename=os.path.join(wd,os.pardir,'conf', "IN.txt")
+infile=open(filename,'w')
+
+indata = np.random.random(len(stations))
+indata = indata/np.sum(indata)
+# printing the results
+for j in range(len(stations)):
+    infile.write(f'{indata[j]}\n')
+        
+infile.close()

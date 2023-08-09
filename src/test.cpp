@@ -1,6 +1,8 @@
-#include "tlC.h"
 #include "createsystem.h"
 #include "parameters.h"
+#include "routeC.h"
+#include "tlC.h"
+
 #include <iostream>
 #include <vector>
 
@@ -41,5 +43,20 @@ int main (int argc, char **argv){
     std::vector<std::vector<std::vector<int>>> V;
     V = loadconffilekind(root, SYSTEM, 1.0*Dt/Dx);
 
+    // Load the passenger configuration files: OD_matrix, RouteMatrix
+    std::string rmfile = "../conf/RouteMatrix.txt";
+    std::string odfile = "../conf/OD_matrix.txt";
+    std::string infile = "../conf/IN.txt";
+    std::vector<std::vector<std::vector<routeC>>> routeMatrix;
+    std::vector<std::vector<double>> ODmatrix;
+    std::vector<double> IN;
+
     
+    routeMatrix = readMatrixFile(rmfile, SYSTEM);
+    ODmatrix = readODmatrix(odfile,SYSTEM);
+    IN = readInputProfile(infile);
+
+    
+
+    return 0;
 }
