@@ -26,7 +26,7 @@ class tlC{
         }
 
         std::string display (void);
-        void updatephase(int TIME);
+        void updatephase(void);
 };
 
 std::string tlC::display (void){
@@ -51,7 +51,7 @@ std::string tlC::display (void){
 }
 
 
-void tlC::updatephase(int TIME){
+void tlC::updatephase(void){
     phasetime++; // the time is increased
     if (phasetime >= durations[curr_phase]){ // if the time is equal or larger than the expected phase time, the phase is increased
         phasetime = 0;
@@ -59,6 +59,7 @@ void tlC::updatephase(int TIME){
         if (curr_phase >= durations.size()){ // If the phase is larger than the number of phases, we set it to zero
             curr_phase = 0;
         }
+        //std::cout<<"fase cambio en tl "<<name<<" "<<curr_phase<<std::endl;
     }
 }
 

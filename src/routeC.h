@@ -80,6 +80,60 @@ std::vector<std::vector<std::vector<routeC>>> readMatrixFile(std::string filenam
     return matrix;
 }
 
+// Create weight vector
+std::vector<std::vector<std::vector<double>>> createRouteWeights (std::vector<std::vector<std::vector<routeC>>> rmatrix, System SYSTEM){
+    // We create the weight matrix, filled with zeros
+    std::vector<std::vector<std::vector<double>>> weights;
+    int nstations = rmatrix.size();
+    for(int i = 0; i<nstations; i++){
+        std::vector<std::vector<double>> aux;
+        for (int j = 0; j<nstations; j++){
+            std::vector<double> empty (SYSTEM.Lines.size(), 0);
+            aux.push_back(empty);
+        }
+        weights.push_back(aux);
+    }
+    // We update the weights
+    for (int i = 0; i<nstations; i++){
+        for (int j = 0; j<nstations; j++){
+            for (routeC route: rmatrix[i][j]){
+                double weight = route.weight; // we extract the weight
+                int lineID = route.lineID; // We extract the lineID
+                weights[i][j][lineID] = weight;  // we update the weight matrix
+            }
+        }
+    }
+    
+    // We update the weights
+    for (int i = 0; i<nstations; i++){
+        for (int j = 0; j<nstations; j++){
+            for (routeC route: rmatrix[i][j]){
+                double weight = route.weight; // we extract the weight
+                int lineID = route.lineID; // We extract the lineID
+                weights[i][j][lineID] = weight;  // we update the weight matrix
+            }
+        }
+    }
+
+    // we normalize the weights
+    for (int i = 0; i<nstations; i++){
+        for (int j = 0; j<nstations; j++){
+            // we find the maximum element
+            double max = *max_element(weights[i][j].begin(),weights[i][j].end());
+            // we divide all elements by the maximum only in case max > 0
+            if (max > 0){
+                for (double &w: weights[i][j]){
+                    w = w/max;
+                }
+            }
+        }
+    }
+    return weights;
+}
+
+
+
+
 std::vector<double> readInputProfile(std::string filename){
     std::vector<double> IN;
     std::ifstream file(filename);

@@ -1,6 +1,8 @@
 # configuration folders
 .vscode/
 layout/__pycache__/
+results/
+.ipynb_checkpoints
 
 # Prerequisites
 *.d

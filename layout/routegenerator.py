@@ -14,9 +14,21 @@ Lines = file.readlines()
 service_stops = [[] for i in range(len(Lines))]
 for i,line in enumerate(Lines):
     linedata = line.split(' ')
-    for stID in linedata[3::3]:
+    for stID in linedata[4::3]:
         service_stops[i].append(int(stID))
 
+print(service_stops)
+# reading the list of service changes
+file = open(os.path.join(wd, os.pardir, 'conf','service_changes.txt'), 'r')
+Lines = file.readlines()
+for i,line in enumerate(Lines):
+    linedata = line.split(' ')
+    if len(linedata)>1:
+        orLine = int(linedata[0])
+        destLine = int(linedata[1])
+        service_stops[orLine].extend(service_stops[destLine])
+
+print(service_stops)
 # getting the list of stations
 stations = []
 for stlist in service_stops:

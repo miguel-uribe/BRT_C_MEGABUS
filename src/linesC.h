@@ -16,12 +16,13 @@ class lineC{
         std::vector<int> stoptracks; // A list with the track where each stop is located
         int origin; // The position where buses serving this service are introduced
         int end; // The position where the service ends
+        int or_lane; // The lane where the service starts
         int headway; // The average headway for the service
         int biart; // percentage of biarticulated buses
-        std::vector<int> pos_or; // the origin of a break
-        std::vector<int> pos_des; // the destination of the break
-        std::vector<int> lane_or; // the origin lane
-        std::vector<int> lane_des; // the destination lane
+        int offset; // time offset to insert buses
+        int change_pos = 1e6; // the position where the line changes to a different one
+        int dest_line = -1; // the service to which the line transforms
+        std::vector<int> breaks; // the origin of a break
         std::vector<int> tls; // The list of indices in traffic lights
         std::vector<int> tldir; // The list of traffic light directions
         std::vector<int> tltracks; // The list of tracks where each tl is located
@@ -35,7 +36,6 @@ class lineC{
 
         std::string display (void);
         void setstopx(std::vector<int> &STATIONIDS, std::vector<int> &WAGONS, std::vector<stationC> &STATIONS);
-        void addbrake(int posor, int posdest, int laneor, int lanedes);
         void addtl(int tl, int dir, int track);
 };
 
@@ -54,8 +54,8 @@ std::string lineC::display (void){
         text = text + std::to_string(tls[i]) +"("+std::to_string(tldir[i])+", "+std::to_string(tltracks[i])+")\n";
     }
     text = text + "Line Breaks: \n";
-    for(int i =0; i<pos_or.size(); i++){
-        text = text + std::to_string(pos_or[i])+"->"+std::to_string(pos_des[i])+"("+std::to_string(lane_or[i])+"->"+std::to_string(lane_des[i])+")\n";
+    for(int i =0; i<breaks.size(); i++){
+        text = text + std::to_string(breaks[i])+"\n";
     }
     return text;
 }
@@ -69,12 +69,6 @@ void lineC::setstopx(std::vector<int> &STATIONIDS, std::vector<int> &WAGONS, std
     }
 }
 
-void lineC::addbrake(int posor, int posdest, int laneor, int lanedes){
-    pos_or.push_back(posor);
-    pos_des.push_back(posdest);
-    lane_or.push_back(laneor);
-    lane_des.push_back(lanedes);
-}
 
 void lineC::addtl(int tl, int dir, int track){
     tls.push_back(tl);

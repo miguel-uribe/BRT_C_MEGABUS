@@ -58,8 +58,10 @@ servicedefinition = {} # The list of stops for each service
 servicetrafficlights = {} #The succession of traffic lights per route
 servicebreaks = {} # the list of breaks in the system, for each service
 servicestarts = {} # the position where each service starts
+servicestartslane = {} # the lane where each service starts
 serviceends = {} # the position where each service ends
 servicechanges = {} # the position and destination where a service changes
+V = (vmax)*np.ones((length, nlanes)) # the maximal speed information
 
 # We now scan over the entire dataframe and proceed to find the information
 for index, row in layout_df.iterrows():
@@ -156,6 +158,7 @@ for index, row in layout_df.iterrows():
                             print(f"Error. Service {service} has been introduced more than once in servicestarts at position {index}")
                         else:
                             servicestarts[service] = index
+                            servicestartslane[service] = j
                 ################################################
                 #SF, the service finish 
                 elif itemclass == 'SF':
@@ -173,16 +176,20 @@ for index, row in layout_df.iterrows():
                 elif itemclass == 'C':
                     # we get the change information
                     org_service, final_service = [data.strip() for data in iteminfo.split(',')]
-                    # we check  whether the service is already in the changes list
-                    if org_service in servicechanges.keys():
-                        servicechanges[org_service].append([final_service, index])
-                    else:
-                        servicechanges[service] = [[final_service, index]]
+                    # we set the service change
+                    servicechanges[service] = [final_service, index]
                     # we check  whether the service is already in the finish dictionary
                     if org_service in serviceends.keys():
                         print(f"Error. Service {org_service} has been introduced more than once in serviceends at position {index}")
                     else:
                         serviceends[org_service] = index
+                             
+                ################################################
+                #V, a maximal speed change
+                elif itemclass == 'V':
+                    # we get the change information
+                    max_speed = int(iteminfo)
+                    V[index, j] = np.round(max_speed*1000*Dx/3600/Dt,0)
         except:
             pass
 
@@ -300,23 +307,23 @@ for key in servicetrafficlights.keys():
 
 
 print("Parsed all the layout and traffic light information, writting the configuration files")
+
+# We print the maximal speed file
+name = os.path.join(wd, os.pardir,'conf','V.txt')
+np.savetxt(name, V, fmt = '%d')
+
 # After we have all the information, we proceed to create all the lane files
 for service in lanes.keys():
     # we export the lane file
     name = os.path.join(wd, os.pardir,'conf',f'lanes_{service}.txt')
     np.savetxt(name, lanes[service], fmt = '%d')
-    
-    # we now calculate the speed
-    V = (vmax)*np.ones(np.shape(lanes[service]))  # by default the maximal speed is the same along the entire corridor
-    name = os.path.join(wd, os.pardir,'conf',f'V_{service}.txt')
-    np.savetxt(name, V, fmt = '%d')
-    
+       
     # Now we create the leftchange file, containing the information regarding the posibility to change the lane to the left, this is increasing the lane. 0 means change is not possible, 1 means change is possible
     LC = np.copy(lanes[service])
     # clearly for the leftmost lane it is always impossible to move to the left
     LC[:,-1]=0
     # in addition, it is impossible to move to the left when the lane in the left is not there
-    mask = lanes[service]-np.roll(lanes[service], -1, axis = 1)==1
+    mask = (lanes[service]-np.roll(lanes[service], -1, axis = 1))==1
     LC[mask] = 0
         
     # Now we create the rightchange file, containing the information regarding the posibility to change the lane to the right, this is decreasing the lane. 0 means change is not possible, 1 means change is possible
@@ -324,7 +331,7 @@ for service in lanes.keys():
     # clearly for the rightmost lane it is always impossible to move to the left
     RC[:,0]=0
     # in addition, it is impossible to move to the left when the lane in the left is not there
-    mask = np.where(lanes[service]-np.roll(lanes[service], 1, axis = 1)==1)
+    mask = (lanes[service]-np.roll(lanes[service], 1, axis = 1))==1
     RC[mask] = 0
     
     # We now print the results
@@ -339,9 +346,10 @@ for service in lanes.keys():
     mask =  (np.roll(lanes[service], 1, axis = 0) - lanes[service]) == 1
     auxEL[mask] = 1
 
-    for i in range(len(lanes[service][0,:])):
+  
+    for i in range(nlanes):
         endF = False
-        for j in np.arange(len(lanes[service])-1,-1,-1):
+        for j in np.arange(length-1,-1,-1):
             if endF:
                 EL[j,i] = endPos-j
             if auxEL[j,i] == 1:
@@ -388,7 +396,7 @@ np.savetxt(name,  np.hstack( ( np.arange(len(services), dtype = int).reshape(-1,
 name = os.path.join(wd, os.pardir,'conf','service_definition.txt')
 text = ''
 for i, service in enumerate(services):
-    text = text + f'{i} {servicestarts[service]} {serviceends[service]}'
+    text = text + f'{i} {servicestarts[service]} {servicestartslane[service]} {serviceends[service]}'
     for j in range(len(servicedefinition[service])):
         station, dock = servicedefinition[service][j]
         track = track_index[service][j]
@@ -402,20 +410,37 @@ with open(name, 'w') as deffile:
 # we now create a file specifying the service breaks
 # the format of the file is as follows
 # service index - [origin pos, origin lane, destination pos, destination lane] (over all the breaks)
+
+breaks_list = []
+
+breaks_name = os.path.join(wd, os.pardir,'conf','breaks_list.txt')
 name = os.path.join(wd, os.pardir,'conf','service_breaks.txt')
 text = ''
 for i, service in enumerate(services):
     text = text + f'{i}'
     if service in servicebreaks.keys():
         for or_pos, or_lane, des_pos, des_lane in servicebreaks[service]:
-            text = text + f' {or_pos} {or_lane} {des_pos} {des_lane}'
+            breakdef = [or_pos, or_lane, des_pos, des_lane]
+            # we check whether the break is in the breaklist
+            if breakdef in breaks_list:
+                index = breaks_list.index(breakdef)
+                text = text + f' {index}'
+            else:
+                breaks_list.append(breakdef)
+                text = text + f' {len(breaks_list)-1}'
         text = text + '\n'
     else:
         text = text + '\n'
 # we export the file
 with open(name, 'w') as breakfile:
     breakfile.write(text)
-
+    
+# we export the file with the breaks definition
+with open(breaks_name, 'w') as breakdeffile:
+    text = ''
+    for i, Break in enumerate(breaks_list):
+        text = text + f'{i} {Break[0]} {Break[1]} {Break[2]} {Break[3]}\n'
+    breakdeffile.write(text)
 
 #################################################################
 ############# now we start building the traffic light information
@@ -443,7 +468,6 @@ for i, tl in enumerate(tlights):
 with open(name, 'w') as tlfile:
     tlfile.write(text)    
 
-print(traffic_lights)
 # we now create a file specifying the traffic lights for each service
 # the format of the file is as follows
 # service index - [traffic light index, direction] (over all the traffic lights)
@@ -464,5 +488,22 @@ for i, service in enumerate(services):
 
 with open (name, 'w') as tlservfile:
     tlservfile.write(text)
+
+# we create a file specifying all the service changes
+
+name = os.path.join(wd, os.pardir,'conf','service_changes.txt')
+text = ''
+for i, service in enumerate(services):
+    text = text + f'{i}'
+    if service in servicechanges.keys():
+        dest_serv = servicechanges[service][0]
+        pos_change = servicechanges[service][1]
+        serv_index = np.where (services == dest_serv)[0][0]
+        text = text + f' {serv_index} {pos_change}\n'
+    else:
+        text = text + '\n'
+
+with open (name, 'w') as chfile:
+    chfile.write(text)
     
 print("All the configuration files have been properly written")
