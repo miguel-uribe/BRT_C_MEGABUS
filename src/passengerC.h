@@ -20,7 +20,7 @@ double getPassengersDemand(int factor,int time){
 }
 
 // This function tells the system to create a new passenger
-void insertPassenger(std::vector<std::vector<int>> & STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, int & PASSCOUNT,  std::vector<std::vector<std::vector<routeC>>> MATRIX, std::discrete_distribution<int> INDIST, std::vector<std::discrete_distribution<int>> ODDIST, int TIME, std::default_random_engine GEN, int nlines){
+void insertPassenger(std::vector<std::vector<int>> & STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, int & PASSCOUNT,  std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::discrete_distribution<int> & INDIST, std::vector<std::discrete_distribution<int>> & ODDIST, int TIME, std::default_random_engine GEN, int nlines){
     int originID= INDIST(GEN);
     int destinationID = ODDIST[originID](GEN);
     int pos_correction = 0;
@@ -56,7 +56,7 @@ void boardPassenger(int passID, int busID, int stationID, int lineID, std::array
    // std::cout<<"Boarded passenger "<<passID<<" to bus with ID "<<busID<<std::endl;
 }
 
-void alightpassenger(int passID, int busID, int stationID, int TIME, int& Nactivepass, float & passsp, std::array<std::vector<int>, fleet> & BUSPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System SYSTEM){
+void alightpassenger(int passID, int busID, int stationID, int TIME, int& Nactivepass, float & passsp, std::array<std::vector<int>, fleet> & BUSPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System & SYSTEM){
    // std::cout<<"Alightning passenger "<<passID<<" from bus with iD "<<busID<<std::endl;
     // We first remove the passenger form the bus list
     // we remove the passenger from the station passenger list  
@@ -87,7 +87,7 @@ struct busdata
 };
 
 // This function must be called when a bus arrives at a station
-auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepass,  float &passsp, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System SYSTEM, std::vector<std::vector<std::vector<routeC>>> routeMatrix, std::vector<std::vector<std::vector<double>>> weightMatrix, int &busOcc){
+auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepass,  float &passsp, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System & SYSTEM, std::vector<std::vector<std::vector<routeC>>> & routeMatrix, std::vector<std::vector<std::vector<double>>> & weightMatrix, int &busOcc){
     int destid;
     double weight;
     //std::cout<<busOcc<<" ";

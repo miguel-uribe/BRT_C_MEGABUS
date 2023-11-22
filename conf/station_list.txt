@@ -1,9 +1,39 @@
-0 E1
-1 E2
-2 E3
-3 E4
-4 E8
-5 E5
-6 E9
-7 E6
-8 E7
+0 Intercambiador Cuba
+1 San Fernando
+2 Intercambiador El Viajero
+3 Aeropuerto
+4 Batallón
+5 Maraya
+6 El Jardín
+7 La Ruana
+8 Ucumarí
+9 Egoyá
+10 Consota
+11 Coliseo
+12 El Cafetero
+13 Ormaza
+14 Francisco Pereira
+15 Mercados
+16 Centenario
+17 El Lago
+18 Condina
+19 Otún
+20 Victoria
+21 Del Café
+22 Ferrocarril
+23 Libertad
+24 Villavicencio
+25 La Popa
+26 Santa Mónica
+27 Milán
+28 Fundadores
+29 CAM
+30 Intercambiador Dosquebradas
+31 Viaducto
+32 Central
+33 Claret
+34 Olaya
+35 Cañarte
+36 Las Flores
+37 Banderas
+38 Palacio de Justicia

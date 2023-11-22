@@ -16,11 +16,12 @@
 #include <deque>
 
 // creating a bus
-void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){  
+void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){  
     // Determining whether the bus starts from Cuba or Dosquebradas
     int origin = SYSTEM.Lines[lineID].origin;
     int parkID = std::distance(std::begin(origins),std::find(std::begin(origins), std::end(origins), origin));
     if (parkID>=PARKED.size()){
+        std::cout<<"Unable to indentify the ParkID, no bus has been introduced"<<std::endl;
         return;
     }
     // we check there are buses available
@@ -111,7 +112,7 @@ void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSES
 
 
 // This function must be called after the bus stops in a given station
-void updatestop(int index, std::array<std::vector<int>,Nparam> & BUSESPAR, System SYSTEM){
+void updatestop(int index, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM){
     int line=BUSESPAR[10][index];
     int i=BUSESPAR[9][index]+1; // updating the index to the next station
     if (i>=SYSTEM.Lines[line].stopx.size()){    // in case the final station is reached
@@ -142,7 +143,7 @@ void initializeBusArray(std::array<std::vector<int>,2> & PARKED, int FCUBA, int 
 
 
 // inserting the buses in the system
-void populate(int TIME, std::array<std::vector<int>,Nparam> & BUSESPAR, System SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){
+void populate(int TIME, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){
     // Now we check and see whether it is time to populate
     // we scan over the lines   
     for (int i=0; i<SYSTEM.Lines.size(); i++){
@@ -156,7 +157,7 @@ void populate(int TIME, std::array<std::vector<int>,Nparam> & BUSESPAR, System S
 
 /*z*/
 // This function calculates all the gaps for all buses
-void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<std::vector<std::vector<int>>> EL, System SYSTEM){
+void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<std::vector<std::vector<int>>> &EL, System & SYSTEM){
     int lane, lineID, track, tlsystem, tldir,size, position, curr_phase, state, tlindex, breakdis, next_stop_track, track_difference, distance_to_stop, next_tl_track, tl_track_difference, distance_to_tl;
     
     int Nbuses = BUSESPAR[0].size();
@@ -380,61 +381,52 @@ void sortbuses(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<int> 
 /* In this version, we check not for the speeds but for the gaps in order to change the lanes, we also check for the safety criterion
 For introduce a probability to breach the safety criterion
 */
-void buschangelane(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<std::vector<std::vector<int>>> LC,std::vector<std::vector<std::vector<int>>> RC, std::vector<std::vector<std::vector<int>>> EL, int TIME){
+void buschangelane(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<std::vector<std::vector<int>>> &LC,std::vector<std::vector<std::vector<int>>> &RC, std::vector<std::vector<std::vector<int>>> &EL, int TIME){
     int pos, lane, lineID;
     int Ncars = BUSESPAR[0].size();
     // We create a new array with all the new values of the lanes
     std::vector<int> newy = BUSESPAR[1]; // by default, the bus stays in the same lane
+    
     // If the time is even, we perform the possible movements to the right
     //if (TIME % 2 == 0){
-        for (int i=0; i<Ncars; i++){ // we scan over all buses
-            if (BUSESPAR[20][i] >0){BUSESPAR[20][i] = BUSESPAR[20][i]-1;} // in case the car has some penalty time for changing lane
-            else{
-                pos = BUSESPAR[0][i];
-                lane = BUSESPAR[1][i];
-                lineID = BUSESPAR[10][i];
-                if (RC[lineID][lane][pos]==1){ // only if a movement to the right is allowed
-                    // we now evaluate willingness
-                    // EL[carril_destino] > EL[carril_origen]
-                    // gapb(r/l) > vbef(r/l)
-                    // gapf(r/l) > v
-                    
-                    if ((EL[lineID][lane-1][pos] > EL[lineID][lane][pos]) && (BUSESPAR[18][i]>BUSESPAR[19][i]) && (BUSESPAR[17][i]>BUSESPAR[2][i])){
-                        newy[i] = lane-1;
-                    }
+    for (int i=0; i<Ncars; i++){ // we scan over all buses
+        if (BUSESPAR[20][i] >0){BUSESPAR[20][i] = BUSESPAR[20][i]-1;} // in case the car has some penalty time for changing lane
+        else{
+            pos = BUSESPAR[0][i];
+            lane = BUSESPAR[1][i];
+            lineID = BUSESPAR[10][i];
+            if ((RC[lineID][lane][pos]==1) && (EL[lineID][lane-1][pos] > EL[lineID][lane][pos]) ){ // only if a movement to the right is allowed
+            // EL[carril_destino] > EL[carril_origen]
+
+
+                // we now evaluate willingness    
+                // gapb(r/l) > vbef(r/l)
+                // gapf(r/l) > v
+                
+                if ((BUSESPAR[18][i]>BUSESPAR[19][i]) && (BUSESPAR[17][i]>BUSESPAR[2][i])){
+                    newy[i] = lane-1;
+                }
+            }
+        
+            else if ((LC[lineID][lane][pos]==1) && (EL[lineID][lane+1][pos] > EL[lineID][lane][pos])){ // only if a movement to the right is allowed
+                // EL[carril_destino] > EL[carril_origen]
+                // we now evaluate willingness
+                // gapb(r/l) > vbef(r/l)
+                // gapf(r/l) > v
+                // we now evaluate willingness
+                if ((BUSESPAR[5][i]>BUSESPAR[6][i]) && (BUSESPAR[4][i]>BUSESPAR[2][i])){
+                    newy[i] = lane+1;
                 }
             }
         }
-    //}
-    // If the time is odd, we perform the possible movements to the left
-    //else{
-        for (int i=0; i<Ncars; i++){ // we scan over all buses
-            if (BUSESPAR[20][i] >0){BUSESPAR[20][i] = BUSESPAR[20][i]-1;} // in case the car has some penalty time for changing lane
-            else{
-                pos = BUSESPAR[0][i];
-                lane = BUSESPAR[1][i];
-                lineID = BUSESPAR[10][i];
-                if (LC[lineID][lane][pos]==1){ // only if a movement to the right is allowed
-                    // we now evaluate willingness
-                    // EL[carril_destino] > EL[carril_origen]
-                    // gapb(r/l) > vbef(r/l)
-                    // gapf(r/l) > v
-                    // we now evaluate willingness
-                    if ((EL[lineID][lane+1][pos] > EL[lineID][lane][pos]) && (BUSESPAR[5][i]>BUSESPAR[6][i]) && (BUSESPAR[4][i]>BUSESPAR[2][i])){
-                        newy[i] = lane+1;
-                    }
-                }
-            }
-        }
-   // }
-    
+    }
     // Now we update all the lanes
     BUSESPAR[1]=newy;        
 }
 
 
 // making the buses move
-void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::array<std::vector<int>,2> & PARKED, std::vector<std::vector<int>> V, std::vector<std::vector<std::vector<routeC>>> MATRIX, std::vector<std::vector<std::vector<double>>> weightMatrix, std::default_random_engine &generator, std::vector<float> &bussp, float & cost){
+void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::array<std::vector<int>,2> & PARKED, std::vector<std::vector<int>> & V, std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::vector<std::vector<std::vector<double>>> &weightMatrix, std::default_random_engine &generator, std::vector<float> &bussp, float & cost){
     int pos, lane, lineID, dt, speed;
     float prand, mean, std;
     // we scan over all buses
@@ -469,7 +461,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
             
             // checking whether the bus reaches a stop
             if (BUSESPAR[0][i]==BUSESPAR[7][i]){ 
-                //std::cout<<"Bus arrived"<<std::endl; 
+                //std::cout<<"Bus arrived to the station"<<std::endl; 
                 // we set the speed, advancing and stoptime to zero
                 BUSESPAR[2][i]=0;
                 BUSESPAR[21][i]=0;
@@ -482,10 +474,12 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 //std::cout<<results.dwelltime<<" "<<results.busoccupation<<std::endl;
                 // we update the stop information
                 updatestop(i,BUSESPAR,SYSTEM);
+                //std::cout<<"Bus left the station"<<std::endl;
             }
             //////////////
             // checking whether the bus reaches a traffic light
             if( (BUSESPAR[26][i]<BUSESPAR[0][i]) && (SYSTEM.Lines[lineID].tltracks[BUSESPAR[23][i]]==BUSESPAR[22][i])){
+                //std::cout<<"Bus arrived to tl"<<std::endl;
                 // We update the new tl information
                 BUSESPAR[23][i]++;
                 // in case there are more traffic lights ahead
@@ -499,6 +493,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                     BUSESPAR[25][i]=-1;
                     BUSESPAR[26][i]=1e6;
                 }
+                //std::cout<<"Bus left the tl"<<std::endl;
             }
 
             //////////
@@ -523,12 +518,13 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                     BUSESPAR[27][i] =1e6;
                 }
 
-               // std::cout<<"Salimos del break"<<std::endl;  
+                //std::cout<<"Salimos del break"<<std::endl;  
             }   
 
             ////////////////
             // checking whether there is a service change
-            else if (BUSESPAR[0][i]>SYSTEM.Lines[BUSESPAR[10][i]].change_pos){
+            else if (BUSESPAR[0][i]>=SYSTEM.Lines[BUSESPAR[10][i]].change_pos){
+                //std::cout<<"Inicio cambio de servicio"<<std::endl;
                 //We add the speed of the bus to the list
                 int total_distance = SYSTEM.Lines[BUSESPAR[10][i]].end - SYSTEM.Lines[BUSESPAR[10][i]].origin;
                 for (int j = 0; j< SYSTEM.Lines[BUSESPAR[10][i]].breaks.size(); j++){
@@ -578,8 +574,9 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
             }
 
             // checking whether the bus leaves the system
-            else if (BUSESPAR[0][i]>SYSTEM.Lines[BUSESPAR[10][i]].end){
+            else if (BUSESPAR[0][i]>=SYSTEM.Lines[BUSESPAR[10][i]].end){
                 //We add the speed of the bus to the list
+                //std::cout<<"Bus arrived al final"<<std::endl;
                 int total_distance = SYSTEM.Lines[BUSESPAR[10][i]].end - SYSTEM.Lines[BUSESPAR[10][i]].origin;
                 for (int j = 0; j< SYSTEM.Lines[BUSESPAR[10][i]].breaks.size(); j++){
                     total_distance-=SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][2]-SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][0];
@@ -597,6 +594,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 int end = SYSTEM.Lines[lineID].end;
                 int parkID = std::distance(std::begin(ends),std::find(std::begin(ends), std::end(ends), end));
                 PARKED[parkID].push_back(BUSESPAR[13][i]);
+                //std::cout<<"Bus salio"<<std::endl;
             }
             
         }

@@ -87,6 +87,7 @@ for i in range(len(stations)):
 
 # Printing the route matrix 
 filename=os.path.join(wd,os.pardir,'conf', "RouteMatrix.txt")
+print(filename)
 routefile=open(filename,'w')
 
 for i in range(len(stations)):
@@ -98,40 +99,4 @@ for i in range(len(stations)):
             routefile.write("%d %d\n"%(RouteMatrix[i][j][k][0],RouteMatrix[i][j][k][1]))                
 routefile.close()
 
-###############
-## OD Matrix
 
-# Printing the OD matrix
-filename=os.path.join(wd,os.pardir,'conf', "OD_matrix.txt")
-odfile=open(filename,'w')
-
-for i in range(len(stations)):
-    destinations = np.random.random(len(stations))
-    # making the diagonal 0
-    destinations[i] = 0
-    # correcting for non connected stations
-    for j in range(len(stations)):
-        if len(RouteMatrix[i][j])==0:
-            destinations[j] = 0
-    # normalizing
-    destinations = destinations/np.sum(destinations)
-    # correcting for non connected stations
-    for j in range(len(stations)):
-        odfile.write(f'{i} {j} {destinations[j]}\n')
-        
-odfile.close()
-
-###############
-## Input vector
-
-# Printing the input vector
-filename=os.path.join(wd,os.pardir,'conf', "IN.txt")
-infile=open(filename,'w')
-
-indata = np.random.random(len(stations))
-indata = indata/np.sum(indata)
-# printing the results
-for j in range(len(stations)):
-    infile.write(f'{indata[j]}\n')
-        
-infile.close()

@@ -5,6 +5,8 @@
 #include "routeC.h"
 #include "tlC.h"
 
+#include <numeric>
+#include <chrono>
 #include <iostream>
 #include <vector>
 #include <array>
@@ -13,7 +15,7 @@
 using namespace std;
 
 int main (int argc, char **argv){
-
+    // auto t00 = std::chrono::high_resolution_clock::now();
     // The arguments list
     // 1 - seed
     // 2 - whether the animation data should be exported
@@ -79,7 +81,7 @@ int main (int argc, char **argv){
     }
 
    
-    cout<<"Read all the configuration files, the system is created"<<endl;
+    //cout<<"Read all the configuration files, the system is created"<<endl;
 
     ////////////////////////////////////////////////////////////////////////
     //Setting the argument information
@@ -165,11 +167,14 @@ int main (int argc, char **argv){
     filename = filename +"_"+to_string(int(100*Cfract))+".txt";
 
 
-    cout<<"Defined all the simulation parameters"<<endl; 
+    //cout<<"Defined all the simulation parameters"<<endl; 
     /////////////////////////////////////////////////////////
     // performing the simulation
     for (int TIME=4*3600; TIME<10*3600;TIME++){
         // Inserting the passengers
+        //if (TIME%100==0){
+        //std::cout<<TIME<<std::endl;}
+        
         if (TIME%10==0){
             std::poisson_distribution<int> distribution (getPassengersDemand(factor,TIME));
             int npass = distribution(generator);
@@ -189,45 +194,17 @@ int main (int argc, char **argv){
             createbus(TIME, 1, BusesPar, SYSTEM, Queues, Parked);
            // createbus(TIME, 2, BusesPar, SYSTEM, Queues, Parked);
         }*/
+
         populate(TIME, BusesPar, SYSTEM, Queues, Parked);
         sortbuses(BusesPar, index);
         calculategaps(BusesPar, EL, SYSTEM);
-        cout<<"Primer calculate gaps"<<endl;
-        for (int j =0; j<BusesPar[0].size(); j++){
-            for (int i = 0; i< BusesPar.size(); i++){
-                cout<<BusesPar[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        //std::cout<<"Primer calculate gaps"<<std::endl;
         buschangelane(BusesPar,LC, RC, EL, TIME);
-        //std::cout<<"changelane"<<std::endl;
         calculategaps(BusesPar, EL, SYSTEM);
-        cout<<"Segundo calculate gaps"<<endl;
-        for (int j =0; j<BusesPar[0].size(); j++){
-            for (int i = 0; i< BusesPar.size(); i++){
-                cout<<BusesPar[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-
-        //std::cout<<"Segundo calculate gaps"<<std::endl;
         busadvance(BusesPar,SYSTEM,TIME,Nactivepass,passsp,BusesPassengers, StationPassengers,Passengers, Parked, V,  routeMatrix, weightMatrix, generator, bussp, cost);
-        // Updating the traffic lights
         for (auto &tl: SYSTEM.Tlights){
             tl.updatephase();
         }
-                
-        for (int j =0; j<BusesPar[0].size(); j++){
-            for (int i = 0; i< BusesPar.size(); i++){
-                cout<<BusesPar[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        
-        // calculating
         getPassengerFlowSpeedOccFast(BusesPar,flow,occ,Nactivepass,ncounts);
-        
         // exporting the data in case of the animation data was requested
         if (print == 1){
             for (int i =0; i<BusesPar[0].size(); i++){
@@ -243,6 +220,73 @@ int main (int argc, char **argv){
             std::cout<<"Filas: "<<Queues[0].size()<<" "<<Queues[1].size()<<std::endl;
         }*/
     }
+    // calculating the average time a function takes
+/*
+    // insert_pass time
+    double sum = std::accumulate(insertpass_time.begin(), insertpass_time.end(), 0.0);
+    double mean = sum / insertpass_time.size();
+
+    double sq_sum = std::inner_product(insertpass_time.begin(), insertpass_time.end(), insertpass_time.begin(), 0.0);
+    double stdev = std::sqrt(sq_sum / insertpass_time.size() - mean * mean);
+    std::cout<<"insert passengers "<<mean<<"+/-"<<stdev<<std::endl;
+    
+    // insert_pass time
+    sum = std::accumulate(populate_time.begin(), populate_time.end(), 0.0);
+    mean = sum / populate_time.size();
+
+    sq_sum = std::inner_product(populate_time.begin(), populate_time.end(), populate_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / populate_time.size() - mean * mean);
+    std::cout<<"populate buses "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //calculategaps_time
+    sum = std::accumulate(calculategaps_time.begin(), calculategaps_time.end(), 0.0);
+    mean = sum / calculategaps_time.size();
+
+    sq_sum = std::inner_product(calculategaps_time.begin(), calculategaps_time.end(), calculategaps_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / calculategaps_time.size() - mean * mean);
+    std::cout<<"calculate gaps "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //sort_time
+    sum = std::accumulate(sort_time.begin(), sort_time.end(), 0.0);
+    mean = sum / sort_time.size();
+
+    sq_sum = std::inner_product(sort_time.begin(), sort_time.end(), sort_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / sort_time.size() - mean * mean);
+    std::cout<<"sort buses "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //change_time
+    sum = std::accumulate(change_time.begin(), change_time.end(), 0.0);
+    mean = sum / change_time.size();
+
+    sq_sum = std::inner_product(change_time.begin(), change_time.end(), change_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / change_time.size() - mean * mean);
+    std::cout<<"change lane buses "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //advance_time
+    sum = std::accumulate(advance_time.begin(), advance_time.end(), 0.0);
+    mean = sum / advance_time.size();
+
+    sq_sum = std::inner_product(advance_time.begin(), advance_time.end(), advance_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / advance_time.size() - mean * mean);
+    std::cout<<"advance buses "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //traffic lights time
+    sum = std::accumulate(tls_time.begin(), tls_time.end(), 0.0);
+    mean = sum / tls_time.size();
+
+    sq_sum = std::inner_product(tls_time.begin(), tls_time.end(), tls_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / tls_time.size() - mean * mean);
+    std::cout<<"traffic lights "<<mean<<"+/-"<<stdev<<std::endl;
+
+    //calculation_time
+    sum = std::accumulate(calculation_time.begin(), calculation_time.end(), 0.0);
+    mean = sum / calculation_time.size();
+
+    sq_sum = std::inner_product(calculation_time.begin(), calculation_time.end(), calculation_time.begin(), 0.0);
+    stdev = std::sqrt(sq_sum / calculation_time.size() - mean * mean);
+    std::cout<<"calculation "<<mean<<"+/-"<<stdev<<std::endl;
+*/
+
     /*
     cout<<"Buses in the system: "<<BusesPar[0].size()<<endl;
     for (int i = 0; i< BusesPar[0].size(); i++){
@@ -263,15 +307,18 @@ int main (int argc, char **argv){
        /////////////////////////////////////////////////////////
     // calculating the speed for the passengers in the buses
     for (int i = 0; i<BusesPar[0].size(); i++){ // we scan over the buses
-        int busID=BusesPar[17][i];
+        int busID=BusesPar[13][i];
         for (int j = 0; j<BusesPassengers[busID].size(); j++){ // we scan over all passengers in the bus
+            //std::cout<< BusesPassengers[busID][j] << " " << BusesPar[0][i] <<std::endl;
             int passID = BusesPassengers[busID][j];
             passsp+=fabs(Passengers[passID][3] + BusesPar[0][i]-SYSTEM.Stations[Passengers[passID][0]].stop_pos[0])/(10*3600-1-Passengers[passID][2]);
+        
         }   
+        
     }
 
     passsp=passsp/passcount;
-
+    //std::cout<<"Velocidad pasajeros: " <<passsp <<std::endl;
     
     /////////////////////////////////////////////////////////
     // Calculating the bus speed
@@ -292,7 +339,7 @@ int main (int argc, char **argv){
     double BSP = std::accumulate(bussp.begin(), bussp.end(), 0.0);
     BSP = BSP / bussp.size();
 
-   // cout<<"BSP "<<BSP<<endl;
+    //cout<<"BSP "<<BSP<<endl;
     /////////////////////////////////////////////////////////
     // normalizing the data
     cost = cost/3600.0; // en unidades de bus-h
@@ -311,5 +358,7 @@ int main (int argc, char **argv){
     if (print == 1)
         animfile.close();
 
+//    auto t1 = std::chrono::high_resolution_clock::now();
+//    std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(t1 - t00).count()<<std::endl;
     return 0;
 }

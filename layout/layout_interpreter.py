@@ -23,7 +23,7 @@ for index, row in traffic_lights_df.iterrows():
     tlname = row['name']
     traffic_lights[tlname] = {}
     traffic_lights[tlname]['dir'] = [info.strip() for info in row['direction'].split('-')] # we read all the directions
-    traffic_lights[tlname]['lengths'] = [int(info.strip()) for info in row['length'].split('-')] # we read all the lengths
+    traffic_lights[tlname]['lengths'] = [int(info.strip()) for info in str(row['length']).split('-')] # we read all the lengths
     if (len(traffic_lights[tlname]['dir'])!=len(traffic_lights[tlname]['lengths'])): # we check that the number of directions and lengths is the same
         print(f"Warning!! Traffic light {tlname} has a different number of directions than lengths")
     traffic_lights[tlname]['offset'] = row['offset']
