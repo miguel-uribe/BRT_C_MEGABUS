@@ -282,6 +282,7 @@ void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
          // we now update the last car information
         lastcar[lane] = i;
         
+        
         if(rightF[lane] == true)  // the forward gap to the right information is up to date
             lastcarR[lane].clear(); 
         lastcarR[lane].push_back(i);

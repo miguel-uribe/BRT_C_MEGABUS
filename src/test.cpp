@@ -15,7 +15,7 @@
 using namespace std;
 
 int main (int argc, char **argv){
-    // auto t00 = std::chrono::high_resolution_clock::now();
+     auto t00 = std::chrono::high_resolution_clock::now();
     // The arguments list
     // 1 - seed
     // 2 - whether the animation data should be exported
@@ -358,7 +358,7 @@ int main (int argc, char **argv){
     if (print == 1)
         animfile.close();
 
-//    auto t1 = std::chrono::high_resolution_clock::now();
-//    std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(t1 - t00).count()<<std::endl;
+    auto t1 = std::chrono::high_resolution_clock::now();
+    std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(t1 - t00).count()<<std::endl;
     return 0;
 }
