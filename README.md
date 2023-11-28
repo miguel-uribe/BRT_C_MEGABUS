@@ -7,41 +7,60 @@ This code creates a full simulation of the Megabus BRT system in Pereira - Dosqu
 
 ### c++ compiler
 The first thing you need is a c++ compiler, which can be easily install in Ubuntu using the following lines from a terminal:
-`sudo apt update`
-`sudo apt install build-essential`
+```
+sudo apt update
+sudo apt install build-essential
+```
 
 ### python
 It is recommended that you create a separated Python environment for your project. Unfortunately the Python version in the official Ubuntu repositories does not update fast enough, it is therefore suggested that we include the `deadsnakes` repository to the package manager and then install an up-to-date Python version.
 
 First, we update the repositories and packages
-`sudo apt update && sudo apt upgrade`
+```
+sudo apt update && sudo apt upgrade
+```
 
 Next, we add the repository
-`sudo add-apt-repository ppa:deadsnakes/ppa`
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+```
 
 Now we can install a custom Python version, say Python 3.11
-`sudo apt install python3.11`
-
+```
+sudo apt install python3.11
+```
 We can verify that Python 3.11 is installed by executing
-`python3.11 --version`
+```
+python3.11 --version
+```
 
 In addition to Python we will need the `venv` and the `python-config` modules which can be installed using:
-`sudo apt install python3.11-venv python3.11-dev`
+```
+sudo apt install python3.11-venv python3.11-dev
+```
 
 Use the same Python version you installed two steps above. Once these steps are completed we are ready to create a Python environment for the simulation project, this can be achieved as follows:
 
-`python3.11 -m venv /path/to/environment/folders/simulator`
+```
+python3.11 -m venv /path/to/environment/folders/simulator
+```
 
 This command will create an environment called `simulator` located in an existing `/path/to/environment/folders` which should have been created beforehand. After this step, the environment can be activated with
-`source /path/to/environment/folders/simulater/bin/activate`
+```
+source /path/to/environment/folders/simulater/bin/activate
+```
 
 Finally, we need to install the required libraries, `numpy` and `pybind11` are mandatories. `pandas`, `jupyter` or visualization libraries such as `matplotlib` and `seaborn` are optional and depend on the work that needs to be performed after the simulations.
 
-`pip install numpy pybind11 pandas jupyter matplotlib seaborn`
+```
+pip install numpy pybind11 pandas jupyter matplotlib seaborn
+```
 
 ## Compiling the c++ source
 In order to compile the c++ code to create a Python module, the following line should be run from the `src_c++` folder.
-`g++ -O2 -Wall -shared -fPIC $(python -m pybind11 --includes) main.cpp -o simulator.so`
+```
+g++ -O2 -Wall -shared -fPIC $(python -m pybind11 --includes) main.cpp -o simulator.so
+```
 
 This line should create the file `simulator.so` in the folder. The library contains the definition of a function called `simulate()` that receives three inputs:
 - (int) seed: the random generator seed
