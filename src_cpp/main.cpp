@@ -11,16 +11,32 @@
 #include <vector>
 #include <array>
 #include <deque>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
+namespace py = pybind11;
 using namespace std;
 
-int main (int argc, char **argv){
-     auto t00 = std::chrono::high_resolution_clock::now();
+struct sim_results
+{
+    double BSP;
+    float flow;
+    float passp;
+    float occ;
+    float cost;
+    vector<array<int, Nparam+1>> BusData; // the detailed bus information
+};
+
+int add(int i, int j) {
+    return i + j;
+}
+
+
+sim_results simulate (int seed, int print, float Cfract){
     // The arguments list
     // 1 - seed
-    // 2 - whether the animation data should be exported
+    // 2 - whether the animation data should be exported [0 or 1]
     // 3 - CubaFract, the fraction of the total fleet initially in Cuba
-
     std::string stationlist = "../conf/station_list.txt";
     std::string stationdefinition = "../conf/station_definition.txt";
     std::string tldefinition = "../conf/traffic_light_list.txt";
@@ -86,20 +102,12 @@ int main (int argc, char **argv){
     ////////////////////////////////////////////////////////////////////////
     //Setting the argument information
     ////////////////////////////////////////////////////////////////////////
-    int seed = stoi(argv[1]);
-    int print = stoi(argv[2]);
     std::default_random_engine generator (seed);
     srand(seed);
-    cout<<"the seed has been set to: "<<seed<<endl;
+    //cout<<"the seed has been set to: "<<seed<<endl;
     if ((print!=0) && (print!=1)){
         cout<<"The second argument is neither 0 or 1. Exiting the simulation."<<endl;
-        return 0;
-    }
-    if(print==0){
-        cout<<"Detailed simulation data will not be exported"<<endl;
-    }
-    else{
-        cout<<"Detailed simulation data will be exported"<<endl;
+        exit;
     }
 
     /////////////////////////////////////////////////////////////////
@@ -111,7 +119,6 @@ int main (int argc, char **argv){
 
     ///////////////////////////////////////////////////////////////
     // Creating the bus array
-    float Cfract = stof(argv[3]);
     int fCuba = int(fleet*Cfract);
     int fDosq = fleet-fCuba;
     vector<int> index; // required to order the buses
@@ -143,28 +150,8 @@ int main (int argc, char **argv){
     float occ = 0; // average station occupation
     int ncounts =0; // number of times the flow and the occupation have been measured
     vector<float> bussp; // the vector with the average speed of a bus
-
-      ///////////////////////////////////////////////////////
-    //// defining the output files
-    
-    string filename = "../results/sim_results_";
-    // adding the line times
-    for (auto line: SYSTEM.Lines){
-        filename= filename +"_"+to_string(line.headway);
-    }
-    // adding the factor
-    filename = filename +"_"+to_string(factor);
-    // adding the fleet
-    filename = filename +"_"+to_string(fleet);
-    // adding the EW fraction
-    ofstream animfile;
-    string filename_anim;
-    if (print == 1){ // in case the animation data is requested
-        filename_anim = filename+"_"+to_string(int(100*Cfract))+"_anim.txt";
-        animfile.open(filename_anim);
-    }
-
-    filename = filename +"_"+to_string(int(100*Cfract))+".txt";
+    array<int, Nparam+1> auxdata;
+    vector<array<int, Nparam+1>> printdata; // the detailed bus information
 
 
     //cout<<"Defined all the simulation parameters"<<endl; 
@@ -207,104 +194,16 @@ int main (int argc, char **argv){
         getPassengerFlowSpeedOccFast(BusesPar,flow,occ,Nactivepass,ncounts);
         // exporting the data in case of the animation data was requested
         if (print == 1){
+            auxdata[0] = TIME;
             for (int i =0; i<BusesPar[0].size(); i++){
-                animfile<<TIME<<" ";
                 for (int j = 0; j<Nparam; j++){
-                    animfile<<BusesPar[j][i]<<" ";
+                    auxdata[j+1] = BusesPar[j][i];
                 }
-            animfile<<endl;
+                printdata.push_back(auxdata);
             }
         }
-    /*    if (TIME%900 == 0){
-            std::cout<<"Parqueo: "<<Parked[0].size()<<" "<<Parked[1].size()<<std::endl;
-            std::cout<<"Filas: "<<Queues[0].size()<<" "<<Queues[1].size()<<std::endl;
-        }*/
     }
-    // calculating the average time a function takes
-/*
-    // insert_pass time
-    double sum = std::accumulate(insertpass_time.begin(), insertpass_time.end(), 0.0);
-    double mean = sum / insertpass_time.size();
-
-    double sq_sum = std::inner_product(insertpass_time.begin(), insertpass_time.end(), insertpass_time.begin(), 0.0);
-    double stdev = std::sqrt(sq_sum / insertpass_time.size() - mean * mean);
-    std::cout<<"insert passengers "<<mean<<"+/-"<<stdev<<std::endl;
-    
-    // insert_pass time
-    sum = std::accumulate(populate_time.begin(), populate_time.end(), 0.0);
-    mean = sum / populate_time.size();
-
-    sq_sum = std::inner_product(populate_time.begin(), populate_time.end(), populate_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / populate_time.size() - mean * mean);
-    std::cout<<"populate buses "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //calculategaps_time
-    sum = std::accumulate(calculategaps_time.begin(), calculategaps_time.end(), 0.0);
-    mean = sum / calculategaps_time.size();
-
-    sq_sum = std::inner_product(calculategaps_time.begin(), calculategaps_time.end(), calculategaps_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / calculategaps_time.size() - mean * mean);
-    std::cout<<"calculate gaps "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //sort_time
-    sum = std::accumulate(sort_time.begin(), sort_time.end(), 0.0);
-    mean = sum / sort_time.size();
-
-    sq_sum = std::inner_product(sort_time.begin(), sort_time.end(), sort_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / sort_time.size() - mean * mean);
-    std::cout<<"sort buses "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //change_time
-    sum = std::accumulate(change_time.begin(), change_time.end(), 0.0);
-    mean = sum / change_time.size();
-
-    sq_sum = std::inner_product(change_time.begin(), change_time.end(), change_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / change_time.size() - mean * mean);
-    std::cout<<"change lane buses "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //advance_time
-    sum = std::accumulate(advance_time.begin(), advance_time.end(), 0.0);
-    mean = sum / advance_time.size();
-
-    sq_sum = std::inner_product(advance_time.begin(), advance_time.end(), advance_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / advance_time.size() - mean * mean);
-    std::cout<<"advance buses "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //traffic lights time
-    sum = std::accumulate(tls_time.begin(), tls_time.end(), 0.0);
-    mean = sum / tls_time.size();
-
-    sq_sum = std::inner_product(tls_time.begin(), tls_time.end(), tls_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / tls_time.size() - mean * mean);
-    std::cout<<"traffic lights "<<mean<<"+/-"<<stdev<<std::endl;
-
-    //calculation_time
-    sum = std::accumulate(calculation_time.begin(), calculation_time.end(), 0.0);
-    mean = sum / calculation_time.size();
-
-    sq_sum = std::inner_product(calculation_time.begin(), calculation_time.end(), calculation_time.begin(), 0.0);
-    stdev = std::sqrt(sq_sum / calculation_time.size() - mean * mean);
-    std::cout<<"calculation "<<mean<<"+/-"<<stdev<<std::endl;
-*/
-
-    /*
-    cout<<"Buses in the system: "<<BusesPar[0].size()<<endl;
-    for (int i = 0; i< BusesPar[0].size(); i++){
-            cout<<BusesPar[0][i]<<" "<<BusesPar[13][i]<<" "<<BusesPar[10][i]<<" "<<BusesPar[7][i]<<endl;
-        }
-    cout<<"Queues at the portals: "<<Queues[0].size()<<" "<<Queues[1].size()<<endl;
-
-    cout<<"Number of lanes"<<EL[0][0].size()<<endl;
-    cout<<"Number of lanes"<<EL[0].size()<<endl;
-*/
-    cout<<Nactivepass<<endl;
-    cout<<passcount<<endl;
-/*
-    for (int i=0; i<SYSTEM.Stations.size(); i++){
-        std::cout<<SYSTEM.Stations[i].name<<" "<<StationPassengers[i].size()<<std::endl;
-    }*/
-
-       /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
     // calculating the speed for the passengers in the buses
     for (int i = 0; i<BusesPar[0].size(); i++){ // we scan over the buses
         int busID=BusesPar[13][i];
@@ -348,17 +247,28 @@ int main (int argc, char **argv){
     /////////////////////////////////////////////////////////
     // exporting the data
 
-    // opening the file
-    ofstream outfile;
-    outfile.open(filename, fstream::app);
-    outfile<<seed<<" "<<flow<<" "<<passsp<<" "<<BSP<<" "<<occ<<" "<<cost<<endl;
-    outfile.close();
+    sim_results RESULTS;
+    RESULTS.BSP = BSP;
+    RESULTS.flow = flow;
+    RESULTS.cost = cost;
+    RESULTS.occ = occ;
+    RESULTS.passp = passsp;
+    RESULTS.BusData = printdata;
+
+    return RESULTS;
+}
 
 
-    if (print == 1)
-        animfile.close();
+PYBIND11_MODULE(simulator, m) {
+    py::class_<sim_results>(m, "sim_results")
+        .def_readwrite("BSP", &sim_results::BSP)
+        .def_readwrite("flow", &sim_results::flow)
+        .def_readwrite("passp", &sim_results::passp)
+        .def_readwrite("occ", &sim_results::occ)
+        .def_readwrite("cost", &sim_results::cost)
+        .def_readwrite("BusData", &sim_results::BusData);
+        
 
-    auto t1 = std::chrono::high_resolution_clock::now();
-    std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(t1 - t00).count()<<std::endl;
-    return 0;
+    m.def("simulate", &simulate, "A function that adds two numbers");
+    m.def("add", &add, "A function that adds two numbers");
 }
