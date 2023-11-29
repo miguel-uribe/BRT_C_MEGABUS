@@ -3,6 +3,7 @@
 layout/__pycache__/
 results/
 .ipynb_checkpoints
+src_python/__pycache__/
 
 # Prerequisites
 *.d

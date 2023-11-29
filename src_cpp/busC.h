@@ -19,7 +19,7 @@
 void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){  
     // Determining whether the bus starts from Cuba or Dosquebradas
     int origin = SYSTEM.Lines[lineID].origin;
-    int parkID = std::distance(std::begin(origins),std::find(std::begin(origins), std::end(origins), origin));
+    int parkID = std::distance(std::begin(Origins),std::find(std::begin(Origins), std::end(Origins), origin));
     if (parkID>=PARKED.size()){
         std::cout<<"Unable to indentify the ParkID, no bus has been introduced"<<std::endl;
         return;
@@ -281,6 +281,7 @@ void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
         }
          // we now update the last car information
         lastcar[lane] = i;
+        
         
         if(rightF[lane] == true)  // the forward gap to the right information is up to date
             lastcarR[lane].clear(); 
@@ -592,7 +593,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 //  the bus is removed and added to the parked list
                 toremove.push_back(i);
                 int end = SYSTEM.Lines[lineID].end;
-                int parkID = std::distance(std::begin(ends),std::find(std::begin(ends), std::end(ends), end));
+                int parkID = std::distance(std::begin(Ends),std::find(std::begin(Ends), std::end(Ends), end));
                 PARKED[parkID].push_back(BUSESPAR[13][i]);
                 //std::cout<<"Bus salio"<<std::endl;
             }
