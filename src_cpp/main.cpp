@@ -242,7 +242,7 @@ sim_results simulate (int seed, int print, float Cfract){
     /////////////////////////////////////////////////////////
     // normalizing the data
     cost = cost/3600.0; // en unidades de bus-h
-    flow = flow/V[0].size()/ncounts;
+    flow = flow/(Ends[0]-Origins[0]+Ends[1]-Origins[1])/ncounts;
     occ = occ/SYSTEM.Stations.size()/ncounts;
     /////////////////////////////////////////////////////////
     // exporting the data
