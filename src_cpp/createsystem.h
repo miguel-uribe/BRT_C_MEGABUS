@@ -182,8 +182,10 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
             iss>>read;
             stoptracks.push_back(std::stoi(read));
         }
-        SYSTEM.Lines[ID].stoptracks = stoptracks;
-        SYSTEM.Lines[ID].setstopx(stationIDs, wagonIDs, SYSTEM.Stations);
+        if (stationIDs.size()>0){
+            SYSTEM.Lines[ID].stoptracks = stoptracks;
+            SYSTEM.Lines[ID].setstopx(stationIDs, wagonIDs, SYSTEM.Stations);
+        }
         
     }
 

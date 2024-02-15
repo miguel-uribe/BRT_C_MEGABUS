@@ -96,7 +96,6 @@ sim_results simulate (int seed, int print, float Cfract){
         ODdist.push_back(std::discrete_distribution<int> (ODmatrix[i].begin(), ODmatrix[i].end()));
     }
 
-   
     //cout<<"Read all the configuration files, the system is created"<<endl;
 
     ////////////////////////////////////////////////////////////////////////
@@ -152,7 +151,6 @@ sim_results simulate (int seed, int print, float Cfract){
     vector<float> bussp; // the vector with the average speed of a bus
     array<int, Nparam+1> auxdata;
     vector<array<int, Nparam+1>> printdata; // the detailed bus information
-
 
     //cout<<"Defined all the simulation parameters"<<endl; 
     /////////////////////////////////////////////////////////

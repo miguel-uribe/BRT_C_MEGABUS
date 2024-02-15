@@ -2,12 +2,12 @@
 1 San Fernando
 2 Intercambiador El Viajero
 3 Aeropuerto
-4 Batallón
+4 BatallÃ³n
 5 Maraya
-6 El Jardín
+6 El JardÃ­n
 7 La Ruana
-8 Ucumarí
-9 Egoyá
+8 UcumarÃ­
+9 EgoyÃ¡
 10 Consota
 11 Coliseo
 12 El Cafetero
@@ -17,15 +17,15 @@
 16 Centenario
 17 El Lago
 18 Condina
-19 Otún
+19 OtÃºn
 20 Victoria
-21 Del Café
+21 Del CafÃ©
 22 Ferrocarril
 23 Libertad
 24 Villavicencio
 25 La Popa
-26 Santa Mónica
-27 Milán
+26 Santa MÃ³nica
+27 MilÃ¡n
 28 Fundadores
 29 CAM
 30 Intercambiador Dosquebradas
@@ -33,7 +33,7 @@
 32 Central
 33 Claret
 34 Olaya
-35 Cañarte
+35 CaÃ±arte
 36 Las Flores
 37 Banderas
 38 Palacio de Justicia
