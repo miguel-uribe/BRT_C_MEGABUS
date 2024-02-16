@@ -15,7 +15,7 @@
 
 // The demand function, over time
 double getPassengersDemand(int factor,int time){
-    double demand=factor*(40/14874.2)*(1/(1+exp(-(time-6.8*3600)/(0.58*3600))))*(1.73*exp(-pow(((time-6.8*3600)/(1.29*3600)),2))+1);
+    double demand=factor*(50/14958.5)*(1/(1+exp(-(time-6.8*3600)/(0.58*3600))))*(1.73*exp(-pow(((time-6.8*3600)/(1.29*3600)),2))+1);
     return demand;
 }
 

@@ -153,13 +153,15 @@ sim_results simulate (int seed, int print, float Cfract){
     vector<array<int, Nparam+1>> printdata; // the detailed bus information
 
     //cout<<"Defined all the simulation parameters"<<endl; 
+    int initial_hour = 4;
+    int final_hour = 9;
     /////////////////////////////////////////////////////////
     // performing the simulation
-    for (int TIME=4*3600; TIME<10*3600;TIME++){
+    for (int TIME=initial_hour*3600; TIME<final_hour*3600;TIME++){
         // Inserting the passengers
         //if (TIME%100==0){
         //std::cout<<TIME<<std::endl;}
-        
+        //std::cout<<"Inició el tiempo "<<TIME<<std::endl;
         if (TIME%10==0){
             std::poisson_distribution<int> distribution (getPassengersDemand(factor,TIME));
             int npass = distribution(generator);
@@ -179,13 +181,19 @@ sim_results simulate (int seed, int print, float Cfract){
             createbus(TIME, 1, BusesPar, SYSTEM, Queues, Parked);
            // createbus(TIME, 2, BusesPar, SYSTEM, Queues, Parked);
         }*/
-
+        //std::cout<<"inicio el tiempo"<<std::endl;
         populate(TIME, BusesPar, SYSTEM, Queues, Parked);
+        //std::cout<<"inserto buses"<<std::endl;
         sortbuses(BusesPar, index);
+        //std::cout<<"ordeno buses"<<std::endl;
         calculategaps(BusesPar, EL, SYSTEM);
+        //std::cout<<"gaps"<<std::endl;
         buschangelane(BusesPar,LC, RC, EL, TIME);
+        //std::cout<<"cambios de carril"<<std::endl;
         calculategaps(BusesPar, EL, SYSTEM);
+        //std::cout<<"gaps2"<<std::endl;
         busadvance(BusesPar,SYSTEM,TIME,Nactivepass,passsp,BusesPassengers, StationPassengers,Passengers, Parked, V,  routeMatrix, weightMatrix, generator, bussp, cost);
+        //std::cout<<"movio el bus"<<std::endl;
         for (auto &tl: SYSTEM.Tlights){
             tl.updatephase();
         }
@@ -200,6 +208,7 @@ sim_results simulate (int seed, int print, float Cfract){
                 printdata.push_back(auxdata);
             }
         }
+        //std::cout<<"terminó el tiempo"<<std::endl;
     }
     /////////////////////////////////////////////////////////
     // calculating the speed for the passengers in the buses
@@ -208,12 +217,11 @@ sim_results simulate (int seed, int print, float Cfract){
         for (int j = 0; j<BusesPassengers[busID].size(); j++){ // we scan over all passengers in the bus
             //std::cout<< BusesPassengers[busID][j] << " " << BusesPar[0][i] <<std::endl;
             int passID = BusesPassengers[busID][j];
-            passsp+=fabs(Passengers[passID][3] + BusesPar[0][i]-SYSTEM.Stations[Passengers[passID][0]].stop_pos[0])/(10*3600-1-Passengers[passID][2]);
+            passsp+=fabs(Passengers[passID][3] + BusesPar[0][i]-SYSTEM.Stations[Passengers[passID][0]].stop_pos[0])/(final_hour*3600-1-Passengers[passID][2]);
         
         }   
         
     }
-
     passsp=passsp/passcount;
     //std::cout<<"Velocidad pasajeros: " <<passsp <<std::endl;
     
@@ -222,21 +230,19 @@ sim_results simulate (int seed, int print, float Cfract){
     // We first calculate the speed for the currently active buses
     int total_distance;
     for (int i =0; i<BusesPar[0].size(); i++){
-        total_distance = SYSTEM.Lines[BusesPar[10][i]].end - SYSTEM.Lines[BusesPar[10][i]].origin;
+        total_distance = BusesPar[0][i] - SYSTEM.Lines[BusesPar[10][i]].origin;
         for (int j = 0; j<BusesPar[22][i]; j++){
                 total_distance-=SYSTEM.Breaks[SYSTEM.Lines[BusesPar[10][i]].breaks[j]][2]-SYSTEM.Breaks[SYSTEM.Lines[BusesPar[10][i]].breaks[j]][0];
             }
-        if (BusesPar[18][i]!=10*3600-1){ //we dont take into account buses just released
-            bussp.push_back(float(total_distance/(10*3600-1-BusesPar[14][i])));
+        if (BusesPar[14][i]!=final_hour*3600-1){ //we dont take into account buses just released
+            bussp.push_back(float(total_distance/(final_hour*3600-1-BusesPar[14][i])));
             //cout<<bussp.back()<<" >0"<<endl;
-            cost+=(10*3600-1-BusesPar[14][i]);
+            cost+=(final_hour*3600-1-BusesPar[14][i]);
         }
     }
-
     double BSP = std::accumulate(bussp.begin(), bussp.end(), 0.0);
     BSP = BSP / bussp.size();
 
-    //cout<<"BSP "<<BSP<<endl;
     /////////////////////////////////////////////////////////
     // normalizing the data
     cost = cost/3600.0; // en unidades de bus-h
@@ -252,7 +258,6 @@ sim_results simulate (int seed, int print, float Cfract){
     RESULTS.occ = occ;
     RESULTS.passp = passsp;
     RESULTS.BusData = printdata;
-
     return RESULTS;
 }
 
