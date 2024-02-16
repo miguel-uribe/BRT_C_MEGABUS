@@ -214,48 +214,49 @@ for key in servicebreaks.keys():
 track_index = {}
 # we now proceed to sort the stations
 for key in servicedefinition.keys():
-    ord_index = [] # the list with the organized index
-    track_index[key] = [] # a list with the section number 
-    breaksexists = False # By default there are no breaks
-    # we create an array of stops
-    stops = np.array([stationdefinition[servicedefinition[key][i][0]][servicedefinition[key][i][1]] for i in range(len(servicedefinition[key]))] )
-    # we load the array of breaks
-    if key in servicebreaks.keys():
-        breaks = np.array(servicebreaks[key])
-        breaksexists = True
-    # we build the sections
-    if not breaksexists:
-        sections = [(servicestarts[key], serviceends[key])]
-    else:
-        sections = [(servicestarts[key], breaks[0,0])]
-        for i in range(len(breaks)-1):
-            sections.append((breaks[i,2], breaks[i+1,0]))
-        sections.append((breaks[-1,2], serviceends[key]))
-    # We look for the first stop in a section
-    for i,section in enumerate(sections):
-        firststop = np.where((stops >= section[0]) & (stops<= section[1]) )[0]
-        if len(firststop)>0:
-            next_index = firststop[0]
-            track = i
-            break
-    ord_index.append(next_index)
-    track_index[key].append(track)
-    # we repeat this process until all stations are covered
-    while (len(ord_index) < len(servicedefinition[key])):
-        next_index += 1
-        if breaksexists:
-            if stops[next_index] > breaks[track][0]:
-                next_index = np.where(stops > breaks[track][2])[0][0]
-                track += 1
-                if (track == len(breaks)):
-                    breaksexists = False
+    if len(servicedefinition[key]) > 0:
+        ord_index = [] # the list with the organized index
+        track_index[key] = [] # a list with the section number 
+        breaksexists = False # By default there are no breaks
+        # we create an array of stops
+        stops = np.array([stationdefinition[servicedefinition[key][i][0]][servicedefinition[key][i][1]] for i in range(len(servicedefinition[key]))] )
+        # we load the array of breaks
+        if key in servicebreaks.keys():
+            breaks = np.array(servicebreaks[key])
+            breaksexists = True
+        # we build the sections
+        if not breaksexists:
+            sections = [(servicestarts[key], serviceends[key])]
+        else:
+            sections = [(servicestarts[key], breaks[0,0])]
+            for i in range(len(breaks)-1):
+                sections.append((breaks[i,2], breaks[i+1,0]))
+            sections.append((breaks[-1,2], serviceends[key]))
+        # We look for the first stop in a section
+        for i,section in enumerate(sections):
+            firststop = np.where((stops >= section[0]) & (stops<= section[1]) )[0]
+            if len(firststop)>0:
+                next_index = firststop[0]
+                track = i
+                break
         ord_index.append(next_index)
         track_index[key].append(track)
-        
-    if (len(ord_index)!= len(set(ord_index))):
-        print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
-    # we reorder the stop list
-    servicedefinition[key][:] = [servicedefinition[key][i] for i in ord_index]
+        # we repeat this process until all stations are covered
+        while (len(ord_index) < len(servicedefinition[key])):
+            next_index += 1
+            if breaksexists:
+                if stops[next_index] > breaks[track][0]:
+                    next_index = np.where(stops > breaks[track][2])[0][0]
+                    track += 1
+                    if (track == len(breaks)):
+                        breaksexists = False
+            ord_index.append(next_index)
+            track_index[key].append(track)
+            
+        if (len(ord_index)!= len(set(ord_index))):
+            print(f"Warning!!! The indices in ord_index for service {key} when ordering the stops are not unique")
+        # we reorder the stop list
+        servicedefinition[key][:] = [servicedefinition[key][i] for i in ord_index]
 
 
 track_index_tl = {}

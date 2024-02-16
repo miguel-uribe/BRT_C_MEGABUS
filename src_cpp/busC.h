@@ -80,8 +80,6 @@ void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSES
         else{
             BUSESPAR[27].push_back(1e6);
         }
-
-
             
         // we retrieve the first stop information
         if (SYSTEM.Lines[lineID].stopx.size()>0){ // in case there are stops
@@ -107,6 +105,7 @@ void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSES
     else{
         QUEUES[parkID].push_back(lineID);
     }
+
 } 
 
 
@@ -235,13 +234,18 @@ void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
         /////////////////////////////////////////////////
         ///// FORWARD GAP
         // we now calculate the distance to the next stop
-        next_stop_track = SYSTEM.Lines[lineID].stoptracks[BUSESPAR[9][i]];
-        track_difference = next_stop_track - track;
-        // We calculate the distance
-        distance_to_stop = BUSESPAR[7][i]-position;
-        // If there are breaks in between
-        for (int j =0; j<track_difference; j++){
-            distance_to_stop+= -(SYSTEM.Breaks[SYSTEM.Lines[lineID].breaks[track+j]][2]-SYSTEM.Breaks[SYSTEM.Lines[lineID].breaks[track+j]][0]);
+        if (BUSESPAR[9][i]>=0){ //Only if there are stops in the future
+            next_stop_track = SYSTEM.Lines[lineID].stoptracks[BUSESPAR[9][i]];
+            track_difference = next_stop_track - track;
+            // We calculate the distance
+            distance_to_stop = BUSESPAR[7][i]-position;
+            // If there are breaks in between
+            for (int j =0; j<track_difference; j++){
+                distance_to_stop+= -(SYSTEM.Breaks[SYSTEM.Lines[lineID].breaks[track+j]][2]-SYSTEM.Breaks[SYSTEM.Lines[lineID].breaks[track+j]][0]);
+            }
+        }
+        else{ //in case there are no stops
+            distance_to_stop=1000;
         }
         // by default the forward gap corresponds to the minimal distance between the next lane ending and the distance to the next stop
         BUSESPAR[3][i] = std::min(EL[lineID][lane][position],distance_to_stop);
