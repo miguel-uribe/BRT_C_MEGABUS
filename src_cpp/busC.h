@@ -473,7 +473,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 BUSESPAR[11][i]=0;
                 // we board and alight passengers, and set the dwell time
                 busdata results;
-                results=busArriving(BUSESPAR[13][i],BUSESPAR[8][i],BUSESPAR[10][i],TIME,NACTIVEPASS,PASSSP,BUSPASSENGERS,STPASSENGERS,PASSENGERS,SYSTEM, MATRIX,  weightMatrix, BUSESPAR[16][i]);
+                results=busArriving(BUSESPAR[13][i],BUSESPAR[0][i],BUSESPAR[8][i],BUSESPAR[10][i],TIME,NACTIVEPASS,PASSSP,BUSPASSENGERS,STPASSENGERS,PASSENGERS,SYSTEM, MATRIX,  weightMatrix, BUSESPAR[16][i]);
                 BUSESPAR[12][i] = results.dwelltime;
                 BUSESPAR[16][i] = results.busoccupation;
                 //std::cout<<results.dwelltime<<" "<<results.busoccupation<<std::endl;

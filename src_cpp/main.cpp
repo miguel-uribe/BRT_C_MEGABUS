@@ -210,8 +210,29 @@ sim_results simulate (int seed, int print, float Cfract){
         }
         //std::cout<<"terminó el tiempo"<<std::endl;
     }
+
+   /* for (int i = 0; i<SYSTEM.Stations.size();i++){
+        std::cout<<i<<" "<<SYSTEM.Stations[i].name<<" "<<StationPassengers[i].size()<<std::endl;
+    }*/
+
+   // std::cout<<"Pasajeros activos "<<Nactivepass<<std::endl;
+    //std::cout<<"Pasajeros totales "<<passcount<<std::endl;
+
+   // // Priting the detail of the passengers at the stations
+    //for (int passid=0; passid<Passengers.size();passid++){
+    //        std::cout<<passid<<" "<<Passengers[passid][0]<<" "<<Passengers[passid][1]<<" "<<Passengers[passid][2]<<" "<<Passengers[passid][3]<<std::endl;
+    //}
+
+    // Printing the details of the passengers at a given station
+    /*int stid = 6;
+    for (int i=0; i<StationPassengers[stid].size(); i++ ){
+        int passid = StationPassengers[stid][i];
+        std::cout<<passid<<" "<<Passengers[passid][0]<<" "<<Passengers[passid][1]<<" "<<Passengers[passid][2]<<" "<<Passengers[passid][3]<<std::endl;
+    }*/
+
     /////////////////////////////////////////////////////////
     // calculating the speed for the passengers in the buses
+    
     for (int i = 0; i<BusesPar[0].size(); i++){ // we scan over the buses
         int busID=BusesPar[13][i];
         for (int j = 0; j<BusesPassengers[busID].size(); j++){ // we scan over all passengers in the bus
@@ -222,6 +243,7 @@ sim_results simulate (int seed, int print, float Cfract){
         }   
         
     }
+
     passsp=passsp/passcount;
     //std::cout<<"Velocidad pasajeros: " <<passsp <<std::endl;
     

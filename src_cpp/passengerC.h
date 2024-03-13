@@ -20,17 +20,21 @@ double getPassengersDemand(int factor,int time){
 }
 
 // This function tells the system to create a new passenger
-void insertPassenger(std::vector<std::vector<int>> & STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, int & PASSCOUNT,  std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::discrete_distribution<int> & INDIST, std::vector<std::discrete_distribution<int>> & ODDIST, int TIME, std::default_random_engine GEN, int nlines){
+void insertPassenger(std::vector<std::vector<int>> & STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, int & PASSCOUNT,  std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::discrete_distribution<int> & INDIST, std::vector<std::discrete_distribution<int>> & ODDIST, int TIME, std::default_random_engine & GEN, int nlines){
     int originID= INDIST(GEN);
     int destinationID = ODDIST[originID](GEN);
     int pos_correction = 0;
     // Insert the passenger at the station
     STPASSENGERS[originID].push_back(PASSCOUNT);
     // Adding the passenger inforation to the Passenger Database
-    // the format is [origin,destination, entertime, pos_correction]
-    PASSENGERS.push_back(std::array<int, Nparpass> {originID, destinationID, TIME, pos_correction});
+    // the format is [origin,destination, entertime, pos_correction, startpos, finalpos]
+    PASSENGERS.push_back(std::array<int, Nparpass> {originID, destinationID, TIME, pos_correction, 0, 0});
     // increasing the passenger count
     PASSCOUNT++;
+    //
+   /* if (PASSENGERS.size()==13388){
+        std::cout<<"Passenger 13387 created in "<<TIME<<" "<<PASSENGERS.back()[0]<<" "<<PASSENGERS.back()[1]<<" "<<PASSENGERS.back()[2]<<" "<<PASSENGERS.back()[3]<<std::endl;
+    }*/
 }
 
 
@@ -52,7 +56,6 @@ void boardPassenger(int passID, int busID, int stationID, int lineID, std::array
     else{
         std::cout<<"WARNING, passenger not found in Station Passengers when attempting to remove"<<std::endl;
     }
-
    // std::cout<<"Boarded passenger "<<passID<<" to bus with ID "<<busID<<std::endl;
 }
 
@@ -72,7 +75,8 @@ void alightpassenger(int passID, int busID, int stationID, int TIME, int& Nactiv
     Nactivepass--;
     // we add the passenger speed to the speed list
     // the correcion PASSENGERS[passID][3] is applied in case a bus has performed a jump
-    passsp+=fabs(PASSENGERS[passID][3]+SYSTEM.Stations[stationID].stop_pos[0]-SYSTEM.Stations[PASSENGERS[passID][0]].stop_pos[0])/(TIME-PASSENGERS[passID][2]);
+    passsp+=fabs(PASSENGERS[passID][3]+PASSENGERS[passID][5]-PASSENGERS[passID][4])/(TIME-PASSENGERS[passID][2]);
+    //std::cout<<passID<<" "<<TIME<<" "<<stationID<<" "<<PASSENGERS[passID][4]<<" "<<PASSENGERS[passID][5]<<" "<<fabs(PASSENGERS[passID][3]+PASSENGERS[passID][5]-PASSENGERS[passID][4])/(TIME-PASSENGERS[passID][2])<<" "<<PASSENGERS[passID][0]<<" "<<PASSENGERS[passID][1]<<" "<<PASSENGERS[passID][2]<<" "<<PASSENGERS[passID][3]<<std::endl;
     
     // we leave the function
     // std::cout<<MATRIX [PASSENGERS[passID][0]] [PASSENGERS[passID][1]][PASSENGERS[passID].back()].display()<<std::endl;
@@ -87,7 +91,7 @@ struct busdata
 };
 
 // This function must be called when a bus arrives at a station
-auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepass,  float &passsp, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System & SYSTEM, std::vector<std::vector<std::vector<routeC>>> & routeMatrix, std::vector<std::vector<std::vector<double>>> & weightMatrix, int &busOcc){
+auto busArriving(int busID, int buspos, int stationID, int lineID, int TIME, int &Nactivepass,  float &passsp, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, System & SYSTEM, std::vector<std::vector<std::vector<routeC>>> & routeMatrix, std::vector<std::vector<std::vector<double>>> & weightMatrix, int &busOcc){
     int destid;
     double weight;
     //std::cout<<busOcc<<" ";
@@ -104,11 +108,12 @@ auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepas
     int npass = toAlight.size();
     // now we scan over the descending list
     for (int i =0; i<toAlight.size(); i++){
+        // updating the final passenger position
+        PASSENGERS[toAlight[i]][5] = buspos;
         // alight passenger 
         alightpassenger(toAlight[i],busID,stationID,TIME,Nactivepass,passsp,BUSPASSENGERS,PASSENGERS, SYSTEM);
         busOcc--;
-       // std::cout<<"Passenger "<<toAlight[i]<<" descended"<<std::endl;
-        // std::cout<<"The route is "<<MATRIX [PASSENGERS[toAlight[i]][0]] [PASSENGERS[toAlight[i]][1]] [PASSENGERS[toAlight[i]][5]].display()<<std::endl;
+        
     }
 
     // Then we board the bus subject to capacity constraints
@@ -118,11 +123,17 @@ auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepas
     std::vector<int> aux2 = STPASSENGERS[stationID]; // a copy of the passenger list
     for(int passid: aux2){
         // check whether the bus works for the passenger
-        destid = PASSENGERS[passid][1];
-        weight = weightMatrix[stationID][destid][lineID];
+        /*if (passid == 13387){
+            std::cout<<"Verificando si el bus sirve para 13387 "<<TIME<<" "<<lineID<<" "<<PASSENGERS[13387][0]<<" "<<PASSENGERS[13387][1]<<" "<<PASSENGERS[13387][2]<<" "<<PASSENGERS[13387][3]<<std::endl;
+        }*/
+        destid = PASSENGERS[passid][1]; // the destination of the passenger
+        weight = weightMatrix[stationID][destid][lineID]; // we calculate the weight for the service to destination
+        /*if (passid==13387){
+            std::cout<<passid<<" "<<stationID<<" "<<destid<<" "<<lineID<<" "<<weight<<std::endl;
+        }*/
         float dice = ((double) rand() / (RAND_MAX)); // we throw the dice
         if (dice<weight){
-            //std::cout<<weight<<std::endl;
+            //if (passid==13387) {std::cout<<passid<<" se subió al bus de ruta "<<lineID<<std::endl;}
             toBoard.push_back(passid);
         }
     }
@@ -132,11 +143,12 @@ auto busArriving(int busID, int stationID, int lineID, int TIME, int &Nactivepas
     for(int i=0; i<toBoard.size(); i++){
         // we calculate the boarding probability
         float prob=boardingProbability(BusCap,busOcc,BusRate);
+       // if (toBoard[i]==13387){std::cout<<"boarding prob "<<prob<<"; ocupacion del bus "<<busOcc<<std::endl;}
         // we throw the dice
         float xi = ((double) rand() / (RAND_MAX));
         if (xi<prob){
             boardPassenger(toBoard[i],busID,stationID,lineID,BUSPASSENGERS,STPASSENGERS);
-            PASSENGERS[toBoard[i]][4] = lineID;
+            PASSENGERS[toBoard[i]][4] = buspos; // Updating the starting position 
             busOcc++;
             // std::cout<<"Boarding passenger "<<passid<<" to bus with ID"<<busID<<". Passenger will descend at station "<<PASSENGERS[passid].back() <<std::endl;
             //std::cout<<"The route is "<<MATRIX [PASSENGERS[passid][0]] [PASSENGERS[passid][1]] [PASSENGERS[passid][5]].display()<<std::endl;

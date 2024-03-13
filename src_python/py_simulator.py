@@ -107,12 +107,12 @@ def run_scenarios():
 
 
 #run_scenarios()
-#one_simulation(16)
+one_simulation(1)
 #print(results[0].BSP)
 #for i in np.arange(1,31):
 #    print(i)
 #    one_simulation(i)
-scenario_1()
+#scenario_1()
 
 #test = simulator.simulate(1,0,0.5)
 #print('test' , test.BSP, test.cost, test.passp, test.occ, test.flow, np.array(test.BusData).shape)

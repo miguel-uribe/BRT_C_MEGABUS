@@ -5,6 +5,96 @@ import os
 ###### Loading the service definition
 ##########################################
 
+# forbidden connections
+# This is the list of connections allowed by bus services, but unrealistic in operation
+forbidden = [ # originID, destID
+    # Egoyá
+    (9, 32),
+    (9, 33),
+    (9, 35),
+    (9, 36),
+    (9, 37),
+    (9, 38),
+    (9, 7),
+    (9, 5),
+    (9, 4),
+    (9, 3),
+    (9, 2),
+    (9, 1),
+    (9, 0), 
+    # Coliseo
+    (11, 32),
+    (11, 33),
+    (11, 35),
+    (11, 36),
+    (11, 37),
+    (11, 38),
+    (11, 7),
+    (11, 5),
+    (11, 4),
+    (11, 3),
+    (11, 2),
+    (11, 1),
+    (11, 0), 
+    # Ormaza
+    (13, 32),
+    (13, 33),
+    (13, 35),
+    (13, 36),
+    (13, 37),
+    (13, 38),
+    (13, 7),
+    (13, 5),
+    (13, 4),
+    (13, 3),
+    (13, 2),
+    (13, 1),
+    (13, 0), 
+    # Mercasa
+    (15, 32),
+    (15, 33),
+    (15, 35),
+    (15, 36),
+    (15, 37),
+    (15, 38),
+    (15, 7),
+    (15, 5),
+    (15, 4),
+    (15, 3),
+    (15, 2),
+    (15, 1),
+    (15, 0),
+    # El Lago
+    (17, 32),
+    (17, 33),
+    (17, 35),
+    (17, 36),
+    (17, 37),
+    (17, 38),
+    (17, 7),
+    (17, 5),
+    (17, 4),
+    (17, 3),
+    (17, 2),
+    (17, 1),
+    (17, 0), 
+    # Otun
+    (19, 32),
+    (19, 33),
+    (19, 35),
+    (19, 36),
+    (19, 37),
+    (19, 38),
+    (19, 7),
+    (19, 5),
+    (19, 4),
+    (19, 3),
+    (19, 2),
+    (19, 1),
+    (19, 0), 
+]
+
+
 # we locate the current file position
 wd = os.path.dirname(__file__)
 
@@ -70,7 +160,8 @@ for epoc in range(10):
                     itinerary = [i, j-stindex]
                     # we check whether the itinerary already exists
                     if itinerary not in RouteMatrix[station][line[j]]:
-                        RouteMatrix[station][line[j]].append(itinerary)
+                        if (station,line[j]) not in forbidden:
+                            RouteMatrix[station][line[j]].append(itinerary)
                         #print('Added new itinerary', epoc)
     
     origins = list(set(destinations))
@@ -80,9 +171,14 @@ RouteWeight = [[[] for i in range(len(stations))] for j in range(len(stations))]
 # Normalizing the weights
 for i in range(len(stations)):
     for j in range(len(stations)):
-        for k in range(len(RouteMatrix[i][j])):
-            factor=1
-            RouteWeight[i][j].append(np.exp(-factor*np.array(RouteMatrix[i][j][k][1]))/np.sum(np.exp(-factor*np.array(RouteMatrix[i][j])[:,1])))
+        if (i,j) not in forbidden: # If the connection is realistic
+            for k in range(len(RouteMatrix[i][j])):
+                factor=1
+                RouteWeight[i][j].append(np.exp(-factor*np.array(RouteMatrix[i][j][k][1]))/np.sum(np.exp(-factor*np.array(RouteMatrix[i][j])[:,1])))
+        else:
+            print('forbidden')
+            print(i,j)
+
 
 
 # Printing the route matrix 
@@ -93,8 +189,11 @@ routefile=open(filename,'w')
 for i in range(len(stations)):
     for j in range(len(stations)):
         routefile.write("%d %d\n"%(i,j))
-        routefile.write("%d\n"%len(RouteMatrix[i][j]))
-        for k,route in enumerate(RouteMatrix[i][j]):
+        # We evaluate the routes with a significant weight
+        real_routes = [r for r in range(len(RouteMatrix[i][j])) if RouteWeight[i][j][r]>1e-3]
+        routefile.write("%d\n"%len(real_routes))
+        for k in real_routes:
+           #print(i,j,k,len(RouteMatrix[i][j]), RouteMatrix[i][j])
             routefile.write("%f\n"%RouteWeight[i][j][k])
             routefile.write("%d %d\n"%(RouteMatrix[i][j][k][0],RouteMatrix[i][j][k][1]))                
 routefile.close()
