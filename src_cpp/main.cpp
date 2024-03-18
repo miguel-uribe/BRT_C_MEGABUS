@@ -24,6 +24,7 @@ struct sim_results
     float passp;
     float occ;
     float cost;
+    int queues;
     vector<array<int, Nparam+1>> BusData; // the detailed bus information
 };
 
@@ -280,6 +281,7 @@ sim_results simulate (int seed, int print, float Cfract){
     RESULTS.occ = occ;
     RESULTS.passp = passsp;
     RESULTS.BusData = printdata;
+    RESULTS.queues = Queues[0].size()+Queues[1].size()
     return RESULTS;
 }
 
@@ -291,9 +293,11 @@ PYBIND11_MODULE(simulator, m) {
         .def_readwrite("passp", &sim_results::passp)
         .def_readwrite("occ", &sim_results::occ)
         .def_readwrite("cost", &sim_results::cost)
+        .def_readwrite("queue", &sim_results::queues)
         .def_readwrite("BusData", &sim_results::BusData);
+
         
 
-    m.def("simulate", &simulate, "A function that adds two numbers");
-    m.def("add", &add, "A function that adds two numbers");
+    m.def("simulate", &simulate, "a complete system simulation");
+
 }
