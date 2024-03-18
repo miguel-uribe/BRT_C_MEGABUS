@@ -281,7 +281,7 @@ sim_results simulate (int seed, int print, float Cfract){
     RESULTS.occ = occ;
     RESULTS.passp = passsp;
     RESULTS.BusData = printdata;
-    RESULTS.queues = Queues[0].size()+Queues[1].size()
+    RESULTS.queues = Queues[0].size()+Queues[1].size();
     return RESULTS;
 }
 
