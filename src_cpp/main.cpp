@@ -24,7 +24,7 @@ struct sim_results
     float passp;
     float occ;
     float cost;
-    int queues;
+    float queues;
     vector<array<int, Nparam+1>> BusData; // the detailed bus information
 };
 
@@ -152,6 +152,8 @@ sim_results simulate (int seed, int print, float Cfract){
     vector<float> bussp; // the vector with the average speed of a bus
     array<int, Nparam+1> auxdata;
     vector<array<int, Nparam+1>> printdata; // the detailed bus information
+    int av_queue = 0; // the average service queue length
+    int queue_cont = 0; //
 
     //cout<<"Defined all the simulation parameters"<<endl; 
     int initial_hour = 4;
@@ -173,6 +175,9 @@ sim_results simulate (int seed, int print, float Cfract){
                insertPassenger(StationPassengers, Passengers, passcount, routeMatrix, INdist, ODdist, TIME, generator, SYSTEM.Lines.size());
             }
             
+            // queue count
+            av_queue+=Queues[0].size()+Queues[1].size();
+            queue_cont++;
         }
         
         // inserting the buses
@@ -244,7 +249,6 @@ sim_results simulate (int seed, int print, float Cfract){
         }   
         
     }
-
     passsp=passsp/passcount;
     //std::cout<<"Velocidad pasajeros: " <<passsp <<std::endl;
     
@@ -281,7 +285,7 @@ sim_results simulate (int seed, int print, float Cfract){
     RESULTS.occ = occ;
     RESULTS.passp = passsp;
     RESULTS.BusData = printdata;
-    RESULTS.queues = Queues[0].size()+Queues[1].size();
+    RESULTS.queues = av_queue/queue_cont;
     return RESULTS;
 }
 
