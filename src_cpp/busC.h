@@ -599,7 +599,17 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 int end = SYSTEM.Lines[lineID].end;
                 int parkID = std::distance(std::begin(Ends),std::find(std::begin(Ends), std::end(Ends), end));
                 PARKED[parkID].push_back(BUSESPAR[13][i]);
-                //std::cout<<"Bus salio"<<std::endl;
+
+                // we check if there are buses in the queues
+                if (!QUEUES[parkID].empty()){
+                    // we create inmediately the bus to fulfill the demand
+                    createbus(TIME,QUEUES[parkID][0], BUSESPAR, SYSTEM, QUEUES, PARKED);
+                    /*if (BUSESPAR[17][i]==1){
+                        std::cout<<"Bus 75 transformed"<<std::endl;
+                    }*/
+                    // we remove the first element of the queue
+                    QUEUES[parkID].pop_front();
+                }
             }
             
         }

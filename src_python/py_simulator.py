@@ -48,7 +48,7 @@ f1, f2, f3 = 270, 270, 360 #s
 r21, r31 = f1/f2, f1/f3 # Relación frecuencias de rutas
 
 def one_simulation(seed):
-    result = simulator.simulate(seed,0,0.5)
+    result = simulator.simulate(seed,0,1)
     print([result.BSP, result.cost, result.passp, result.occ, result.flow, result.queue])
     return [result.BSP, result.cost, result.passp, result.occ, result.flow, result.queue]
 
@@ -107,7 +107,7 @@ def run_scenarios():
 
 
 #run_scenarios()
-one_simulation(1)
+one_simulation(3)
 #print(results[0].BSP)
 #for i in np.arange(1,31):
 #    print(i)
