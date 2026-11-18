@@ -14,6 +14,8 @@
 #include <array>
 #include <cmath>
 #include <deque>
+#include <stdexcept>
+#include <string>
 
 // creating a bus
 void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){  
@@ -256,7 +258,8 @@ void calculategaps(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
         if (track<SYSTEM.Lines[lineID].breaks.size()){
             int breakID = SYSTEM.Lines[lineID].breaks[track];
             if((carbreak[breakID]>=0) && (carbreak[breakID]!=i)){
-                BUSESPAR[3][i] = std::min(BUSESPAR[3][i],breakdis-position+BUSESPAR[0][carbreak[breakID]]-SYSTEM.Breaks[breakID][2]);
+                // distance to the break, plus distance from the break destination to the rear of the bus ahead
+                BUSESPAR[3][i] = std::min(BUSESPAR[3][i],breakdis-position+BUSESPAR[0][carbreak[breakID]]-SYSTEM.Breaks[breakID][2]-BUSESPAR[15][carbreak[breakID]]);
             }
         }
         //std::cout<<"Llegó hasta antes de tl"<<std::endl;
@@ -431,7 +434,7 @@ void buschangelane(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
 
 
 // making the buses move
-void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::array<std::vector<int>,2> & PARKED, std::vector<std::vector<int>> & V, std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::vector<std::vector<std::vector<double>>> &weightMatrix, std::default_random_engine &generator, std::vector<float> &bussp, float & cost){
+void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::array<std::vector<int>,2> & PARKED, std::array<std::deque<int>,2> & QUEUES, std::vector<std::vector<int>> & V, std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::vector<std::vector<std::vector<double>>> &weightMatrix, std::default_random_engine &generator, std::vector<float> &bussp, float & cost){
     int pos, lane, lineID, dt, speed;
     float prand, mean, std;
     // we scan over all buses
@@ -535,14 +538,14 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 for (int j = 0; j< SYSTEM.Lines[BUSESPAR[10][i]].breaks.size(); j++){
                     total_distance-=SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][2]-SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][0];
                 }
-                bussp.push_back(float((total_distance/(TIME-BUSESPAR[14][i]))));
+                bussp.push_back(float(total_distance)/(TIME-BUSESPAR[14][i]));
                 // we update the cost value
                 cost+=TIME-BUSESPAR[14][i];
 
                 // changing the line
                 int newline = SYSTEM.Lines[BUSESPAR[10][i]].dest_line;
                 BUSESPAR[10][i] = newline; // we set the new line
-                BUSESPAR[14][i] = 0; // the time is restarted
+                BUSESPAR[14][i] = TIME; // the time is restarted
                 // we update the next station information
                 if (SYSTEM.Lines[newline].stopx.size()>0){ 
                     BUSESPAR[7][i] = SYSTEM.Lines[newline].stopx[0]; // the position of the next stop
@@ -559,8 +562,8 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                  // index of the next traffic light
                 BUSESPAR[23][i] = 0;
                 if (SYSTEM.Lines[newline].tls.size()>0){ // if there are traffic lights
-                    BUSESPAR[24][i] = SYSTEM.Lines[lineID].tldir[0]; // direction index of the next traffic light
-                    BUSESPAR[25][i] = SYSTEM.Lines[lineID].tls[0]; // system index of the next traffic light
+                    BUSESPAR[24][i] = SYSTEM.Lines[newline].tldir[0]; // direction index of the next traffic light
+                    BUSESPAR[25][i] = SYSTEM.Lines[newline].tls[0]; // system index of the next traffic light
                     BUSESPAR[26][i] = SYSTEM.Tlights[BUSESPAR[25][i]].positions[BUSESPAR[24][i]]; // position of the next traffic light
                 }
                 else{
@@ -586,7 +589,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 for (int j = 0; j< SYSTEM.Lines[BUSESPAR[10][i]].breaks.size(); j++){
                     total_distance-=SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][2]-SYSTEM.Breaks[SYSTEM.Lines[BUSESPAR[10][i]].breaks[j]][0];
                 }
-                bussp.push_back(float((total_distance/(TIME-BUSESPAR[14][i]))));
+                bussp.push_back(float(total_distance)/(TIME-BUSESPAR[14][i]));
                 // we update the cost value
                 cost+=TIME-BUSESPAR[14][i];
 
@@ -597,7 +600,12 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 //  the bus is removed and added to the parked list
                 toremove.push_back(i);
                 int end = SYSTEM.Lines[lineID].end;
-                int parkID = std::distance(std::begin(Ends),std::find(std::begin(Ends), std::end(Ends), end));
+                // the bus is parked at the depot where its line ends
+                auto endIt = std::find(std::begin(Ends), std::end(Ends), end);
+                if (endIt == std::end(Ends)){
+                    throw std::runtime_error("Line " + SYSTEM.Lines[lineID].name + " ends at cell " + std::to_string(end) + ", which is not listed in Ends (parameters.h)");
+                }
+                int parkID = endIt - std::begin(Ends);
                 PARKED[parkID].push_back(BUSESPAR[13][i]);
 
                 // we check if there are buses in the queues
