@@ -198,7 +198,7 @@ sim_results simulate (int seed, int print, float Cfract){
         //std::cout<<"cambios de carril"<<std::endl;
         calculategaps(BusesPar, EL, SYSTEM);
         //std::cout<<"gaps2"<<std::endl;
-        busadvance(BusesPar,SYSTEM,TIME,Nactivepass,passsp,BusesPassengers, StationPassengers,Passengers, Parked, V,  routeMatrix, weightMatrix, generator, bussp, cost);
+        busadvance(BusesPar,SYSTEM,TIME,Nactivepass,passsp,BusesPassengers, StationPassengers,Passengers, Parked, Queues, V,  routeMatrix, weightMatrix, generator, bussp, cost);
         //std::cout<<"movio el bus"<<std::endl;
         for (auto &tl: SYSTEM.Tlights){
             tl.updatephase();
@@ -262,7 +262,7 @@ sim_results simulate (int seed, int print, float Cfract){
                 total_distance-=SYSTEM.Breaks[SYSTEM.Lines[BusesPar[10][i]].breaks[j]][2]-SYSTEM.Breaks[SYSTEM.Lines[BusesPar[10][i]].breaks[j]][0];
             }
         if (BusesPar[14][i]!=final_hour*3600-1){ //we dont take into account buses just released
-            bussp.push_back(float(total_distance/(final_hour*3600-1-BusesPar[14][i])));
+            bussp.push_back(float(total_distance)/(final_hour*3600-1-BusesPar[14][i]));
             //cout<<bussp.back()<<" >0"<<endl;
             cost+=(final_hour*3600-1-BusesPar[14][i]);
         }

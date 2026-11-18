@@ -21,6 +21,6 @@ const int D0=10;           // The default dwell time
 const float D1=0.5;         // The dwell time for boarding or alightning passenger
 const int MaxDwell = 30;  // the maximum dwell time
 int Origins[2] = {0, 19999}; // the origin of buses in the system
-int Ends[2] = {10943,30653}; // the end of buses in the system
+int Ends[2] = {30653,10943}; // the end of buses in the system, same depot order as Origins: 0 Cuba, 1 Dosquebradas
 
 #endif

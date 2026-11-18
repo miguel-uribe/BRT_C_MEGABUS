@@ -176,8 +176,14 @@ for index, row in layout_df.iterrows():
                 elif itemclass == 'C':
                     # we get the change information
                     org_service, final_service = [data.strip() for data in iteminfo.split(',')]
+                    # the changing service must circulate this cell
+                    if org_service not in services:
+                        print(f"Error. Service {org_service} changes into {final_service} at position {index}, but {org_service} is not listed in the R key of that cell")
+                    # a service can only change once
+                    if org_service in servicechanges.keys():
+                        print(f"Error. Service {org_service} has more than one service change, the second one at position {index}")
                     # we set the service change
-                    servicechanges[service] = [final_service, index]
+                    servicechanges[org_service] = [final_service, index]
                     # we check  whether the service is already in the finish dictionary
                     if org_service in serviceends.keys():
                         print(f"Error. Service {org_service} has been introduced more than once in serviceends at position {index}")
@@ -192,6 +198,13 @@ for index, row in layout_df.iterrows():
                     V[index, j] = np.round(max_speed*1000*Dx/3600/Dt,0)
         except:
             pass
+
+# the destination of each service change must exist and must start where the change happens
+for org_service, (final_service, pos_change) in servicechanges.items():
+    if final_service not in lanes.keys():
+        print(f"Error. Service {org_service} changes into {final_service} at position {pos_change}, but {final_service} does not appear in any R key")
+    elif servicestarts.get(final_service) != pos_change:
+        print(f"Warning!!! Service {org_service} changes into {final_service} at position {pos_change}, but {final_service} does not start there (SS key)")
 
 # for each service, the servicedefinition, the traffic_lights information, and the breaks information must be sorted based on the service start position
 # sorting the breaks first:
