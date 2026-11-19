@@ -1,0 +1,38 @@
+[project]
+name = "brt-megabus"
+version = "0.1.0"
+description = "BRT simulator (C++ core with Python bindings) and its layout tools"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # simulator bindings and layout tools
+    "numpy",
+    "pandas",
+    "openpyxl",
+    "pybind11",
+    # layout GUI
+    "PySide6",
+]
+
+[dependency-groups]
+# installed by default with `uv sync`
+dev = [
+    "pytest",
+    "pytest-qt",
+    "hypothesis",
+]
+# optional, install with `uv sync --group analysis`
+analysis = [
+    "jupyter",
+    "matplotlib",
+    "seaborn",
+]
+
+[tool.uv]
+# this repository is a collection of scripts, not an installable package
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# run the GUI tests without a display
+qt_qpa_platform = "offscreen"
