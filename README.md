@@ -101,20 +101,42 @@ The detailed bus information of every time step is stored when the simulation is
 # The scenario file
 A scenario is a single JSON file with the complete description of a system and its simulation: the lanes each service may use, the speed limits, the jumps, the stations with their docking bays, the traffic lights, the services, the depots, the passenger demand and the model parameters. It is meant to replace the spreadsheets in `layout/`, the files in `conf/` and the parameter files described in the rest of this document. The scenario of the Megabus system is `scenarios/megabus.json`.
 
-The `brtsim` Python package reads a scenario, checks it and compiles it into the configuration of the engine, in memory and in a fraction of a second:
+All the positions in a scenario are given as a cell (one meter) and a lane, along the coordinate in which the buses always advance. The definitions are in `brtsim/model.py`.
+
+## Running simulations
+The `brtsim` Python package reads a scenario, checks it, compiles it in memory into the configuration of the engine, and runs it with as many seeds as needed in parallel. Nothing is written to disk:
 ```
 import brtsim
-from brtsim.engine import engine_config, load_engine
 
 scenario = brtsim.load('scenarios/megabus.json')
-scenario.service('1E').headway = 240
-scenario.depot('Dosquebradas').initial_buses = 20
+results = brtsim.run(scenario, seeds=20)      # raises brtsim.ScenarioError listing every problem of the scenario
 
-config = engine_config(brtsim.compile_scenario(scenario))   # raises brtsim.ScenarioError listing every problem found
-sim = load_engine().Simulation(config, seed=1)
-sim.run()
+print(results.summary())                      # mean, standard deviation and confidence interval of each indicator
+results.mean['bus_speed']                     # km/h
+results.stations                              # entries, boardings, alightings and waiting passengers of each station
+results.services                              # departures, arrivals, trip time and boardings of each service
 ```
-All the positions in a scenario are given as a cell (one meter) and a lane, along the coordinate in which the buses always advance. The definitions are in `brtsim/model.py`.
+The indicators and their units are listed in `brtsim/results.py`.
+
+To evaluate many alternatives, as an optimization algorithm does, the scenario is prepared once and some of its parameters are replaced in each run, without compiling it again:
+```
+model = brtsim.prepare(scenario)
+
+results = model.run(seeds=20, frequencies={'1E': 15, '2E': 10}, fleet={'Cuba': 30, 'Dosquebradas': 20}, demand_scale=1.2)
+
+# several cases at once, all their simulations share the processors
+cases = [{'frequencies': {'1E': frequency}} for frequency in range(5, 40, 5)]
+for case, results in zip(cases, model.run_many(cases, seeds=20)):
+    print(case, results.mean['bus_speed'], results.std['bus_speed'])
+```
+The parameters that can be replaced are the `headways` (seconds) or `frequencies` (buses per hour) and `offsets` of the services, the `fleet` of each depot, the demand (`demand_scale`, `demand`, `entries`), the model parameters (`params`) and the simulation window (`initial_time`, `final_time`); they are described in `Model.config` in `brtsim/api.py`. Any other change, such as the stops of a service, is made in the scenario, which compiles in a fraction of a second. `model.simulation(seed)` gives a simulation that advances step by step, as described above.
+
+The same is available from the command line:
+```
+uv run python -m brtsim run scenarios/megabus.json --seeds 20 --frequency 1E=15 --buses Cuba=30 --services --output results.json
+uv run python -m brtsim validate scenarios/megabus.json
+uv run python -m brtsim --help
+```
 
 ## Jumps
 The parts of a system that are not consecutive along the coordinate of the buses are connected with jumps: the buses reaching a cell continue from another cell and lane. To avoid collisions, a jump must follow two rules:
@@ -127,7 +149,7 @@ Jumps are created with `brtsim.add_jump(scenario, x, lane, to_x, to_lane)`, whic
 ## The Megabus scenario
 `scenarios/megabus.json` was created from the original files by the importer, and the tests check that it compiles to exactly the configuration the scripts `layout_interpreter.py` and `routegenerator.py` write. After changing the spreadsheets or the files `IN.txt`, `OD_matrix.txt` or `service_data.txt`, the scenario is created again with:
 ```
-uv run python -m brtsim.legacy
+uv run python -m brtsim import-megabus
 ```
 
 # User Generated Files

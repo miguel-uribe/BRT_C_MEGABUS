@@ -5,6 +5,21 @@ from pathlib import Path
 
 from .compiler import Compiled
 
+# The names of the parameters of the model in the scenario and in the engine
+PARAM_FIELDS = {
+    "bus_lengths": "busL",
+    "braking_probability": "p",
+    "braking_probability_stopped": "p0",
+    "lane_change_penalty": "pentime",
+    "bus_capacity": "BusCap",
+    "boarding_rate": "BusRate",
+    "dwell_base": "D0",
+    "dwell_per_passenger": "D1",
+    "dwell_max": "MaxDwell",
+    "insertion_period": "insertion_period",
+    "max_offset": "max_offset",
+}
+
 
 def load_engine():
     """The compiled C++ module. It is built in src_cpp/, see the README."""
@@ -81,17 +96,7 @@ def engine_config(compiled: Compiled):
     config.initial_time = compiled.initial_time
     config.final_time = compiled.final_time
 
-    params = compiled.params
-    config.params.busL = params.bus_lengths
-    config.params.p = params.braking_probability
-    config.params.p0 = params.braking_probability_stopped
-    config.params.pentime = params.lane_change_penalty
-    config.params.BusCap = params.bus_capacity
-    config.params.BusRate = params.boarding_rate
-    config.params.D0 = params.dwell_base
-    config.params.D1 = params.dwell_per_passenger
-    config.params.MaxDwell = params.dwell_max
-    config.params.insertion_period = params.insertion_period
-    config.params.max_offset = params.max_offset
+    for name, engine_name in PARAM_FIELDS.items():
+        setattr(config.params, engine_name, getattr(compiled.params, name))
     config.validate()
     return config
