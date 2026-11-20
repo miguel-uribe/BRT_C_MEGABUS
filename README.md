@@ -98,6 +98,29 @@ while not sim.done:
 ```
 The detailed bus information of every time step is stored when the simulation is created with `record=True`, and retrieved with `sim.bus_data()`.
 
+# The scenario file
+A scenario is a single JSON file with the complete description of a system and its simulation: the lanes each service may use, the speed limits, the jumps, the stations with their docking bays, the traffic lights, the services, the depots, the passenger demand and the model parameters. It is meant to replace the spreadsheets in `layout/`, the files in `conf/` and the parameter files described in the rest of this document. The scenario of the Megabus system is `scenarios/megabus.json`.
+
+The `brtsim` Python package reads a scenario, checks it and compiles it into the configuration of the engine, in memory and in a fraction of a second:
+```
+import brtsim
+from brtsim.engine import engine_config, load_engine
+
+scenario = brtsim.load('scenarios/megabus.json')
+scenario.service('1E').headway = 240
+scenario.depot('Dosquebradas').initial_buses = 20
+
+config = engine_config(brtsim.compile_scenario(scenario))   # raises brtsim.ScenarioError listing every problem found
+sim = load_engine().Simulation(config, seed=1)
+sim.run()
+```
+All the positions in a scenario are given as a cell (one meter) and a lane, along the coordinate in which the buses always advance. The definitions are in `brtsim/model.py`.
+
+`scenarios/megabus.json` was created from the original files by the importer, and the tests check that it compiles to exactly the configuration the scripts `layout_interpreter.py` and `routegenerator.py` write. After changing the spreadsheets or the files `IN.txt`, `OD_matrix.txt` or `service_data.txt`, the scenario is created again with:
+```
+uv run python -m brtsim.legacy
+```
+
 # User Generated Files
 The entire simulation workflow relies on a series of user generated files with the basic information of the street layout, traffic lights, and service frequencies. These files must be generated manually.
 

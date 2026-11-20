@@ -1,0 +1,8896 @@
+{
+ "version": 1,
+ "name": "Megabus",
+ "length": 30654,
+ "lanes": 3,
+ "initial_time": 14400,
+ "final_time": 32400,
+ "default_speed_kmh": 60,
+ "lane_segments": [
+  {
+   "lane": 0,
+   "start": 7042,
+   "end": 7274,
+   "services": [
+    "3E"
+   ]
+  },
+  {
+   "lane": 0,
+   "start": 7274,
+   "end": 7300,
+   "services": [
+    "3E",
+    "3W"
+   ]
+  },
+  {
+   "lane": 0,
+   "start": 7300,
+   "end": 7302,
+   "services": [
+    "3W"
+   ]
+  },
+  {
+   "lane": 0,
+   "start": 7302,
+   "end": 7329,
+   "services": [
+    "3E",
+    "3W"
+   ]
+  },
+  {
+   "lane": 0,
+   "start": 23518,
+   "end": 23526,
+   "services": [
+    "3W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1534,
+   "end": 1632,
+   "services": [
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1632,
+   "end": 1652,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E",
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1652,
+   "end": 1662,
+   "services": [
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1662,
+   "end": 1681,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E",
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1681,
+   "end": 1691,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1691,
+   "end": 1708,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E",
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 1708,
+   "end": 1761,
+   "services": [
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 3399,
+   "end": 7045,
+   "services": [
+    "2E",
+    "3E"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 7045,
+   "end": 7489,
+   "services": [
+    "2E"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 23165,
+   "end": 23525,
+   "services": [
+    "2W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 23525,
+   "end": 26865,
+   "services": [
+    "2W",
+    "3W"
+   ]
+  },
+  {
+   "lane": 1,
+   "start": 27254,
+   "end": 27316,
+   "services": [
+    "2W",
+    "3W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 0,
+   "end": 1632,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 1632,
+   "end": 1708,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E",
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 1708,
+   "end": 3418,
+   "services": [
+    "1E",
+    "2E",
+    "3E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 3418,
+   "end": 5277,
+   "services": [
+    "1E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 5277,
+   "end": 5278,
+   "services": [
+    "1E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 5278,
+   "end": 6375,
+   "services": [
+    "1E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 6375,
+   "end": 6376,
+   "services": [
+    "1E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 6376,
+   "end": 7354,
+   "services": [
+    "1E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 7368,
+   "end": 7483,
+   "services": [
+    "1E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 7483,
+   "end": 10944,
+   "services": [
+    "1E",
+    "2E",
+    "4E"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 19999,
+   "end": 23185,
+   "services": [
+    "1W",
+    "2W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 23185,
+   "end": 23439,
+   "services": [
+    "1W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 23439,
+   "end": 23440,
+   "services": [
+    "1W",
+    "2W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 23440,
+   "end": 27296,
+   "services": [
+    "1W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 27296,
+   "end": 29006,
+   "services": [
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  },
+  {
+   "lane": 2,
+   "start": 29098,
+   "end": 30654,
+   "services": [
+    "1W",
+    "2W",
+    "3W",
+    "4W"
+   ]
+  }
+ ],
+ "speed_limits": [
+  {
+   "lane": 0,
+   "start": 7042,
+   "end": 7301,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 0,
+   "start": 7302,
+   "end": 7329,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 0,
+   "start": 23518,
+   "end": 23526,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 1,
+   "start": 1632,
+   "end": 1761,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 1,
+   "start": 5402,
+   "end": 7486,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 1,
+   "start": 23518,
+   "end": 25036,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 2,
+   "start": 1007,
+   "end": 1718,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 2,
+   "start": 5905,
+   "end": 6580,
+   "speed_kmh": 40
+  },
+  {
+   "lane": 2,
+   "start": 24408,
+   "end": 25014,
+   "speed_kmh": 40
+  }
+ ],
+ "jumps": [
+  {
+   "x": 1717,
+   "lane": 1,
+   "to_x": 29100,
+   "to_lane": 2
+  },
+  {
+   "x": 7301,
+   "lane": 0,
+   "to_x": 23520,
+   "to_lane": 0
+  },
+  {
+   "x": 7328,
+   "lane": 2,
+   "to_x": 7370,
+   "to_lane": 2
+  },
+  {
+   "x": 26834,
+   "lane": 1,
+   "to_x": 27256,
+   "to_lane": 1
+  },
+  {
+   "x": 28927,
+   "lane": 2,
+   "to_x": 1534,
+   "to_lane": 1
+  }
+ ],
+ "stations": [
+  {
+   "name": "Intercambiador Cuba",
+   "bays": [
+    {
+     "x": 18,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 38,
+     "lane": 2,
+     "services": [
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 58,
+     "lane": 2,
+     "services": [
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 30606,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 30626,
+     "lane": 2,
+     "services": [
+      "2W"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 30646,
+     "lane": 2,
+     "services": [
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "San Fernando",
+   "bays": [
+    {
+     "x": 635,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 30043,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Intercambiador El Viajero",
+   "bays": [
+    {
+     "x": 1661,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 1690,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Aeropuerto",
+   "bays": [
+    {
+     "x": 2692,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 28229,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Batallón",
+   "bays": [
+    {
+     "x": 2948,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 27972,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Maraya",
+   "bays": [
+    {
+     "x": 3349,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 27572,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "El Jardín",
+   "bays": [
+    {
+     "x": 3933,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 26986,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "La Ruana",
+   "bays": [
+    {
+     "x": 3936,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 26555,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Ucumarí",
+   "bays": [
+    {
+     "x": 4182,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 26733,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Egoyá",
+   "bays": [
+    {
+     "x": 4291,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Consota",
+   "bays": [
+    {
+     "x": 4600,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 26328,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Coliseo",
+   "bays": [
+    {
+     "x": 4685,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "El Cafetero",
+   "bays": [
+    {
+     "x": 4872,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 26046,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Ormaza",
+   "bays": [
+    {
+     "x": 4965,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Francisco Pereira",
+   "bays": [
+    {
+     "x": 5277,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 25639,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Mercados",
+   "bays": [
+    {
+     "x": 5413,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Centenario",
+   "bays": [
+    {
+     "x": 5560,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 25359,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "El Lago",
+   "bays": [
+    {
+     "x": 5807,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Condina",
+   "bays": [
+    {
+     "x": 6297,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Otún",
+   "bays": [
+    {
+     "x": 6382,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Victoria",
+   "bays": [
+    {
+     "x": 6745,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Del Café",
+   "bays": [
+    {
+     "x": 7022,
+     "lane": 1,
+     "services": [
+      "2E",
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Ferrocarril",
+   "bays": [
+    {
+     "x": 7258,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 23778,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Libertad",
+   "bays": [
+    {
+     "x": 7272,
+     "lane": 0,
+     "services": [
+      "3E"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Villavicencio",
+   "bays": [
+    {
+     "x": 7583,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 23484,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "La Popa",
+   "bays": [
+    {
+     "x": 8822,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 22268,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Santa Mónica",
+   "bays": [
+    {
+     "x": 9263,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 21823,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Milán",
+   "bays": [
+    {
+     "x": 9657,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 21429,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Fundadores",
+   "bays": [
+    {
+     "x": 10033,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 21052,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "CAM",
+   "bays": [
+    {
+     "x": 10524,
+     "lane": 2,
+     "services": [
+      "1E",
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 20561,
+     "lane": 2,
+     "services": [
+      "1W",
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Intercambiador Dosquebradas",
+   "bays": [
+    {
+     "x": 10905,
+     "lane": 2,
+     "services": [
+      "1E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 10930,
+     "lane": 2,
+     "services": [
+      "2E"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 20018,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    },
+    {
+     "x": 20038,
+     "lane": 2,
+     "services": [
+      "2W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Viaducto",
+   "bays": [
+    {
+     "x": 23529,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Central",
+   "bays": [
+    {
+     "x": 24091,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Claret",
+   "bays": [
+    {
+     "x": 24633,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Olaya",
+   "bays": [
+    {
+     "x": 24661,
+     "lane": 2,
+     "services": [
+      "1W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Cañarte",
+   "bays": [
+    {
+     "x": 25017,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Las Flores",
+   "bays": [
+    {
+     "x": 25386,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Banderas",
+   "bays": [
+    {
+     "x": 25746,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  },
+  {
+   "name": "Palacio de Justicia",
+   "bays": [
+    {
+     "x": 26208,
+     "lane": 1,
+     "services": [
+      "2W",
+      "3W"
+     ],
+     "biarticulated": false
+    }
+   ]
+  }
+ ],
+ "traffic_lights": [
+  {
+   "name": "S1",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 112,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 30519,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S2",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 292,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 30339,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S3",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    28,
+    28
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 497,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 30093,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S4",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 659,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 29956,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S5",
+   "directions": [
+    "N",
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      false,
+      false
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      true,
+      true
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25,
+    30,
+    10
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 1624,
+     "lane": 1
+    },
+    {
+     "direction": "E",
+     "x": 1821,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S6",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    30
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 1715,
+     "lane": 1
+    },
+    {
+     "direction": "E",
+     "x": 1715,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S7",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 2650,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 28242,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S8",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 2728,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 28155,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S9",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 3295,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 27590,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S10",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4145,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 26744,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S11",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4235,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 26622,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S12",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25,
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4615,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 26248,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S13",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25,
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4795,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 26057,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S14",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4897,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 25986,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S15",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5051,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 25821,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S16",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5482,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 25394,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S17",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5859,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 25002,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S18",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6191,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S19",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6375,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S20",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6461,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S21",
+   "directions": [
+    "N",
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      false
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      true
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    10,
+    20
+   ],
+   "heads": [
+    {
+     "direction": "N",
+     "x": 7477,
+     "lane": 1
+    },
+    {
+     "direction": "E",
+     "x": 7477,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S22",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 8857,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 22201,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S23",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    35,
+    35
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 9186,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 21832,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S24",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    30,
+    30
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 9465,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 21561,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S25",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 9616,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 21436,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S26",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    30,
+    30
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 9764,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 21263,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S27",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 9981,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 21069,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S28",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    35,
+    35
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 10563,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 20457,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S29",
+   "directions": [
+    "E",
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true,
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false,
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    5,
+    5
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 10741,
+     "lane": 2
+    },
+    {
+     "direction": "W",
+     "x": 20304,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S30",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24498,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S31",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24539,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S32",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24723,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S33",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    15
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4021,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S34",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4235,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S35",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4334,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S36",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4426,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S37",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4521,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S38",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 4801,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S39",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5174,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S40",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5269,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S41",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    15
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5547,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S42",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    15
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5641,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S43",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5738,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S44",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5824,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S45",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 5923,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S46",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6013,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S47",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6284,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S48",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6388,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S49",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6479,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S50",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6574,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S51",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6669,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S52",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6758,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S53",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 6941,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S54",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    30
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 7045,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S55",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 23439,
+     "lane": 2
+    }
+   ]
+  },
+  {
+   "name": "S56",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 23537,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S57",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    15
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 23820,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S58",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24004,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S59",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24101,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S60",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24200,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S61",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24565,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S62",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24652,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S63",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24746,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S64",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24840,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S65",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 24933,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S66",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25027,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S67",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25123,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S68",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25212,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S69",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25306,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S70",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25399,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S71",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25495,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S72",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25586,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S73",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25867,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S74",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 25962,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S75",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    25
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 26362,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S76",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    35
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 26833,
+     "lane": 1
+    }
+   ]
+  },
+  {
+   "name": "S77",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    30
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 7108,
+     "lane": 0
+    }
+   ]
+  },
+  {
+   "name": "S78",
+   "directions": [
+    "E"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "E",
+     "x": 7205,
+     "lane": 0
+    }
+   ]
+  },
+  {
+   "name": "S79",
+   "directions": [
+    "W"
+   ],
+   "phases": [
+    {
+     "duration": 30,
+     "green": [
+      true
+     ]
+    },
+    {
+     "duration": 30,
+     "green": [
+      false
+     ]
+    }
+   ],
+   "offset": 0,
+   "lengths": [
+    20
+   ],
+   "heads": [
+    {
+     "direction": "W",
+     "x": 7300,
+     "lane": 0
+    }
+   ]
+  }
+ ],
+ "services": [
+  {
+   "name": "1E",
+   "start_x": 0,
+   "start_lane": 2,
+   "end_x": 10943,
+   "headway": 89,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "2E",
+   "start_x": 0,
+   "start_lane": 2,
+   "end_x": 10943,
+   "headway": 137,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "3E",
+   "start_x": 0,
+   "start_lane": 2,
+   "end_x": 7273,
+   "headway": 473,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": "3W"
+  },
+  {
+   "name": "4E",
+   "start_x": 0,
+   "start_lane": 2,
+   "end_x": 10943,
+   "headway": 1000000,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "1W",
+   "start_x": 19999,
+   "start_lane": 2,
+   "end_x": 30653,
+   "headway": 106,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "2W",
+   "start_x": 19999,
+   "start_lane": 2,
+   "end_x": 30653,
+   "headway": 60,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "3W",
+   "start_x": 7273,
+   "start_lane": 0,
+   "end_x": 30653,
+   "headway": 1000000,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  },
+  {
+   "name": "4W",
+   "start_x": 19999,
+   "start_lane": 2,
+   "end_x": 30653,
+   "headway": 1000000,
+   "biarticulated_percent": 0,
+   "offset": null,
+   "becomes": null
+  }
+ ],
+ "depots": [
+  {
+   "name": "Cuba",
+   "origin": 0,
+   "end": 30653,
+   "initial_buses": 50
+  },
+  {
+   "name": "Dosquebradas",
+   "origin": 19999,
+   "end": 10943,
+   "initial_buses": 0
+  }
+ ],
+ "demand": {
+  "times": [
+   14400,
+   14410,
+   14420,
+   14430,
+   14440,
+   14450,
+   14460,
+   14470,
+   14480,
+   14490,
+   14500,
+   14510,
+   14520,
+   14530,
+   14540,
+   14550,
+   14560,
+   14570,
+   14580,
+   14590,
+   14600,
+   14610,
+   14620,
+   14630,
+   14640,
+   14650,
+   14660,
+   14670,
+   14680,
+   14690,
+   14700,
+   14710,
+   14720,
+   14730,
+   14740,
+   14750,
+   14760,
+   14770,
+   14780,
+   14790,
+   14800,
+   14810,
+   14820,
+   14830,
+   14840,
+   14850,
+   14860,
+   14870,
+   14880,
+   14890,
+   14900,
+   14910,
+   14920,
+   14930,
+   14940,
+   14950,
+   14960,
+   14970,
+   14980,
+   14990,
+   15000,
+   15010,
+   15020,
+   15030,
+   15040,
+   15050,
+   15060,
+   15070,
+   15080,
+   15090,
+   15100,
+   15110,
+   15120,
+   15130,
+   15140,
+   15150,
+   15160,
+   15170,
+   15180,
+   15190,
+   15200,
+   15210,
+   15220,
+   15230,
+   15240,
+   15250,
+   15260,
+   15270,
+   15280,
+   15290,
+   15300,
+   15310,
+   15320,
+   15330,
+   15340,
+   15350,
+   15360,
+   15370,
+   15380,
+   15390,
+   15400,
+   15410,
+   15420,
+   15430,
+   15440,
+   15450,
+   15460,
+   15470,
+   15480,
+   15490,
+   15500,
+   15510,
+   15520,
+   15530,
+   15540,
+   15550,
+   15560,
+   15570,
+   15580,
+   15590,
+   15600,
+   15610,
+   15620,
+   15630,
+   15640,
+   15650,
+   15660,
+   15670,
+   15680,
+   15690,
+   15700,
+   15710,
+   15720,
+   15730,
+   15740,
+   15750,
+   15760,
+   15770,
+   15780,
+   15790,
+   15800,
+   15810,
+   15820,
+   15830,
+   15840,
+   15850,
+   15860,
+   15870,
+   15880,
+   15890,
+   15900,
+   15910,
+   15920,
+   15930,
+   15940,
+   15950,
+   15960,
+   15970,
+   15980,
+   15990,
+   16000,
+   16010,
+   16020,
+   16030,
+   16040,
+   16050,
+   16060,
+   16070,
+   16080,
+   16090,
+   16100,
+   16110,
+   16120,
+   16130,
+   16140,
+   16150,
+   16160,
+   16170,
+   16180,
+   16190,
+   16200,
+   16210,
+   16220,
+   16230,
+   16240,
+   16250,
+   16260,
+   16270,
+   16280,
+   16290,
+   16300,
+   16310,
+   16320,
+   16330,
+   16340,
+   16350,
+   16360,
+   16370,
+   16380,
+   16390,
+   16400,
+   16410,
+   16420,
+   16430,
+   16440,
+   16450,
+   16460,
+   16470,
+   16480,
+   16490,
+   16500,
+   16510,
+   16520,
+   16530,
+   16540,
+   16550,
+   16560,
+   16570,
+   16580,
+   16590,
+   16600,
+   16610,
+   16620,
+   16630,
+   16640,
+   16650,
+   16660,
+   16670,
+   16680,
+   16690,
+   16700,
+   16710,
+   16720,
+   16730,
+   16740,
+   16750,
+   16760,
+   16770,
+   16780,
+   16790,
+   16800,
+   16810,
+   16820,
+   16830,
+   16840,
+   16850,
+   16860,
+   16870,
+   16880,
+   16890,
+   16900,
+   16910,
+   16920,
+   16930,
+   16940,
+   16950,
+   16960,
+   16970,
+   16980,
+   16990,
+   17000,
+   17010,
+   17020,
+   17030,
+   17040,
+   17050,
+   17060,
+   17070,
+   17080,
+   17090,
+   17100,
+   17110,
+   17120,
+   17130,
+   17140,
+   17150,
+   17160,
+   17170,
+   17180,
+   17190,
+   17200,
+   17210,
+   17220,
+   17230,
+   17240,
+   17250,
+   17260,
+   17270,
+   17280,
+   17290,
+   17300,
+   17310,
+   17320,
+   17330,
+   17340,
+   17350,
+   17360,
+   17370,
+   17380,
+   17390,
+   17400,
+   17410,
+   17420,
+   17430,
+   17440,
+   17450,
+   17460,
+   17470,
+   17480,
+   17490,
+   17500,
+   17510,
+   17520,
+   17530,
+   17540,
+   17550,
+   17560,
+   17570,
+   17580,
+   17590,
+   17600,
+   17610,
+   17620,
+   17630,
+   17640,
+   17650,
+   17660,
+   17670,
+   17680,
+   17690,
+   17700,
+   17710,
+   17720,
+   17730,
+   17740,
+   17750,
+   17760,
+   17770,
+   17780,
+   17790,
+   17800,
+   17810,
+   17820,
+   17830,
+   17840,
+   17850,
+   17860,
+   17870,
+   17880,
+   17890,
+   17900,
+   17910,
+   17920,
+   17930,
+   17940,
+   17950,
+   17960,
+   17970,
+   17980,
+   17990,
+   18000,
+   18010,
+   18020,
+   18030,
+   18040,
+   18050,
+   18060,
+   18070,
+   18080,
+   18090,
+   18100,
+   18110,
+   18120,
+   18130,
+   18140,
+   18150,
+   18160,
+   18170,
+   18180,
+   18190,
+   18200,
+   18210,
+   18220,
+   18230,
+   18240,
+   18250,
+   18260,
+   18270,
+   18280,
+   18290,
+   18300,
+   18310,
+   18320,
+   18330,
+   18340,
+   18350,
+   18360,
+   18370,
+   18380,
+   18390,
+   18400,
+   18410,
+   18420,
+   18430,
+   18440,
+   18450,
+   18460,
+   18470,
+   18480,
+   18490,
+   18500,
+   18510,
+   18520,
+   18530,
+   18540,
+   18550,
+   18560,
+   18570,
+   18580,
+   18590,
+   18600,
+   18610,
+   18620,
+   18630,
+   18640,
+   18650,
+   18660,
+   18670,
+   18680,
+   18690,
+   18700,
+   18710,
+   18720,
+   18730,
+   18740,
+   18750,
+   18760,
+   18770,
+   18780,
+   18790,
+   18800,
+   18810,
+   18820,
+   18830,
+   18840,
+   18850,
+   18860,
+   18870,
+   18880,
+   18890,
+   18900,
+   18910,
+   18920,
+   18930,
+   18940,
+   18950,
+   18960,
+   18970,
+   18980,
+   18990,
+   19000,
+   19010,
+   19020,
+   19030,
+   19040,
+   19050,
+   19060,
+   19070,
+   19080,
+   19090,
+   19100,
+   19110,
+   19120,
+   19130,
+   19140,
+   19150,
+   19160,
+   19170,
+   19180,
+   19190,
+   19200,
+   19210,
+   19220,
+   19230,
+   19240,
+   19250,
+   19260,
+   19270,
+   19280,
+   19290,
+   19300,
+   19310,
+   19320,
+   19330,
+   19340,
+   19350,
+   19360,
+   19370,
+   19380,
+   19390,
+   19400,
+   19410,
+   19420,
+   19430,
+   19440,
+   19450,
+   19460,
+   19470,
+   19480,
+   19490,
+   19500,
+   19510,
+   19520,
+   19530,
+   19540,
+   19550,
+   19560,
+   19570,
+   19580,
+   19590,
+   19600,
+   19610,
+   19620,
+   19630,
+   19640,
+   19650,
+   19660,
+   19670,
+   19680,
+   19690,
+   19700,
+   19710,
+   19720,
+   19730,
+   19740,
+   19750,
+   19760,
+   19770,
+   19780,
+   19790,
+   19800,
+   19810,
+   19820,
+   19830,
+   19840,
+   19850,
+   19860,
+   19870,
+   19880,
+   19890,
+   19900,
+   19910,
+   19920,
+   19930,
+   19940,
+   19950,
+   19960,
+   19970,
+   19980,
+   19990,
+   20000,
+   20010,
+   20020,
+   20030,
+   20040,
+   20050,
+   20060,
+   20070,
+   20080,
+   20090,
+   20100,
+   20110,
+   20120,
+   20130,
+   20140,
+   20150,
+   20160,
+   20170,
+   20180,
+   20190,
+   20200,
+   20210,
+   20220,
+   20230,
+   20240,
+   20250,
+   20260,
+   20270,
+   20280,
+   20290,
+   20300,
+   20310,
+   20320,
+   20330,
+   20340,
+   20350,
+   20360,
+   20370,
+   20380,
+   20390,
+   20400,
+   20410,
+   20420,
+   20430,
+   20440,
+   20450,
+   20460,
+   20470,
+   20480,
+   20490,
+   20500,
+   20510,
+   20520,
+   20530,
+   20540,
+   20550,
+   20560,
+   20570,
+   20580,
+   20590,
+   20600,
+   20610,
+   20620,
+   20630,
+   20640,
+   20650,
+   20660,
+   20670,
+   20680,
+   20690,
+   20700,
+   20710,
+   20720,
+   20730,
+   20740,
+   20750,
+   20760,
+   20770,
+   20780,
+   20790,
+   20800,
+   20810,
+   20820,
+   20830,
+   20840,
+   20850,
+   20860,
+   20870,
+   20880,
+   20890,
+   20900,
+   20910,
+   20920,
+   20930,
+   20940,
+   20950,
+   20960,
+   20970,
+   20980,
+   20990,
+   21000,
+   21010,
+   21020,
+   21030,
+   21040,
+   21050,
+   21060,
+   21070,
+   21080,
+   21090,
+   21100,
+   21110,
+   21120,
+   21130,
+   21140,
+   21150,
+   21160,
+   21170,
+   21180,
+   21190,
+   21200,
+   21210,
+   21220,
+   21230,
+   21240,
+   21250,
+   21260,
+   21270,
+   21280,
+   21290,
+   21300,
+   21310,
+   21320,
+   21330,
+   21340,
+   21350,
+   21360,
+   21370,
+   21380,
+   21390,
+   21400,
+   21410,
+   21420,
+   21430,
+   21440,
+   21450,
+   21460,
+   21470,
+   21480,
+   21490,
+   21500,
+   21510,
+   21520,
+   21530,
+   21540,
+   21550,
+   21560,
+   21570,
+   21580,
+   21590,
+   21600,
+   21610,
+   21620,
+   21630,
+   21640,
+   21650,
+   21660,
+   21670,
+   21680,
+   21690,
+   21700,
+   21710,
+   21720,
+   21730,
+   21740,
+   21750,
+   21760,
+   21770,
+   21780,
+   21790,
+   21800,
+   21810,
+   21820,
+   21830,
+   21840,
+   21850,
+   21860,
+   21870,
+   21880,
+   21890,
+   21900,
+   21910,
+   21920,
+   21930,
+   21940,
+   21950,
+   21960,
+   21970,
+   21980,
+   21990,
+   22000,
+   22010,
+   22020,
+   22030,
+   22040,
+   22050,
+   22060,
+   22070,
+   22080,
+   22090,
+   22100,
+   22110,
+   22120,
+   22130,
+   22140,
+   22150,
+   22160,
+   22170,
+   22180,
+   22190,
+   22200,
+   22210,
+   22220,
+   22230,
+   22240,
+   22250,
+   22260,
+   22270,
+   22280,
+   22290,
+   22300,
+   22310,
+   22320,
+   22330,
+   22340,
+   22350,
+   22360,
+   22370,
+   22380,
+   22390,
+   22400,
+   22410,
+   22420,
+   22430,
+   22440,
+   22450,
+   22460,
+   22470,
+   22480,
+   22490,
+   22500,
+   22510,
+   22520,
+   22530,
+   22540,
+   22550,
+   22560,
+   22570,
+   22580,
+   22590,
+   22600,
+   22610,
+   22620,
+   22630,
+   22640,
+   22650,
+   22660,
+   22670,
+   22680,
+   22690,
+   22700,
+   22710,
+   22720,
+   22730,
+   22740,
+   22750,
+   22760,
+   22770,
+   22780,
+   22790,
+   22800,
+   22810,
+   22820,
+   22830,
+   22840,
+   22850,
+   22860,
+   22870,
+   22880,
+   22890,
+   22900,
+   22910,
+   22920,
+   22930,
+   22940,
+   22950,
+   22960,
+   22970,
+   22980,
+   22990,
+   23000,
+   23010,
+   23020,
+   23030,
+   23040,
+   23050,
+   23060,
+   23070,
+   23080,
+   23090,
+   23100,
+   23110,
+   23120,
+   23130,
+   23140,
+   23150,
+   23160,
+   23170,
+   23180,
+   23190,
+   23200,
+   23210,
+   23220,
+   23230,
+   23240,
+   23250,
+   23260,
+   23270,
+   23280,
+   23290,
+   23300,
+   23310,
+   23320,
+   23330,
+   23340,
+   23350,
+   23360,
+   23370,
+   23380,
+   23390,
+   23400,
+   23410,
+   23420,
+   23430,
+   23440,
+   23450,
+   23460,
+   23470,
+   23480,
+   23490,
+   23500,
+   23510,
+   23520,
+   23530,
+   23540,
+   23550,
+   23560,
+   23570,
+   23580,
+   23590,
+   23600,
+   23610,
+   23620,
+   23630,
+   23640,
+   23650,
+   23660,
+   23670,
+   23680,
+   23690,
+   23700,
+   23710,
+   23720,
+   23730,
+   23740,
+   23750,
+   23760,
+   23770,
+   23780,
+   23790,
+   23800,
+   23810,
+   23820,
+   23830,
+   23840,
+   23850,
+   23860,
+   23870,
+   23880,
+   23890,
+   23900,
+   23910,
+   23920,
+   23930,
+   23940,
+   23950,
+   23960,
+   23970,
+   23980,
+   23990,
+   24000,
+   24010,
+   24020,
+   24030,
+   24040,
+   24050,
+   24060,
+   24070,
+   24080,
+   24090,
+   24100,
+   24110,
+   24120,
+   24130,
+   24140,
+   24150,
+   24160,
+   24170,
+   24180,
+   24190,
+   24200,
+   24210,
+   24220,
+   24230,
+   24240,
+   24250,
+   24260,
+   24270,
+   24280,
+   24290,
+   24300,
+   24310,
+   24320,
+   24330,
+   24340,
+   24350,
+   24360,
+   24370,
+   24380,
+   24390,
+   24400,
+   24410,
+   24420,
+   24430,
+   24440,
+   24450,
+   24460,
+   24470,
+   24480,
+   24490,
+   24500,
+   24510,
+   24520,
+   24530,
+   24540,
+   24550,
+   24560,
+   24570,
+   24580,
+   24590,
+   24600,
+   24610,
+   24620,
+   24630,
+   24640,
+   24650,
+   24660,
+   24670,
+   24680,
+   24690,
+   24700,
+   24710,
+   24720,
+   24730,
+   24740,
+   24750,
+   24760,
+   24770,
+   24780,
+   24790,
+   24800,
+   24810,
+   24820,
+   24830,
+   24840,
+   24850,
+   24860,
+   24870,
+   24880,
+   24890,
+   24900,
+   24910,
+   24920,
+   24930,
+   24940,
+   24950,
+   24960,
+   24970,
+   24980,
+   24990,
+   25000,
+   25010,
+   25020,
+   25030,
+   25040,
+   25050,
+   25060,
+   25070,
+   25080,
+   25090,
+   25100,
+   25110,
+   25120,
+   25130,
+   25140,
+   25150,
+   25160,
+   25170,
+   25180,
+   25190,
+   25200,
+   25210,
+   25220,
+   25230,
+   25240,
+   25250,
+   25260,
+   25270,
+   25280,
+   25290,
+   25300,
+   25310,
+   25320,
+   25330,
+   25340,
+   25350,
+   25360,
+   25370,
+   25380,
+   25390,
+   25400,
+   25410,
+   25420,
+   25430,
+   25440,
+   25450,
+   25460,
+   25470,
+   25480,
+   25490,
+   25500,
+   25510,
+   25520,
+   25530,
+   25540,
+   25550,
+   25560,
+   25570,
+   25580,
+   25590,
+   25600,
+   25610,
+   25620,
+   25630,
+   25640,
+   25650,
+   25660,
+   25670,
+   25680,
+   25690,
+   25700,
+   25710,
+   25720,
+   25730,
+   25740,
+   25750,
+   25760,
+   25770,
+   25780,
+   25790,
+   25800,
+   25810,
+   25820,
+   25830,
+   25840,
+   25850,
+   25860,
+   25870,
+   25880,
+   25890,
+   25900,
+   25910,
+   25920,
+   25930,
+   25940,
+   25950,
+   25960,
+   25970,
+   25980,
+   25990,
+   26000,
+   26010,
+   26020,
+   26030,
+   26040,
+   26050,
+   26060,
+   26070,
+   26080,
+   26090,
+   26100,
+   26110,
+   26120,
+   26130,
+   26140,
+   26150,
+   26160,
+   26170,
+   26180,
+   26190,
+   26200,
+   26210,
+   26220,
+   26230,
+   26240,
+   26250,
+   26260,
+   26270,
+   26280,
+   26290,
+   26300,
+   26310,
+   26320,
+   26330,
+   26340,
+   26350,
+   26360,
+   26370,
+   26380,
+   26390,
+   26400,
+   26410,
+   26420,
+   26430,
+   26440,
+   26450,
+   26460,
+   26470,
+   26480,
+   26490,
+   26500,
+   26510,
+   26520,
+   26530,
+   26540,
+   26550,
+   26560,
+   26570,
+   26580,
+   26590,
+   26600,
+   26610,
+   26620,
+   26630,
+   26640,
+   26650,
+   26660,
+   26670,
+   26680,
+   26690,
+   26700,
+   26710,
+   26720,
+   26730,
+   26740,
+   26750,
+   26760,
+   26770,
+   26780,
+   26790,
+   26800,
+   26810,
+   26820,
+   26830,
+   26840,
+   26850,
+   26860,
+   26870,
+   26880,
+   26890,
+   26900,
+   26910,
+   26920,
+   26930,
+   26940,
+   26950,
+   26960,
+   26970,
+   26980,
+   26990,
+   27000,
+   27010,
+   27020,
+   27030,
+   27040,
+   27050,
+   27060,
+   27070,
+   27080,
+   27090,
+   27100,
+   27110,
+   27120,
+   27130,
+   27140,
+   27150,
+   27160,
+   27170,
+   27180,
+   27190,
+   27200,
+   27210,
+   27220,
+   27230,
+   27240,
+   27250,
+   27260,
+   27270,
+   27280,
+   27290,
+   27300,
+   27310,
+   27320,
+   27330,
+   27340,
+   27350,
+   27360,
+   27370,
+   27380,
+   27390,
+   27400,
+   27410,
+   27420,
+   27430,
+   27440,
+   27450,
+   27460,
+   27470,
+   27480,
+   27490,
+   27500,
+   27510,
+   27520,
+   27530,
+   27540,
+   27550,
+   27560,
+   27570,
+   27580,
+   27590,
+   27600,
+   27610,
+   27620,
+   27630,
+   27640,
+   27650,
+   27660,
+   27670,
+   27680,
+   27690,
+   27700,
+   27710,
+   27720,
+   27730,
+   27740,
+   27750,
+   27760,
+   27770,
+   27780,
+   27790,
+   27800,
+   27810,
+   27820,
+   27830,
+   27840,
+   27850,
+   27860,
+   27870,
+   27880,
+   27890,
+   27900,
+   27910,
+   27920,
+   27930,
+   27940,
+   27950,
+   27960,
+   27970,
+   27980,
+   27990,
+   28000,
+   28010,
+   28020,
+   28030,
+   28040,
+   28050,
+   28060,
+   28070,
+   28080,
+   28090,
+   28100,
+   28110,
+   28120,
+   28130,
+   28140,
+   28150,
+   28160,
+   28170,
+   28180,
+   28190,
+   28200,
+   28210,
+   28220,
+   28230,
+   28240,
+   28250,
+   28260,
+   28270,
+   28280,
+   28290,
+   28300,
+   28310,
+   28320,
+   28330,
+   28340,
+   28350,
+   28360,
+   28370,
+   28380,
+   28390,
+   28400,
+   28410,
+   28420,
+   28430,
+   28440,
+   28450,
+   28460,
+   28470,
+   28480,
+   28490,
+   28500,
+   28510,
+   28520,
+   28530,
+   28540,
+   28550,
+   28560,
+   28570,
+   28580,
+   28590,
+   28600,
+   28610,
+   28620,
+   28630,
+   28640,
+   28650,
+   28660,
+   28670,
+   28680,
+   28690,
+   28700,
+   28710,
+   28720,
+   28730,
+   28740,
+   28750,
+   28760,
+   28770,
+   28780,
+   28790,
+   28800,
+   28810,
+   28820,
+   28830,
+   28840,
+   28850,
+   28860,
+   28870,
+   28880,
+   28890,
+   28900,
+   28910,
+   28920,
+   28930,
+   28940,
+   28950,
+   28960,
+   28970,
+   28980,
+   28990,
+   29000,
+   29010,
+   29020,
+   29030,
+   29040,
+   29050,
+   29060,
+   29070,
+   29080,
+   29090,
+   29100,
+   29110,
+   29120,
+   29130,
+   29140,
+   29150,
+   29160,
+   29170,
+   29180,
+   29190,
+   29200,
+   29210,
+   29220,
+   29230,
+   29240,
+   29250,
+   29260,
+   29270,
+   29280,
+   29290,
+   29300,
+   29310,
+   29320,
+   29330,
+   29340,
+   29350,
+   29360,
+   29370,
+   29380,
+   29390,
+   29400,
+   29410,
+   29420,
+   29430,
+   29440,
+   29450,
+   29460,
+   29470,
+   29480,
+   29490,
+   29500,
+   29510,
+   29520,
+   29530,
+   29540,
+   29550,
+   29560,
+   29570,
+   29580,
+   29590,
+   29600,
+   29610,
+   29620,
+   29630,
+   29640,
+   29650,
+   29660,
+   29670,
+   29680,
+   29690,
+   29700,
+   29710,
+   29720,
+   29730,
+   29740,
+   29750,
+   29760,
+   29770,
+   29780,
+   29790,
+   29800,
+   29810,
+   29820,
+   29830,
+   29840,
+   29850,
+   29860,
+   29870,
+   29880,
+   29890,
+   29900,
+   29910,
+   29920,
+   29930,
+   29940,
+   29950,
+   29960,
+   29970,
+   29980,
+   29990,
+   30000,
+   30010,
+   30020,
+   30030,
+   30040,
+   30050,
+   30060,
+   30070,
+   30080,
+   30090,
+   30100,
+   30110,
+   30120,
+   30130,
+   30140,
+   30150,
+   30160,
+   30170,
+   30180,
+   30190,
+   30200,
+   30210,
+   30220,
+   30230,
+   30240,
+   30250,
+   30260,
+   30270,
+   30280,
+   30290,
+   30300,
+   30310,
+   30320,
+   30330,
+   30340,
+   30350,
+   30360,
+   30370,
+   30380,
+   30390,
+   30400,
+   30410,
+   30420,
+   30430,
+   30440,
+   30450,
+   30460,
+   30470,
+   30480,
+   30490,
+   30500,
+   30510,
+   30520,
+   30530,
+   30540,
+   30550,
+   30560,
+   30570,
+   30580,
+   30590,
+   30600,
+   30610,
+   30620,
+   30630,
+   30640,
+   30650,
+   30660,
+   30670,
+   30680,
+   30690,
+   30700,
+   30710,
+   30720,
+   30730,
+   30740,
+   30750,
+   30760,
+   30770,
+   30780,
+   30790,
+   30800,
+   30810,
+   30820,
+   30830,
+   30840,
+   30850,
+   30860,
+   30870,
+   30880,
+   30890,
+   30900,
+   30910,
+   30920,
+   30930,
+   30940,
+   30950,
+   30960,
+   30970,
+   30980,
+   30990,
+   31000,
+   31010,
+   31020,
+   31030,
+   31040,
+   31050,
+   31060,
+   31070,
+   31080,
+   31090,
+   31100,
+   31110,
+   31120,
+   31130,
+   31140,
+   31150,
+   31160,
+   31170,
+   31180,
+   31190,
+   31200,
+   31210,
+   31220,
+   31230,
+   31240,
+   31250,
+   31260,
+   31270,
+   31280,
+   31290,
+   31300,
+   31310,
+   31320,
+   31330,
+   31340,
+   31350,
+   31360,
+   31370,
+   31380,
+   31390,
+   31400,
+   31410,
+   31420,
+   31430,
+   31440,
+   31450,
+   31460,
+   31470,
+   31480,
+   31490,
+   31500,
+   31510,
+   31520,
+   31530,
+   31540,
+   31550,
+   31560,
+   31570,
+   31580,
+   31590,
+   31600,
+   31610,
+   31620,
+   31630,
+   31640,
+   31650,
+   31660,
+   31670,
+   31680,
+   31690,
+   31700,
+   31710,
+   31720,
+   31730,
+   31740,
+   31750,
+   31760,
+   31770,
+   31780,
+   31790,
+   31800,
+   31810,
+   31820,
+   31830,
+   31840,
+   31850,
+   31860,
+   31870,
+   31880,
+   31890,
+   31900,
+   31910,
+   31920,
+   31930,
+   31940,
+   31950,
+   31960,
+   31970,
+   31980,
+   31990,
+   32000,
+   32010,
+   32020,
+   32030,
+   32040,
+   32050,
+   32060,
+   32070,
+   32080,
+   32090,
+   32100,
+   32110,
+   32120,
+   32130,
+   32140,
+   32150,
+   32160,
+   32170,
+   32180,
+   32190,
+   32200,
+   32210,
+   32220,
+   32230,
+   32240,
+   32250,
+   32260,
+   32270,
+   32280,
+   32290,
+   32300,
+   32310,
+   32320,
+   32330,
+   32340,
+   32350,
+   32360,
+   32370,
+   32380,
+   32390,
+   32400
+  ],
+  "rates": [
+   34.94096612050203,
+   35.11241947501915,
+   35.28474951705,
+   35.45796115173161,
+   35.6320593159016,
+   35.807048978334564,
+   35.98293513998008,
+   36.15972283420315,
+   36.33741712702604,
+   36.51602311737221,
+   36.695545937312076,
+   36.87599075231087,
+   37.05736276147836,
+   37.239667197820204,
+   37.42290932849197,
+   37.60709445505441,
+   37.79222791373114,
+   37.978315075668306,
+   38.16536134719612,
+   38.35337217009244,
+   38.54235302184868,
+   38.73230941593746,
+   38.92324690208227,
+   39.11517106652978,
+   39.308087532323654,
+   39.50200195958061,
+   39.69692004576904,
+   39.89284752598921,
+   40.089790173255935,
+   40.2877537987834,
+   40.48674425227221,
+   40.68676742219842,
+   40.88782923610511,
+   41.08993566089607,
+   41.293092703131464,
+   41.4973064093263,
+   41.70258286625083,
+   41.90892820123305,
+   42.11634858246418,
+   42.32485021930578,
+   42.53443936259949,
+   42.74512230497934,
+   42.956905381186075,
+   43.16979496838388,
+   43.38379748647996,
+   43.59891939844606,
+   43.81516721064238,
+   44.03254747314455,
+   44.251066780072385,
+   44.47073176992138,
+   44.691549125896856,
+   44.91352557625049,
+   45.136667894619094,
+   45.36098290036656,
+   45.5864774589278,
+   45.81315848215544,
+   46.04103292866925,
+   46.27010780420805,
+   46.500390161984086,
+   46.73188710304041,
+   46.96460577661062,
+   47.19855338048128,
+   47.433737161357236,
+   47.670164415229515,
+   47.907842487745675,
+   48.146778774583446,
+   48.38698072182673,
+   48.628455826344236,
+   48.87121163617142,
+   49.11525575089478,
+   49.360595822038974,
+   49.60723955345709,
+   49.85519470172359,
+   50.104469076529746,
+   50.35507054108273,
+   50.607007012506976,
+   50.8602864622485,
+   51.11491691648263,
+   51.3709064565241,
+   51.62826321924031,
+   51.88699539746781,
+   52.14711124043148,
+   52.40861905416665,
+   52.67152720194464,
+   52.93584410470104,
+   53.201578241466926,
+   53.4687381498036,
+   53.73733242624009,
+   54.007369726713556,
+   54.27885876701354,
+   54.55180832322865,
+   54.82622723219647,
+   55.10212439195728,
+   55.37950876221022,
+   55.658389364772844,
+   55.938775284044326,
+   56.22067566747139,
+   56.504099726017685,
+   56.78905673463635,
+   57.07555603274619,
+   57.36360702471078,
+   57.6532191803208,
+   57.94440203528033,
+   58.237165191695865,
+   58.531518318568736,
+   58.82747115229148,
+   59.12503349714706,
+   59.424215225811416,
+   59.72502627986013,
+   60.02747667027792,
+   60.331576477971524,
+   60.63733585428671,
+   60.94476502152831,
+   61.2538742734835,
+   61.56467397594942,
+   61.87717456726356,
+   62.19138655883802,
+   62.5073205356975,
+   62.824987157020544,
+   63.14439715668452,
+   63.465561343814386,
+   63.78849060333489,
+   64.11319589652632,
+   64.43968826158427,
+   64.7679788141829,
+   65.09807874804152,
+   65.42999933549571,
+   65.76375192807146,
+   66.09934795706307,
+   66.43679893411539,
+   66.77611645180926,
+   67.11731218425071,
+   67.46039788766447,
+   67.80538540099091,
+   68.1522866464866,
+   68.50111363032929,
+   68.85187844322628,
+   69.20459326102664,
+   69.55927034533786,
+   69.9159220441456,
+   70.27456079243782,
+   70.63519911283294,
+   70.99784961621152,
+   71.36252500235206,
+   71.72923806057108,
+   72.09800167036661,
+   72.46882880206587,
+   72.84173251747731,
+   73.2167259705462,
+   73.59382240801412,
+   73.9730351700832,
+   74.35437769108373,
+   74.73786350014582,
+   75.1235062218758,
+   75.5113195770359,
+   75.90131738322836,
+   76.29351355558381,
+   76.68792210745353,
+   77.08455715110563,
+   77.48343289842597,
+   77.88456366162274,
+   78.28796385393494,
+   78.69364799034602,
+   79.10163068830056,
+   79.51192666842566,
+   79.92455075525667,
+   80.33951787796693,
+   80.75684307110131,
+   81.17654147531478,
+   81.59862833811464,
+   82.02311901460682,
+   82.45002896824721,
+   82.87937377159639,
+   83.31116910707881,
+   83.74543076774677,
+   84.18217465804797,
+   84.62141679459764,
+   85.06317330695488,
+   85.50746043840354,
+   85.95429454673686,
+   86.40369210504687,
+   86.85566970251803,
+   87.31024404522472,
+   87.76743195693375,
+   88.2272503799106,
+   88.68971637573028,
+   89.15484712609219,
+   89.62265993364,
+   90.09317222278477,
+   90.5664015405334,
+   91.04236555732105,
+   91.52108206784746,
+   92.00256899191835,
+   92.48684437529066,
+   92.97392639052231,
+   93.46383333782597,
+   93.9565836459279,
+   94.4521958729302,
+   94.95068870717806,
+   95.45208096813114,
+   95.95639160723915,
+   96.46363970882189,
+   96.97384449095374,
+   97.48702530635212,
+   98.00320164327047,
+   98.52239312639585,
+   99.04461951775012,
+   99.56990071759627,
+   100.09825676534827,
+   100.62970784048575,
+   101.16427426347295,
+   101.70197649668152,
+   102.24283514531807,
+   102.78687095835576,
+   103.3341048294703,
+   103.88455779797978,
+   104.43825104978953,
+   104.99520591834042,
+   105.55544388556174,
+   106.11898658282864,
+   106.68585579192288,
+   107.25607344599867,
+   107.82966163055237,
+   108.40664258439604,
+   108.9870387006356,
+   109.57087252765334,
+   110.15816677009335,
+   110.74894428985276,
+   111.34322810707572,
+   111.94104140115219,
+   112.54240751172051,
+   113.14734993967427,
+   113.75589234817274,
+   114.36805856365602,
+   114.98387257686338,
+   115.60335854385649,
+   116.22654078704556,
+   116.85344379622055,
+   117.48409222958523,
+   118.11851091479608,
+   118.75672485000432,
+   119.39875920490219,
+   120.044639321773,
+   120.69439071654497,
+   121.34803907984876,
+   122.00561027807873,
+   122.6671303544584,
+   123.33262553010873,
+   124.00212220512105,
+   124.67564695963276,
+   125.3532265549072,
+   126.03488793441704,
+   126.72065822493103,
+   127.41056473760423,
+   128.10463496907218,
+   128.80289660254797,
+   129.50537750892306,
+   130.21210574787133,
+   130.9231095689567,
+   131.63841741274365,
+   132.35805791191177,
+   133.08205989237246,
+   133.81045237438985,
+   134.54326457370436,
+   135.28052590265958,
+   136.02226597133173,
+   136.7685145886634,
+   137.51930176359846,
+   138.2746577062216,
+   139.03461282889998,
+   139.79919774742757,
+   140.56844328217284,
+   141.3423804592291,
+   142.1210405115669,
+   142.90445488019003,
+   143.69265521529385,
+   144.48567337742554,
+   145.2835414386478,
+   146.0862916837047,
+   146.89395661118937,
+   147.7065689347147,
+   148.52416158408664,
+   149.3467677064783,
+   150.174420667608,
+   151.00715405291828,
+   151.84500166875733,
+   152.68799754356218,
+   153.53617592904476,
+   154.38957130137808,
+   155.24821836238604,
+   156.1121520407342,
+   156.98140749312148,
+   157.85602010547544,
+   158.7360254941466,
+   159.62145950710624,
+   160.51235822514508,
+   161.40875796307245,
+   162.31069527091765,
+   163.21820693513249,
+   164.13132997979403,
+   165.0501016678095,
+   165.97455950212148,
+   166.9047412269138,
+   167.84068482881906,
+   168.78242853812597,
+   169.7300108299877,
+   170.6834704256309,
+   171.64284629356519,
+   172.60817765079236,
+   173.5795039640169,
+   174.556864950856,
+   175.54030058104973,
+   176.52985107767148,
+   177.52555691833842,
+   178.5274588364211,
+   179.5355978222537,
+   180.55001512434325,
+   181.57075225057872,
+   182.59785096943926,
+   183.63135331120233,
+   184.67130156915056,
+   185.7177383007774,
+   186.7707063289934,
+   187.83024874332918,
+   188.89640890113904,
+   189.96923042880255,
+   191.0487572229244,
+   192.13503345153353,
+   193.22810355528014,
+   194.32801224863107,
+   195.43480452106309,
+   196.54852563825483,
+   197.66922114327605,
+   198.79693685777474,
+   199.9317188831626,
+   201.07361360179678,
+   202.22266767816035,
+   203.37892806003939,
+   204.54244197969695,
+   205.71325695504544,
+   206.8914207908138,
+   208.07698157971336,
+   209.2699877035995,
+   210.47048783462986,
+   211.67853093641892,
+   212.89416626518914,
+   214.11744337091778,
+   215.34841209847974,
+   216.5871225887869,
+   217.833625279922,
+   219.0879709082687,
+   220.35021050963752,
+   221.62039542038582,
+   222.89857727853368,
+   224.18480802487488,
+   225.4791399040817,
+   226.78162546580523,
+   228.0923175657706,
+   229.41126936686427,
+   230.7385343402184,
+   232.07416626628705,
+   233.41821923591732,
+   234.7707476514134,
+   236.13180622759506,
+   237.50144999284868,
+   238.87973429017126,
+   240.26671477820847,
+   241.66244743228467,
+   243.0669885454253,
+   244.48039472937336,
+   245.90272291559572,
+   247.3340303562834,
+   248.77437462534385,
+   250.223813619383,
+   251.68240555868138,
+   253.15020898816002,
+   254.62728277833776,
+   256.11368612627996,
+   257.60947855653797,
+   259.11471992207845,
+   260.6294704052047,
+   262.1537905184658,
+   263.68774110555864,
+   265.2313833422173,
+   266.78477873709346,
+   268.3479891326254,
+   269.92107670589735,
+   271.50410396948666,
+   273.0971337722999,
+   274.7002293003989,
+   276.3134540778127,
+   277.93687196734027,
+   279.5705471713396,
+   281.21454423250486,
+   282.86892803463064,
+   284.5337638033652,
+   286.2091171069484,
+   287.8950538569376,
+   289.5916403089212,
+   291.29894306321665,
+   293.0170290655556,
+   294.7459656077553,
+   296.4858203283749,
+   298.23666121335754,
+   299.99855659665866,
+   301.7715751608566,
+   303.5557859377516,
+   305.35125830894606,
+   307.1580620064113,
+   308.97626711303633,
+   310.8059440631631,
+   312.6471636431023,
+   314.4999969916347,
+   316.3645156004941,
+   318.2407913148338,
+   320.12889633367547,
+   322.02890321034033,
+   323.94088485286153,
+   325.8649145243797,
+   327.8010658435192,
+   329.7494127847448,
+   331.7100296787009,
+   333.6829912125305,
+   335.66837243017466,
+   337.6662487326525,
+   339.6766958783202,
+   341.6997899831105,
+   343.735607520752,
+   345.7842253229654,
+   347.8457205796407,
+   349.9201708389925,
+   352.0076540076921,
+   354.10824835097884,
+   356.22203249275003,
+   358.3490854156252,
+   360.4894864609904,
+   362.64331532901826,
+   364.81065207866413,
+   366.9915771276387,
+   369.18617125235744,
+   371.3945155878638,
+   373.6166916277298,
+   375.8527812239305,
+   378.1028665866933,
+   380.3670302843217,
+   382.645355242994,
+   384.9379247465345,
+   387.2448224361594,
+   389.566132310196,
+   391.9019387237728,
+   394.2523263884857,
+   396.61738037203344,
+   398.99718609782684,
+   401.3918293445682,
+   403.8013962458047,
+   406.2259732894498,
+   408.6656473172776,
+   411.12050552438666,
+   413.59063545863455,
+   416.07612502004105,
+   418.5770624601636,
+   421.0935363814377,
+   423.62563573648976,
+   426.1734498274185,
+   428.7370683050409,
+   431.31658116811013,
+   433.9120787624996,
+   436.52365178035325,
+   439.1513912592046,
+   441.795388581061,
+   444.4557354714542,
+   447.1325239984593,
+   449.8258465716749,
+   452.5357959411725,
+   455.2624651964099,
+   458.0059477651074,
+   460.76633741209025,
+   463.543728238096,
+   466.33821467854114,
+   469.14989150225654,
+   471.97885381018284,
+   474.8251970340284,
+   477.6890169348896,
+   480.57040960183593,
+   483.4694714504526,
+   486.3862992213468,
+   489.3209899786155,
+   492.2736411082722,
+   495.24435031663444,
+   498.2332156286737,
+   501.24033538631977,
+   504.2658082467312,
+   507.30973318051855,
+   510.3722094699302,
+   513.4533367069943,
+   516.5532147916218,
+   519.6719439296623,
+   522.8096246309213,
+   525.9663577071341,
+   529.142244269893,
+   532.3373857285353,
+   535.5518837879839,
+   538.7858404465463,
+   542.0393579936654,
+   545.31253900763,
+   548.6054863532355,
+   551.9183031794012,
+   555.2510929167424,
+   558.603959275094,
+   561.977006240989,
+   565.3703380750896,
+   568.784059309571,
+   572.2182747454583,
+   575.6730894499137,
+   579.1486087534774,
+   582.6449382472596,
+   586.1621837800815,
+   589.7004514555708,
+   593.2598476292045,
+   596.8404789053031,
+   600.442452133975,
+   604.0658744080102,
+   607.7108530597218,
+   611.3774956577392,
+   615.0659100037486,
+   618.7762041291797,
+   622.5084862918443,
+   626.2628649725204,
+   630.039448871483,
+   633.8383469049834,
+   637.6596682016768,
+   641.503522098991,
+   645.3700181394478,
+   649.2592660669271,
+   653.1713758228755,
+   657.1064575424625,
+   661.064621550683,
+   665.0459783583992,
+   669.0506386583334,
+   673.0787133210013,
+   677.1303133905892,
+   681.2055500807777,
+   685.3045347705064,
+   689.4273789996819,
+   693.5741944648296,
+   697.7450930146896,
+   701.9401866457504,
+   706.15958749773,
+   710.4034078489965,
+   714.6717601119293,
+   718.9647568282245,
+   723.2825106641394,
+   727.6251344056783,
+   731.9927409537213,
+   736.385443319089,
+   740.8033546175515,
+   745.2465880647783,
+   749.715256971222,
+   754.2094747369496,
+   758.7293548464075,
+   763.2750108631277,
+   767.8465564243737,
+   772.444105235725,
+   777.0677710655992,
+   781.7176677397129,
+   786.3939091354837,
+   791.096609176366,
+   795.8258818261271,
+   800.5818410830633,
+   805.3646009741485,
+   810.1742755491243,
+   815.0109788745278,
+   819.8748250276524,
+   824.7659280904514,
+   829.6844021433742,
+   834.6303612591422,
+   839.6039194964571,
+   844.605190893654,
+   849.6342894622816,
+   854.6913291806231,
+   859.7764239871582,
+   864.889687773951,
+   870.0312343799817,
+   875.2011775844139,
+   880.3996310997949,
+   885.6267085651922,
+   890.8825235392699,
+   896.1671894932949,
+   901.4808198040846,
+   906.8235277468866,
+   912.1954264881952,
+   917.5966290785043,
+   923.0272484449952,
+   928.4873973841602,
+   933.9771885543623,
+   939.4967344683289,
+   945.0461474855841,
+   950.6255398048152,
+   956.2350234561736,
+   961.8747102935125,
+   967.5447119865634,
+   973.2451400130425,
+   978.9761056506977,
+   984.737719969291,
+   990.5300938225148,
+   996.3533378398463,
+   1002.2075624183369,
+   1008.0928777143412,
+   1014.0093936351757,
+   1019.9572198307227,
+   1025.9364656849627,
+   1031.9472403074515,
+   1037.9896525247257,
+   1044.0638108716541,
+   1050.1698235827207,
+   1056.3077985832458,
+   1062.477843480547,
+   1068.6800655550373,
+   1074.9145717512588,
+   1081.1814686688597,
+   1087.4808625535038,
+   1093.812859287724,
+   1100.177564381711,
+   1106.5750829640442,
+   1113.0055197723593,
+   1119.4689791439587,
+   1125.9655650063582,
+   1132.4953808677783,
+   1139.0585298075719,
+   1145.655114466597,
+   1152.2852370375278,
+   1158.9489992551069,
+   1165.6465023863443,
+   1172.3778472206513,
+   1179.1431340599243,
+   1185.942462708566,
+   1192.7759324634544,
+   1199.643642103852,
+   1206.5456898812622,
+   1213.4821735092276,
+   1220.4531901530768,
+   1227.458836419613,
+   1234.4992083467528,
+   1241.5744013931053,
+   1248.6845104275053,
+   1255.8296297184902,
+   1263.0098529237223,
+   1270.2252730793662,
+   1277.4759825894103,
+   1284.7620732149362,
+   1292.0836360633452,
+   1299.4407615775292,
+   1306.8335395249928,
+   1314.2620589869325,
+   1321.7264083472617,
+   1329.2266752815956,
+   1336.7629467461825,
+   1344.335308966794,
+   1351.9438474275707,
+   1359.5886468598183,
+   1367.2697912307658,
+   1374.9873637322778,
+   1382.741446769524,
+   1390.5321219496088,
+   1398.3594700701583,
+   1406.2235711078658,
+   1414.1245042070034,
+   1422.0623476678893,
+   1430.0371789353187,
+   1438.0490745869572,
+   1446.0981103217014,
+   1454.1843609479974,
+   1462.3079003721318,
+   1470.4688015864833,
+   1478.6671366577425,
+   1486.9029767151026,
+   1495.1763919384146,
+   1503.4874515463152,
+   1511.8362237843235,
+   1520.22277591291,
+   1528.6471741955372,
+   1537.1094838866736,
+   1545.6097692197832,
+   1554.1480933952894,
+   1562.724518568513,
+   1571.339105837592,
+   1579.9919152313764,
+   1588.6830056972994,
+   1597.4124350892384,
+   1606.1802601553466,
+   1614.9865365258713,
+   1623.8313187009605,
+   1632.7146600384447,
+   1641.6366127416102,
+   1650.5972278469592,
+   1659.5965552119565,
+   1668.634643502764,
+   1677.7115401819683,
+   1686.827291496294,
+   1695.981942464321,
+   1705.1755368641793,
+   1714.4081172212532,
+   1723.6797247958743,
+   1732.9903995710106,
+   1742.3401802399599,
+   1751.7291041940402,
+   1761.1572075102783,
+   1770.6245249391036,
+   1780.1310898920487,
+   1789.6769344294485,
+   1799.2620892481468,
+   1808.8865836692185,
+   1818.5504456256876,
+   1828.253701650267,
+   1837.9963768631048,
+   1847.7784949595411,
+   1857.6000781978844,
+   1867.4611473872023,
+   1877.3617218751297,
+   1887.3018195356885,
+   1897.2814567571404,
+   1907.300648429852,
+   1917.3594079341824,
+   1927.4577471284033,
+   1937.595676336632,
+   1947.7732043368076,
+   1957.9903383486806,
+   1968.247084021847,
+   1978.5434454237995,
+   1988.8794250280255,
+   1999.2550237021333,
+   2009.670240696014,
+   2020.1250736300462,
+   2030.6195184833348,
+   2041.1535695819948,
+   2051.727219587476,
+   2062.340459484936,
+   2072.9932785716505,
+   2083.6856644454774,
+   2094.4176029933774,
+   2105.1890783799645,
+   2116.0000730361307,
+   2126.850567647713,
+   2137.7405411442196,
+   2148.669970687609,
+   2159.63883166114,
+   2170.647097658267,
+   2181.694740471605,
+   2192.7817300819665,
+   2203.9080346474493,
+   2215.0736204926,
+   2226.2784520976493,
+   2237.5224920878127,
+   2248.8057012226627,
+   2260.128038385585,
+   2271.4894605732998,
+   2282.8899228854634,
+   2294.3293785143587,
+   2305.807778734655,
+   2317.325072893255,
+   2328.881208399227,
+   2340.476130713831,
+   2352.1097833406156,
+   2363.7821078156203,
+   2375.493043697669,
+   2387.242528558748,
+   2399.030497974484,
+   2410.8568855147237,
+   2422.721622734206,
+   2434.624639163337,
+   2446.56586229907,
+   2458.545217595887,
+   2470.562628456886,
+   2482.6180162249793,
+   2494.711300174199,
+   2506.8423975011115,
+   2519.0112233163545,
+   2531.2176906362783,
+   2543.4617103747087,
+   2555.743191334829,
+   2568.0620402011855,
+   2580.418161531802,
+   2592.8114577504375,
+   2605.241829138954,
+   2617.7091738298213,
+   2630.2133877987426,
+   2642.754364857422,
+   2655.331996646452,
+   2667.946172628349,
+   2680.596780080713,
+   2693.283704089536,
+   2706.0068275426383,
+   2718.7660311232617,
+   2731.5611933037885,
+   2744.3921903396244,
+   2757.2588962632058,
+   2770.161182878181,
+   2783.098919753722,
+   2796.071974218995,
+   2809.0802113577834,
+   2822.1234940032723,
+   2835.2016827329794,
+   2848.3146358638537,
+   2861.4622094475267,
+   2874.6442572657347,
+   2887.8606308258954,
+   2901.1111793568557,
+   2914.395749804803,
+   2927.71418682935,
+   2941.0663327997854,
+   2954.452027791493,
+   2967.871109582551,
+   2981.323413650506,
+   2994.8087731693154,
+   3008.3270190064773,
+   3021.877979720331,
+   3035.461481557551,
+   3049.0773484508036,
+   3062.725402016609,
+   3076.4054615533755,
+   3090.1173440396224,
+   3103.8608641323985,
+   3117.635834165879,
+   3131.44206415016,
+   3145.279361770251,
+   3159.1475323852455,
+   3173.046379027704,
+   3186.9757024032256,
+   3200.935300890215,
+   3214.9249705398515,
+   3228.9445050762633,
+   3242.993695896895,
+   3257.072332073087,
+   3271.180200350847,
+   3285.31708515184,
+   3299.4827685745818,
+   3313.677030395832,
+   3327.8996480722017,
+   3342.1503967419803,
+   3356.429049227155,
+   3370.735376035654,
+   3385.0691453638087,
+   3399.4301230990122,
+   3413.818072822612,
+   3428.2327558130078,
+   3442.6739310489697,
+   3457.1413552131735,
+   3471.6347826959586,
+   3486.153965599305,
+   3500.698653741023,
+   3515.26859465918,
+   3529.8635336167363,
+   3544.4832136064115,
+   3559.12737535577,
+   3573.795757332538,
+   3588.488095750142,
+   3603.2041245734677,
+   3617.9435755248633,
+   3632.706178090345,
+   3647.4916595260547,
+   3662.2997448649344,
+   3677.1301569236252,
+   3691.9826163096122,
+   3706.85684142858,
+   3721.7525484920116,
+   3736.669451525023,
+   3751.6072623744053,
+   3766.56569071693,
+   3781.5444440678634,
+   3796.5432277897185,
+   3811.5617451012463,
+   3826.5996970866595,
+   3841.656782705074,
+   3856.732698800206,
+   3871.827140110285,
+   3886.9397992782083,
+   3902.070366861928,
+   3917.2185313450746,
+   3932.383979147802,
+   3947.56639463788,
+   3962.765460142017,
+   3977.98085595741,
+   3993.2122603635316,
+   4008.459349634155,
+   4023.7217980496034,
+   4038.999277909231,
+   4054.2914595441553,
+   4069.5980113301935,
+   4084.91859970105,
+   4100.2528891617285,
+   4115.600542302185,
+   4130.961219811184,
+   4146.334580490418,
+   4161.720281268843,
+   4177.117977217231,
+   4192.5273215629695,
+   4207.947965705081,
+   4223.379559229461,
+   4238.821749924367,
+   4254.274183796102,
+   4269.736505084939,
+   4285.208356281288,
+   4300.689378142032,
+   4316.17920970716,
+   4331.677488316548,
+   4347.1838496270175,
+   4362.697927629576,
+   4378.219354666898,
+   4393.747761451015,
+   4409.2827770812255,
+   4424.824029062203,
+   4440.371143322354,
+   4455.923744232354,
+   4471.481454623913,
+   4487.043895808745,
+   4502.610687597752,
+   4518.1814483204125,
+   4533.755794844376,
+   4549.333342595259,
+   4564.9137055766505,
+   4580.496496390328,
+   4596.081326256648,
+   4611.667805035158,
+   4627.255541245404,
+   4642.844142087919,
+   4658.433213465423,
+   4674.022360004206,
+   4689.6111850757015,
+   4705.199290818252,
+   4720.78627815906,
+   4736.37174683633,
+   4751.955295421579,
+   4767.53652134215,
+   4783.115020903883,
+   4798.690389313976,
+   4814.2622207040295,
+   4829.8301081532445,
+   4845.3936437118,
+   4860.952418424416,
+   4876.506022354059,
+   4892.054044605822,
+   4907.59607335098,
+   4923.131695851188,
+   4938.660498482846,
+   4954.18206676162,
+   4969.695985367117,
+   4985.201838167705,
+   5000.699208245503,
+   5016.187677921482,
+   5031.66682878075,
+   5047.136241697942,
+   5062.59549686279,
+   5078.044173805783,
+   5093.481851424002,
+   5108.908108007068,
+   5124.322521263214,
+   5139.724668345498,
+   5155.114125878137,
+   5170.490469982942,
+   5185.85327630591,
+   5201.202120043892,
+   5216.536575971399,
+   5231.856218467512,
+   5247.1606215428965,
+   5262.449358866923,
+   5277.722003794889,
+   5292.9781293953465,
+   5308.217308477519,
+   5323.439113618802,
+   5338.6431171923805,
+   5353.8288913949045,
+   5368.996008274271,
+   5384.14403975747,
+   5399.272557678528,
+   5414.381133806505,
+   5429.469339873583,
+   5444.536747603208,
+   5459.5829287383085,
+   5474.607455069582,
+   5489.609898463817,
+   5504.589830892299,
+   5519.546824459261,
+   5534.480451430374,
+   5549.390284261302,
+   5564.275895626287,
+   5579.13685844678,
+   5593.972745920111,
+   5608.783131548198,
+   5623.567589166275,
+   5638.325692971659,
+   5653.057017552534,
+   5667.76113791676,
+   5682.437629520707,
+   5697.0860682980865,
+   5711.706030688818,
+   5726.297093667881,
+   5740.858834774182,
+   5755.390832139434,
+   5769.892664517012,
+   5784.363911310824,
+   5798.804152604162,
+   5813.212969188542,
+   5827.58994259254,
+   5841.934655110594,
+   5856.246689831796,
+   5870.525630668654,
+   5884.771062385833,
+   5898.982570628845,
+   5913.159741952736,
+   5927.302163850706,
+   5941.409424782695,
+   5955.481114203942,
+   5969.516822593466,
+   5983.516141482514,
+   5997.478663482965,
+   6011.403982315643,
+   6025.291692838598,
+   6039.141391075311,
+   6052.952674242829,
+   6066.725140779833,
+   6080.458390374633,
+   6094.152023993082,
+   6107.805643906394,
+   6121.418853718921,
+   6134.991258395792,
+   6148.522464290486,
+   6162.0120791723175,
+   6175.459712253808,
+   6188.864974217968,
+   6202.227477245471,
+   6215.546835041716,
+   6228.822662863795,
+   6242.054577547333,
+   6255.242197533215,
+   6268.385142894202,
+   6281.48303536141,
+   6294.535498350674,
+   6307.542156988785,
+   6320.502638139582,
+   6333.41657042993,
+   6346.283584275543,
+   6359.103311906665,
+   6371.8753873936275,
+   6384.59944667224,
+   6397.27512756904,
+   6409.902069826388,
+   6422.479915127405,
+   6435.008307120769,
+   6447.486891445314,
+   6459.915315754511,
+   6472.293229740744,
+   6484.6202851594335,
+   6496.896135852994,
+   6509.120437774602,
+   6521.292849011794,
+   6533.413029809889,
+   6545.480642595215,
+   6557.495351998165,
+   6569.45682487605,
+   6581.364730335784,
+   6593.218739756344,
+   6605.018526811065,
+   6616.763767489717,
+   6628.454140120388,
+   6640.089325391176,
+   6651.669006371648,
+   6663.192868534114,
+   6674.660599774688,
+   6686.071890434137,
+   6697.426433318496,
+   6708.7239237195045,
+   6719.96405943478,
+   6731.146540787811,
+   6742.271070647701,
+   6753.337354448689,
+   6764.345100209462,
+   6775.294018552211,
+   6786.183822721476,
+   6797.014228602757,
+   6807.784954740872,
+   6818.495722358103,
+   6829.146255372075,
+   6839.7362804134245,
+   6850.265526843206,
+   6860.733726770052,
+   6871.140615067108,
+   6881.485929388688,
+   6891.769410186721,
+   6901.9908007269,
+   6912.149847104627,
+   6922.246298260671,
+   6932.279905996574,
+   6942.250424989812,
+   6952.157612808699,
+   6962.001229927018,
+   6971.781039738399,
+   6981.496808570434,
+   6991.148305698531,
+   7000.735303359506,
+   7010.257576764889,
+   7019.714904113998,
+   7029.107066606723,
+   7038.433848456024,
+   7047.695036900201,
+   7056.890422214872,
+   7066.019797724659,
+   7075.082959814637,
+   7084.079707941493,
+   7093.009844644398,
+   7101.873175555627,
+   7110.669509410893,
+   7119.398658059396,
+   7128.060436473608,
+   7136.654662758774,
+   7145.181158162139,
+   7153.63974708188,
+   7162.03025707578,
+   7170.352518869619,
+   7178.606366365262,
+   7186.791636648493,
+   7194.908169996556,
+   7202.955809885418,
+   7210.9344029967415,
+   7218.843799224589,
+   7226.683851681833,
+   7234.454416706294,
+   7242.155353866592,
+   7249.786525967704,
+   7257.347799056265,
+   7264.839042425569,
+   7272.260128620275,
+   7279.61093344087,
+   7286.891335947806,
+   7294.101218465383,
+   7301.240466585345,
+   7308.308969170192,
+   7315.306618356202,
+   7322.23330955619,
+   7329.08894146197,
+   7335.873416046549,
+   7342.586638566034,
+   7349.228517561261,
+   7355.798964859145,
+   7362.297895573761,
+   7368.725228107127,
+   7375.0808841497255,
+   7381.364788680754,
+   7387.576869968075,
+   7393.71705956792,
+   7399.785292324299,
+   7405.781506368141,
+   7411.705643116172,
+   7417.5576472695075,
+   7423.337466811974,
+   7429.045053008177,
+   7434.680360401277,
+   7440.2433468105255,
+   7445.733973328497,
+   7451.152204318087,
+   7456.498007409231,
+   7461.77135349536,
+   7466.972216729591,
+   7472.1005745206685,
+   7477.156407528632,
+   7482.139699660225,
+   7487.050438064049,
+   7491.888613125472,
+   7496.654218461257,
+   7501.347250913958,
+   7505.967710546056,
+   7510.515600633839,
+   7514.990927661044,
+   7519.3937013122295,
+   7523.723934465934,
+   7527.981643187544,
+   7532.166846721966,
+   7536.27956748603,
+   7540.31983106064,
+   7544.28766618272,
+   7548.1831047369005,
+   7552.006181746954,
+   7555.756935367039,
+   7559.435406872675,
+   7563.0416406515,
+   7566.575684193793,
+   7570.037588082783,
+   7573.427405984725,
+   7576.74519463873,
+   7579.99101384642,
+   7583.164926461324,
+   7586.266998378067,
+   7589.297298521346,
+   7592.255898834701,
+   7595.142874269042,
+   7597.958302771008,
+   7600.702265271073,
+   7603.374845671501,
+   7605.976130834026,
+   7608.506210567393,
+   7610.965177614673,
+   7613.353127640356,
+   7615.670159217305,
+   7617.916373813457,
+   7620.091875778364,
+   7622.196772329541,
+   7624.231173538625,
+   7626.19519231733,
+   7628.088944403253,
+   7629.912548345465,
+   7631.666125489949,
+   7633.349799964836,
+   7634.963698665488,
+   7636.507951239405,
+   7637.982690070942,
+   7639.388050265882,
+   7640.724169635834,
+   7641.991188682461,
+   7643.18925058155,
+   7644.318501166943,
+   7645.37908891426,
+   7646.371164924538,
+   7647.294882907658,
+   7648.15039916564,
+   7648.937872575812,
+   7649.657464573807,
+   7650.309339136426,
+   7650.893662764356,
+   7651.410604464765,
+   7651.860335733749,
+   7652.243030538628,
+   7652.558865300156,
+   7652.808018874553,
+   7652.990672535445,
+   7653.107009955662,
+   7653.157217188923,
+   7653.141482651391,
+   7653.059997103117,
+   7652.912953629386,
+   7652.700547621906,
+   7652.4229767599345,
+   7652.080440991277,
+   7651.673142513176,
+   7651.2012857530935,
+   7650.665077349414,
+   7650.064726132031,
+   7649.400443102835,
+   7648.672441416136,
+   7647.880936358946,
+   7647.026145331222,
+   7646.108287825993,
+   7645.127585409408,
+   7644.084261700713,
+   7642.978542352136,
+   7641.810655028695,
+   7640.580829387947,
+   7639.289297059635,
+   7637.936291625306,
+   7636.522048597813,
+   7635.046805400796,
+   7633.510801348069,
+   7631.914277622961,
+   7630.257477257593,
+   7628.540645112097,
+   7626.764027853792,
+   7624.927873936293,
+   7623.032433578572,
+   7621.077958743992,
+   7619.064703119273,
+   7616.992922093418,
+   7614.862872736606,
+   7612.674813779052,
+   7610.429005589812,
+   7608.125710155572,
+   7605.765191059392,
+   7603.347713459436,
+   7600.873544067652,
+   7598.3429511284485,
+   7595.756204397347,
+   7593.113575119576,
+   7590.4153360087175,
+   7587.66176122525,
+   7584.85312635517,
+   7581.989708388513,
+   7579.071785697915,
+   7576.099638017174,
+   7573.073546419759,
+   7569.9937932973535,
+   7566.860662338395,
+   7563.67443850658,
+   7560.4354080194125,
+   7557.143858326747,
+   7553.800078089303,
+   7550.404357157228,
+   7546.956986548663,
+   7543.458258428298,
+   7539.908466085964,
+   7536.307903915226,
+   7532.6568673920065,
+   7528.955653053214,
+   7525.204558475403,
+   7521.403882253449,
+   7517.553923979266,
+   7513.654984220518,
+   7509.707364499392,
+   7505.711367271391,
+   7501.667295904137,
+   7497.57545465625,
+   7493.436148656224,
+   7489.249683881356,
+   7485.0163671367245,
+   7480.736506034186,
+   7476.410408971428,
+   7472.038385111069,
+   7467.6207443597905,
+   7463.157797347539,
+   7458.649855406739,
+   7454.097230551613,
+   7449.50023545748,
+   7444.859183440184,
+   7440.174388435528,
+   7435.446164978775,
+   7430.67482818422,
+   7425.860693724807,
+   7421.004077811817,
+   7416.105297174612,
+   7411.1646690404505,
+   7406.182511114364,
+   7401.159141559094,
+   7396.094878975117,
+   7390.990042380718,
+   7385.844951192144,
+   7380.659925203834,
+   7375.435284568723,
+   7370.171349778606,
+   7364.868441644596,
+   7359.52688127766,
+   7354.14699006921,
+   7348.729089671816,
+   7343.273501979954,
+   7337.780549110872,
+   7332.250553385527,
+   7326.683837309593,
+   7321.080723554592,
+   7315.441534939067,
+   7309.766594409882,
+   7304.056225023584,
+   7298.310749927882,
+   7292.530492343183,
+   7286.715775544263,
+   7280.866922841982,
+   7274.984257565156,
+   7269.06810304246,
+   7263.118782584466,
+   7257.13661946578,
+   7251.12193690727,
+   7245.075058058367,
+   7238.996305979524,
+   7232.886003624716,
+   7226.744473824091,
+   7220.572039266696,
+   7214.369022483309,
+   7208.135745829386,
+   7201.872531468111,
+   7195.57970135355,
+   7189.257577213905,
+   7182.906480534894,
+   7176.526732543217,
+   7170.11865419016,
+   7163.682566135273,
+   7157.218788730197,
+   7150.727642002572,
+   7144.209445640069,
+   7137.664518974541,
+   7131.093180966287,
+   7124.495750188396,
+   7117.872544811275,
+   7111.223882587219,
+   7104.550080835138,
+   7097.851456425398,
+   7091.128325764762,
+   7084.381004781468,
+   7077.609808910403,
+   7070.8150530784205,
+   7063.997051689755,
+   7057.156118611563,
+   7050.29256715959,
+   7043.406710083956,
+   7036.498859555043,
+   7029.569327149536,
+   7022.618423836556,
+   7015.646459963931,
+   7008.653745244579,
+   7001.640588743025,
+   6994.607298862027,
+   6987.554183329346,
+   6980.481549184599,
+   6973.389702766284,
+   6966.278949698901,
+   6959.149594880188,
+   6952.001942468519,
+   6944.836295870382,
+   6937.652957728007,
+   6930.452229907122,
+   6923.234413484813,
+   6915.999808737531,
+   6908.748715129208,
+   6901.481431299513,
+   6894.198255052218,
+   6886.899483343698,
+   6879.585412271563,
+   6872.256337063396,
+   6864.912552065641,
+   6857.554350732598,
+   6850.182025615561,
+   6842.795868352046,
+   6835.396169655214,
+   6827.983219303331,
+   6820.557306129425,
+   6813.118718011053,
+   6805.667741860152,
+   6798.2046636130735,
+   6790.729768220721,
+   6783.243339638784,
+   6775.745660818158,
+   6768.237013695431,
+   6760.717679183533,
+   6753.187937162494,
+   6745.648066470337,
+   6738.098344894084,
+   6730.5390491609,
+   6722.970454929347,
+   6715.392836780782,
+   6707.8064682108625,
+   6700.211621621185,
+   6692.608568311036,
+   6684.997578469282,
+   6677.378921166385,
+   6669.752864346519,
+   6662.119674819829,
+   6654.479618254804,
+   6646.832959170791,
+   6639.179960930592,
+   6631.52088573323,
+   6623.855994606803,
+   6616.185547401459,
+   6608.5098027825425,
+   6600.829018223776,
+   6593.143450000642,
+   6585.4533531838415,
+   6577.758981632878,
+   6570.060587989783,
+   6562.358423672924,
+   6554.652738870966,
+   6546.94378253693,
+   6539.231802382381,
+   6531.5170448717245,
+   6523.799755216631,
+   6516.080177370561,
+   6508.3585540234335,
+   6500.635126596373,
+   6492.910135236617,
+   6485.183818812485,
+   6477.456414908527,
+   6469.7281598207255,
+   6461.999288551839,
+   6454.270034806875,
+   6446.540630988637,
+   6438.811308193418,
+   6431.082296206796,
+   6423.353823499519,
+   6415.626117223544,
+   6407.899403208148,
+   6400.173905956165,
+   6392.449848640339,
+   6384.727453099768,
+   6377.006939836477,
+   6369.288528012074,
+   6361.572435444552,
+   6353.858878605148,
+   6346.148072615351,
+   6338.440231243994,
+   6330.73556690446,
+   6323.034290651982,
+   6315.336612181058,
+   6307.642739822973,
+   6299.9528805434065,
+   6292.267239940156,
+   6284.586022240968,
+   6276.909430301443,
+   6269.237665603082,
+   6261.570928251394,
+   6253.909416974131,
+   6246.2533291196005,
+   6238.602860655099,
+   6230.9582061654155,
+   6223.319558851469,
+   6215.687110528994,
+   6208.061051627376,
+   6200.441571188537,
+   6192.828856865941,
+   6185.223094923681,
+   6177.624470235676,
+   6170.033166284937,
+   6162.449365162943,
+   6154.873247569106,
+   6147.304992810316,
+   6139.744778800601,
+   6132.192782060832,
+   6124.649177718569,
+   6117.114139507961,
+   6109.58783976975,
+   6102.070449451341,
+   6094.562138106991,
+   6087.063073898052,
+   6079.573423593317,
+   6072.09335256945,
+   6064.6230248114825,
+   6057.1626029134295,
+   6049.712248078936,
+   6042.272120122054,
+   6034.842377468069,
+   6027.4231771544255,
+   6020.014674831718,
+   6012.617024764774,
+   6005.230379833794,
+   5997.854891535613,
+   5990.490709984972,
+   5983.137983915936,
+   5975.7968606833365,
+   5968.467486264313,
+   5961.150005259931,
+   5953.844560896844,
+   5946.551295029083,
+   5939.270348139858,
+   5932.001859343467,
+   5924.7459663872705,
+   5917.502805653733,
+   5910.272512162531,
+   5903.055219572737,
+   5895.851060185057,
+   5888.660164944164,
+   5881.482663441065,
+   5874.318683915553,
+   5867.168353258732,
+   5860.031797015567,
+   5852.909139387566,
+   5845.80050323545,
+   5838.706010081947,
+   5831.625780114604,
+   5824.559932188693,
+   5817.508583830156,
+   5810.471851238619,
+   5803.449849290462,
+   5796.442691541958,
+   5789.450490232447,
+   5782.473356287594,
+   5775.511399322685,
+   5768.564727645987,
+   5761.633448262166,
+   5754.717666875742,
+   5747.817487894628,
+   5740.933014433688,
+   5734.064348318384,
+   5727.2115900884355,
+   5720.374839001563,
+   5713.554193037266,
+   5706.749748900661,
+   5699.961602026347,
+   5693.1898465823515,
+   5686.434575474095,
+   5679.6958803484295,
+   5672.973851597694,
+   5666.2685783638435,
+   5659.5801485426055,
+   5652.908648787694,
+   5646.254164515051,
+   5639.616779907153,
+   5632.996577917337,
+   5626.393640274192,
+   5619.808047485972,
+   5613.239878845063,
+   5606.6892124324795,
+   5600.156125122415,
+   5593.640692586816,
+   5587.142989300009,
+   5580.663088543344,
+   5574.2010624099075,
+   5567.756981809236,
+   5561.330916472094,
+   5554.922934955275,
+   5548.53310464643,
+   5542.161491768943,
+   5535.808161386842,
+   5529.473177409724,
+   5523.15660259773,
+   5516.858498566546,
+   5510.578925792432,
+   5504.317943617293,
+   5498.075610253754,
+   5491.851982790303,
+   5485.647117196417,
+   5479.4610683277615,
+   5473.293889931383,
+   5467.145634650946,
+   5461.016354031992,
+   5454.906098527223,
+   5448.814917501807,
+   5442.742859238728,
+   5436.6899709441195,
+   5430.6562987526695,
+   5424.641887733014,
+   5418.646781893168,
+   5412.671024185967,
+   5406.7146565145495,
+   5400.777719737841,
+   5394.860253676065,
+   5388.962297116281,
+   5383.083887817922,
+   5377.225062518375,
+   5371.385856938567,
+   5365.566305788559,
+   5359.766442773178,
+   5353.9863005976495,
+   5348.225910973261,
+   5342.485304623013,
+   5336.76451128732,
+   5331.063559729702,
+   5325.382477742497,
+   5319.72129215259,
+   5314.08002882715,
+   5308.458712679382,
+   5302.857367674287,
+   5297.276016834447,
+   5291.714682245796,
+   5286.173385063426,
+   5280.652145517399,
+   5275.150982918546,
+   5269.669915664303,
+   5264.208961244546,
+   5258.768136247428,
+   5253.347456365225,
+   5247.946936400207,
+   5242.56659027048,
+   5237.206431015873,
+   5231.866470803809,
+   5226.5467209351755,
+   5221.247191850229,
+   5215.967893134468,
+   5210.708833524536,
+   5205.47002091412,
+   5200.251462359845,
+   5195.053164087187,
+   5189.875131496374,
+   5184.717369168294,
+   5179.579880870405,
+   5174.462669562653,
+   5169.365737403373,
+   5164.289085755209,
+   5159.232715191023,
+   5154.196625499807,
+   5149.180815692593,
+   5144.1852840083675,
+   5139.210027919971,
+   5134.255044140009,
+   5129.320328626756,
+   5124.405876590054,
+   5119.511682497213,
+   5114.637740078901,
+   5109.784042335033,
+   5104.950581540667,
+   5100.137349251874,
+   5095.3443363116185,
+   5090.571532855632,
+   5085.818928318274,
+   5081.086511438393,
+   5076.374270265187,
+   5071.682192164029,
+   5067.010263822336,
+   5062.358471255373,
+   5057.726799812098,
+   5053.115234180963,
+   5048.523758395734,
+   5043.952355841282,
+   5039.401009259378,
+   5034.869700754476,
+   5030.358411799474,
+   5025.867123241491,
+   5021.395815307605,
+   5016.944467610601,
+   5012.513059154704,
+   5008.101568341288,
+   5003.709972974594,
+   4999.338250267424,
+   4994.98637684682,
+   4990.654328759744,
+   4986.34208147873,
+   4982.049609907536,
+   4977.7768883867775,
+   4973.523890699551,
+   4969.290590077032,
+   4965.076959204079,
+   4960.882970224806,
+   4956.708594748148,
+   4952.553803853422,
+   4948.418568095848,
+   4944.302857512076,
+   4940.206641625696,
+   4936.129889452721,
+   4932.072569507068,
+   4928.034649806013,
+   4924.016097875631,
+   4920.016880756228,
+   4916.036965007743,
+   4912.076316715151,
+   4908.134901493823,
+   4904.212684494903,
+   4900.309630410636,
+   4896.425703479691,
+   4892.5608674924715,
+   4888.715085796403,
+   4884.8883213011995,
+   4881.080536484113,
+   4877.291693395169,
+   4873.521753662375,
+   4869.770678496925,
+   4866.038428698356,
+   4862.324964659725,
+   4858.630246372731,
+   4854.954233432833,
+   4851.296885044356,
+   4847.658160025554,
+   4844.038016813679,
+   4840.436413470009,
+   4836.853307684867,
+   4833.288656782616,
+   4829.742417726634,
+   4826.214547124263,
+   4822.705001231746,
+   4819.213735959139,
+   4815.7407068751945,
+   4812.285869212238,
+   4808.849177871007,
+   4805.430587425477,
+   4802.030052127673,
+   4798.64752591244,
+   4795.282962402203,
+   4791.936314911718,
+   4788.60753645276,
+   4785.29657973884,
+   4782.003397189861,
+   4778.7279409367675,
+   4775.47016282617,
+   4772.230014424944,
+   4769.007447024812,
+   4765.802411646891,
+   4762.614859046233,
+   4759.444739716326,
+   4756.292003893583,
+   4753.156601561803,
+   4750.0384824566045,
+   4746.937596069848,
+   4743.853891654023,
+   4740.787318226607,
+   4737.737824574424,
+   4734.7053592579505,
+   4731.689870615615,
+   4728.691306768071,
+   4725.709615622439,
+   4722.744744876538,
+   4719.7966420230705,
+   4716.865254353809,
+   4713.95052896374,
+   4711.052412755188,
+   4708.17085244192,
+   4705.305794553221,
+   4702.457185437941,
+   4699.624971268532,
+   4696.809098045035,
+   4694.009511599075,
+   4691.226157597806,
+   4688.45898154783,
+   4685.707928799117,
+   4682.972944548872,
+   4680.253973845397,
+   4677.550961591908,
+   4674.863852550353,
+   4672.192591345176,
+   4669.537122467083,
+   4666.897390276766,
+   4664.273339008605,
+   4661.664912774349,
+   4659.072055566774,
+   4656.494711263299,
+   4653.9328236296005,
+   4651.386336323192,
+   4648.855192896969,
+   4646.339336802743,
+   4643.838711394745,
+   4641.3532599330965,
+   4638.882925587277,
+   4636.427651439534
+  ],
+  "entries": {
+   "Intercambiador Cuba": 0.38047897881045656,
+   "San Fernando": 0.012191847826096214,
+   "Intercambiador El Viajero": 0.08144060216063732,
+   "Aeropuerto": 0.008578354210673444,
+   "Batallón": 0.00925884074632935,
+   "Maraya": 0.014677228366857262,
+   "El Jardín": 0.09642486282245721,
+   "La Ruana": 0.005182868178887196,
+   "Ucumarí": 0.005182868178887196,
+   "Egoyá": 0.0032543787749317776,
+   "Consota": 0.004948578835422353,
+   "Coliseo": 0.005182868178887196,
+   "El Cafetero": 0.0013740983132293182,
+   "Ormaza": 0.0034330171346134775,
+   "Francisco Pereira": 0.004673260736576154,
+   "Mercados": 0.0013714556470714313,
+   "Centenario": 0.0037980221843408324,
+   "El Lago": 0.004621934759103197,
+   "Condina": 0.0025194716682717167,
+   "Otún": 0.009038490837641135,
+   "Victoria": 0.004621934759103197,
+   "Del Café": 0.0025635524408961713,
+   "Ferrocarril": 0.004380949193223844,
+   "Libertad": 0.003175752483032278,
+   "Villavicencio": 0.0053787961819068714,
+   "La Popa": 0.002119946791856964,
+   "Santa Mónica": 0.004583517262002178,
+   "Milán": 0.003826707224373796,
+   "Fundadores": 0.003761769209098218,
+   "CAM": 0.004563091654823509,
+   "Intercambiador Dosquebradas": 0.0049515635800329,
+   "Viaducto": 0.004888145097798106,
+   "Central": 0.006702990576172519,
+   "Claret": 0.03828485273784563,
+   "Olaya": 0.024034490809793512,
+   "Cañarte": 0.01989832676660287,
+   "Las Flores": 0.019699510182657837,
+   "Banderas": 0.02508528828156267,
+   "Palacio de Justicia": 0.15984678639584665
+  },
+  "destinations": {
+   "Intercambiador Cuba": {
+    "San Fernando": 0.012426148564661283,
+    "Intercambiador El Viajero": 0.08786159267413854,
+    "Aeropuerto": 0.007917508698880481,
+    "Batallón": 0.009667807424632913,
+    "Maraya": 0.02307396121101873,
+    "El Jardín": 0.015334677374450972,
+    "La Ruana": 0.015290804145809422,
+    "Ucumarí": 0.015334677374450972,
+    "Egoyá": 0.015815083440051007,
+    "Consota": 0.015334677374450972,
+    "Coliseo": 0.007349634001191917,
+    "El Cafetero": 0.014847354619111266,
+    "Ormaza": 0.007349634001191917,
+    "Francisco Pereira": 0.01533771608751651,
+    "Mercados": 0.03630978500103734,
+    "Centenario": 0.01533771608751651,
+    "El Lago": 0.06112817009254846,
+    "Condina": 0.06039190438682972,
+    "Otún": 0.04497072498044632,
+    "Victoria": 0.014119886711220416,
+    "Del Café": 0.014119886711220416,
+    "Ferrocarril": 0.04270809923184342,
+    "Libertad": 0.03776066919939831,
+    "Villavicencio": 0.03776066919939831,
+    "La Popa": 0.032025064524708505,
+    "Santa Mónica": 0.019196563339386602,
+    "Milán": 0.016154068764251517,
+    "Fundadores": 0.014482101308633068,
+    "CAM": 0.012451970873022689,
+    "Intercambiador Dosquebradas": 0.042369113907642926,
+    "Viaducto": 0.03776066919939831,
+    "Central": 0.06112817009254846,
+    "Claret": 0.06112817009254846,
+    "Cañarte": 0.04134817384457769,
+    "Las Flores": 0.009296031010107349,
+    "Banderas": 0.009296031010107349,
+    "Palacio de Justicia": 0.015815083440051007
+   },
+   "San Fernando": {
+    "Intercambiador Cuba": 0.15488575289939335,
+    "Intercambiador El Viajero": 0.0833451646430611,
+    "Aeropuerto": 0.00528019612157023,
+    "Batallón": 0.00528019612157023,
+    "Maraya": 0.011000408586604643,
+    "El Jardín": 0.009981651535234361,
+    "La Ruana": 0.011379733020625494,
+    "Ucumarí": 0.009981651535234361,
+    "Egoyá": 0.016159220889288204,
+    "Consota": 0.009981651535234361,
+    "Coliseo": 0.008345137548458694,
+    "El Cafetero": 0.01287806453500785,
+    "Ormaza": 0.008345137548458694,
+    "Francisco Pereira": 0.011973104813843822,
+    "Mercados": 0.03660480788301201,
+    "Centenario": 0.011973104813843822,
+    "El Lago": 0.05521067137173468,
+    "Condina": 0.03573778060525006,
+    "Otún": 0.03476508437801088,
+    "Victoria": 0.013693612068152677,
+    "Del Café": 0.013693612068152677,
+    "Ferrocarril": 0.03190118490115347,
+    "Libertad": 0.038046240732291244,
+    "Villavicencio": 0.038046240732291244,
+    "La Popa": 0.0406635793270351,
+    "Santa Mónica": 0.009862435284542092,
+    "Milán": 0.004096703887425178,
+    "Fundadores": 0.012947607347911673,
+    "CAM": 0.01567874327286179,
+    "Intercambiador Dosquebradas": 0.03692091157802939,
+    "Viaducto": 0.038046240732291244,
+    "Central": 0.05521067137173468,
+    "Claret": 0.05521067137173468,
+    "Cañarte": 0.03032698849996694,
+    "Las Flores": 0.008193407774850356,
+    "Banderas": 0.008193407774850356,
+    "Palacio de Justicia": 0.016159220889288204
+   },
+   "Intercambiador El Viajero": {
+    "Intercambiador Cuba": 0.1645151356741394,
+    "San Fernando": 0.01796246883679094,
+    "Aeropuerto": 0.007990890916518782,
+    "Batallón": 0.008331605424045166,
+    "Maraya": 0.01209266093379355,
+    "El Jardín": 0.008992699731982072,
+    "La Ruana": 0.006035514133324508,
+    "Ucumarí": 0.008992699731982072,
+    "Egoyá": 0.0097822920827575,
+    "Consota": 0.008992699731982072,
+    "Coliseo": 0.003991227088166207,
+    "El Cafetero": 0.01105348168583808,
+    "Ormaza": 0.003991227088166207,
+    "Francisco Pereira": 0.01006216471393989,
+    "Mercados": 0.038103239091700554,
+    "Centenario": 0.01006216471393989,
+    "El Lago": 0.06833029448441619,
+    "Condina": 0.04942794034186321,
+    "Otún": 0.04110720533305818,
+    "Victoria": 0.014230509264351949,
+    "Del Café": 0.014230509264351949,
+    "Ferrocarril": 0.03603623774604049,
+    "Libertad": 0.045076529345740544,
+    "Villavicencio": 0.045076529345740544,
+    "La Popa": 0.025016016285937134,
+    "Santa Mónica": 0.015218581336178464,
+    "Milán": 0.013976866242082312,
+    "Fundadores": 0.012386865206959186,
+    "CAM": 0.001817144040140712,
+    "Intercambiador Dosquebradas": 0.02725716060211068,
+    "Viaducto": 0.045076529345740544,
+    "Central": 0.06833029448441619,
+    "Claret": 0.06833029448441619,
+    "Cañarte": 0.05381585646379226,
+    "Las Flores": 0.0072620863604194895,
+    "Banderas": 0.0072620863604194895,
+    "Palacio de Justicia": 0.0097822920827575
+   },
+   "Aeropuerto": {
+    "Intercambiador Cuba": 0.14806801395932248,
+    "San Fernando": 0.012140728946904981,
+    "Intercambiador El Viajero": 0.07963714387374793,
+    "Batallón": 0.005887067500008987,
+    "Maraya": 0.014555936126395845,
+    "El Jardín": 0.017431182768646875,
+    "La Ruana": 0.0075475224359089575,
+    "Ucumarí": 0.017431182768646875,
+    "Egoyá": 0.012399501144707573,
+    "Consota": 0.017431182768646875,
+    "Coliseo": 0.0010782174908441366,
+    "El Cafetero": 0.014816505353349845,
+    "Ormaza": 0.0010782174908441366,
+    "Francisco Pereira": 0.02169912700323825,
+    "Mercados": 0.03509597932697664,
+    "Centenario": 0.02169912700323825,
+    "El Lago": 0.05916718481007199,
+    "Condina": 0.0399838986188034,
+    "Otún": 0.04294001157286773,
+    "Victoria": 0.008140542055873232,
+    "Del Café": 0.008140542055873232,
+    "Ferrocarril": 0.01676628198262632,
+    "Libertad": 0.03196914860352865,
+    "Villavicencio": 0.03196914860352865,
+    "La Popa": 0.05635483418812022,
+    "Santa Mónica": 0.01832969734435032,
+    "Milán": 0.013010491056185916,
+    "Fundadores": 0.005462968620276959,
+    "CAM": 0.015095044871817911,
+    "Intercambiador Dosquebradas": 0.010782174908441366,
+    "Viaducto": 0.03196914860352865,
+    "Central": 0.05916718481007199,
+    "Claret": 0.05916718481007199,
+    "Cañarte": 0.04903194039613712,
+    "Las Flores": 0.0010782174908441366,
+    "Banderas": 0.0010782174908441366,
+    "Palacio de Justicia": 0.012399501144707573
+   },
+   "Batallón": {
+    "Intercambiador Cuba": 0.15167073470655648,
+    "San Fernando": 0.012746894977972649,
+    "Intercambiador El Viajero": 0.08876873728390672,
+    "Aeropuerto": 0.005454392365182654,
+    "Maraya": 0.015412725678695094,
+    "El Jardín": 0.0180766535737782,
+    "La Ruana": 0.01341477975738277,
+    "Ucumarí": 0.0180766535737782,
+    "Egoyá": 0.01298664848853013,
+    "Consota": 0.0180766535737782,
+    "Coliseo": 0.0014271042295088052,
+    "El Cafetero": 0.014755068479596454,
+    "Ormaza": 0.0014271042295088052,
+    "Francisco Pereira": 0.020532462102057936,
+    "Mercados": 0.0336154401260799,
+    "Centenario": 0.020532462102057936,
+    "El Lago": 0.056416997953056824,
+    "Condina": 0.0414692704024767,
+    "Otún": 0.040283584638459796,
+    "Victoria": 0.007542245852954035,
+    "Del Café": 0.007542245852954035,
+    "Ferrocarril": 0.021527867302140326,
+    "Libertad": 0.030119034763783328,
+    "Villavicencio": 0.030119034763783328,
+    "La Popa": 0.05221298674362882,
+    "Santa Mónica": 0.01698254033115478,
+    "Milán": 0.01205427372525104,
+    "Fundadores": 0.005061463000657896,
+    "CAM": 0.013985621449186289,
+    "Intercambiador Dosquebradas": 0.009989729606561635,
+    "Viaducto": 0.030119034763783328,
+    "Central": 0.056416997953056824,
+    "Claret": 0.056416997953056824,
+    "Cañarte": 0.04892470074813561,
+    "Las Flores": 0.0014271042295088052,
+    "Banderas": 0.0014271042295088052,
+    "Palacio de Justicia": 0.01298664848853013
+   },
+   "Maraya": {
+    "Intercambiador Cuba": 0.1555350273904295,
+    "San Fernando": 0.009032614942025717,
+    "Intercambiador El Viajero": 0.10202953755112104,
+    "Aeropuerto": 0.003150912189078738,
+    "Batallón": 0.0035710338142892367,
+    "El Jardín": 0.02307067896155937,
+    "La Ruana": 0.023166706761607484,
+    "Ucumarí": 0.02307067896155937,
+    "Egoyá": 0.012667667289680362,
+    "Consota": 0.02307067896155937,
+    "Coliseo": 0.0023806892095261578,
+    "El Cafetero": 0.0141610996383453,
+    "Ormaza": 0.0023806892095261578,
+    "Francisco Pereira": 0.013860512618403027,
+    "Mercados": 0.036113954989969596,
+    "Centenario": 0.013860512618403027,
+    "El Lago": 0.04789086440524532,
+    "Condina": 0.058126327571832045,
+    "Otún": 0.03231935645369335,
+    "Victoria": 0.007441654358936911,
+    "Del Café": 0.007441654358936911,
+    "Ferrocarril": 0.04609284387830277,
+    "Libertad": 0.021651268042098184,
+    "Villavicencio": 0.021651268042098184,
+    "La Popa": 0.03781094626894486,
+    "Santa Mónica": 0.015764563841232038,
+    "Milán": 0.019005502092855883,
+    "Fundadores": 0.01375064747911187,
+    "CAM": 0.01179007989479621,
+    "Intercambiador Dosquebradas": 0.01483096022965315,
+    "Viaducto": 0.021651268042098184,
+    "Central": 0.04789086440524532,
+    "Claret": 0.04789086440524532,
+    "Cañarte": 0.04883913893072045,
+    "Las Flores": 0.002184632451094592,
+    "Banderas": 0.002184632451094592,
+    "Palacio de Justicia": 0.012667667289680362
+   },
+   "El Jardín": {
+    "Intercambiador Cuba": 0.21062494891034364,
+    "San Fernando": 0.007435821274825526,
+    "Intercambiador El Viajero": 0.09281604567273645,
+    "Aeropuerto": 0.0071383884238325045,
+    "Batallón": 0.010282678562901585,
+    "Maraya": 0.043609321343214845,
+    "Ucumarí": 0.031033779469120806,
+    "Consota": 0.031033779469120806,
+    "El Cafetero": 0.02060784753308789,
+    "Francisco Pereira": 0.015768392478631373,
+    "Centenario": 0.015768392478631373,
+    "Condina": 0.1262349533374394,
+    "Ferrocarril": 0.1098093758928044,
+    "Villavicencio": 0.04315325763835888,
+    "La Popa": 0.05608733761582682,
+    "Santa Mónica": 0.030037885256476143,
+    "Milán": 0.03666638879289204,
+    "Fundadores": 0.03379214879789917,
+    "CAM": 0.026053229284442654,
+    "Intercambiador Dosquebradas": 0.052046027767413704
+   },
+   "La Ruana": {
+    "Intercambiador Cuba": 0.1591494343850479,
+    "San Fernando": 0.0012661794159788554,
+    "Intercambiador El Viajero": 0.033973073680679415,
+    "Aeropuerto": 0.004489181565743214,
+    "Batallón": 0.005064717663915421,
+    "Maraya": 0.020412346948507604,
+    "Egoyá": 0.02286577511557313,
+    "Coliseo": 0.007158572802027641,
+    "Ormaza": 0.007158572802027641,
+    "Mercados": 0.04943443986086278,
+    "El Lago": 0.06303353566624606,
+    "Otún": 0.05074172899813966,
+    "Victoria": 0.023264539412163873,
+    "Del Café": 0.023264539412163873,
+    "Libertad": 0.04767905476143755,
+    "Villavicencio": 0.04767905476143755,
+    "La Popa": 0.048165976571478475,
+    "Santa Mónica": 0.032054620020105395,
+    "Milán": 0.021165111622942365,
+    "Fundadores": 0.02043061793575117,
+    "CAM": 0.017847100339511486,
+    "Intercambiador Dosquebradas": 0.013790941171440696,
+    "Viaducto": 0.04767905476143755,
+    "Central": 0.06303353566624606,
+    "Claret": 0.06303353566624606,
+    "Cañarte": 0.042676001679469146,
+    "Las Flores": 0.02031149109892314,
+    "Banderas": 0.02031149109892314,
+    "Palacio de Justicia": 0.02286577511557313
+   },
+   "Ucumarí": {
+    "Intercambiador Cuba": 0.21062494891034364,
+    "San Fernando": 0.007435821274825526,
+    "Intercambiador El Viajero": 0.09281604567273645,
+    "Aeropuerto": 0.0071383884238325045,
+    "Batallón": 0.010282678562901585,
+    "Maraya": 0.043609321343214845,
+    "El Jardín": 0.031033779469120806,
+    "Consota": 0.031033779469120806,
+    "El Cafetero": 0.02060784753308789,
+    "Francisco Pereira": 0.015768392478631373,
+    "Centenario": 0.015768392478631373,
+    "Condina": 0.1262349533374394,
+    "Ferrocarril": 0.1098093758928044,
+    "Villavicencio": 0.04315325763835888,
+    "La Popa": 0.05608733761582682,
+    "Santa Mónica": 0.030037885256476143,
+    "Milán": 0.03666638879289204,
+    "Fundadores": 0.03379214879789917,
+    "CAM": 0.026053229284442654,
+    "Intercambiador Dosquebradas": 0.052046027767413704
+   },
+   "Egoyá": {
+    "Coliseo": 0.007701831142989123,
+    "Ormaza": 0.007701831142989123,
+    "Mercados": 0.051119569148410676,
+    "El Lago": 0.09451357269730529,
+    "Otún": 0.0642966427314562,
+    "Victoria": 0.04719032987037724,
+    "Del Café": 0.04719032987037724,
+    "Libertad": 0.072582934866421,
+    "Villavicencio": 0.072582934866421,
+    "La Popa": 0.13980781617188734,
+    "Santa Mónica": 0.05765099490391551,
+    "Milán": 0.05765099490391551,
+    "Fundadores": 0.06161069340115851,
+    "CAM": 0.02215215942513564,
+    "Intercambiador Dosquebradas": 0.12366442999081972,
+    "Viaducto": 0.072582934866421
+   },
+   "Consota": {
+    "Intercambiador Cuba": 0.21062494891034364,
+    "San Fernando": 0.007435821274825526,
+    "Intercambiador El Viajero": 0.09281604567273645,
+    "Aeropuerto": 0.0071383884238325045,
+    "Batallón": 0.010282678562901585,
+    "Maraya": 0.043609321343214845,
+    "El Jardín": 0.031033779469120806,
+    "Ucumarí": 0.031033779469120806,
+    "El Cafetero": 0.02060784753308789,
+    "Francisco Pereira": 0.015768392478631373,
+    "Centenario": 0.015768392478631373,
+    "Condina": 0.1262349533374394,
+    "Ferrocarril": 0.1098093758928044,
+    "Villavicencio": 0.04315325763835888,
+    "La Popa": 0.05608733761582682,
+    "Santa Mónica": 0.030037885256476143,
+    "Milán": 0.03666638879289204,
+    "Fundadores": 0.03379214879789917,
+    "CAM": 0.026053229284442654,
+    "Intercambiador Dosquebradas": 0.052046027767413704
+   },
+   "Coliseo": {
+    "Ormaza": 0.0019232002051413552,
+    "Mercados": 0.05176613885505481,
+    "El Lago": 0.07524520802615552,
+    "Otún": 0.10569587794089363,
+    "Victoria": 0.07593435476633119,
+    "Del Café": 0.07593435476633119,
+    "Libertad": 0.05961920635938201,
+    "Villavicencio": 0.05961920635938201,
+    "La Popa": 0.026924802871978973,
+    "Santa Mónica": 0.021796268991602027,
+    "Milán": 0.05641387268414642,
+    "Fundadores": 0.04914844968694574,
+    "CAM": 0.0581233839776054,
+    "Intercambiador Dosquebradas": 0.2222364681496677,
+    "Viaducto": 0.05961920635938201
+   },
+   "El Cafetero": {
+    "Intercambiador Cuba": 0.28922328692521243,
+    "San Fernando": 0.00631035881850379,
+    "Intercambiador El Viajero": 0.08566932953242588,
+    "Aeropuerto": 0.008553455523460705,
+    "Batallón": 0.009872924173435361,
+    "Maraya": 0.024319063855842402,
+    "El Jardín": 0.016996641166887816,
+    "Ucumarí": 0.016996641166887816,
+    "Consota": 0.016996641166887816,
+    "Francisco Pereira": 0.015424667058004314,
+    "Centenario": 0.015424667058004314,
+    "Condina": 0.13286138243557893,
+    "Ferrocarril": 0.07721279212289783,
+    "Villavicencio": 0.03230813237223656,
+    "La Popa": 0.03245892878937652,
+    "Santa Mónica": 0.03658069752453545,
+    "Milán": 0.027561186824351554,
+    "Fundadores": 0.02803452002259643,
+    "CAM": 0.031838987963356685,
+    "Intercambiador Dosquebradas": 0.0953556954995176
+   },
+   "Ormaza": {
+    "Mercados": 0.05186588734022738,
+    "El Lago": 0.07539019847132121,
+    "Otún": 0.1058995439655726,
+    "Victoria": 0.07608067313250692,
+    "Del Café": 0.07608067313250692,
+    "Libertad": 0.05973408696769221,
+    "Villavicencio": 0.05973408696769221,
+    "La Popa": 0.02697668443702229,
+    "Santa Mónica": 0.021838268353779947,
+    "Milán": 0.05652257691566575,
+    "Fundadores": 0.04924315413107243,
+    "CAM": 0.05823538227674653,
+    "Intercambiador Dosquebradas": 0.2226646969405014,
+    "Viaducto": 0.05973408696769221
+   },
+   "Francisco Pereira": {
+    "Intercambiador Cuba": 0.21869343137611366,
+    "San Fernando": 0.006520517246494147,
+    "Intercambiador El Viajero": 0.12402562216020654,
+    "Aeropuerto": 0.009021994451031544,
+    "Batallón": 0.011213764954054784,
+    "Maraya": 0.030001844059499308,
+    "El Jardín": 0.01956733746907117,
+    "Ucumarí": 0.01956733746907117,
+    "Consota": 0.01956733746907117,
+    "El Cafetero": 0.01734714882365623,
+    "Centenario": 0.014317411818532525,
+    "Condina": 0.09699123342849347,
+    "Ferrocarril": 0.06825657759460335,
+    "Villavicencio": 0.039051632701692374,
+    "La Popa": 0.06989842017250211,
+    "Santa Mónica": 0.04680224143702095,
+    "Milán": 0.029220430227986677,
+    "Fundadores": 0.02862854630953741,
+    "CAM": 0.024175122765713368,
+    "Intercambiador Dosquebradas": 0.10713204806564817
+   },
+   "Mercados": {
+    "El Lago": 0.08485226723446958,
+    "Otún": 0.04429841467966251,
+    "Victoria": 0.04187852199930249,
+    "Del Café": 0.04187852199930249,
+    "Libertad": 0.059717199899655536,
+    "Villavicencio": 0.059717199899655536,
+    "La Popa": 0.029002000770939267,
+    "Santa Mónica": 0.0487037818853748,
+    "Milán": 0.06632525070822397,
+    "Fundadores": 0.12069890334909886,
+    "CAM": 0.10099712223466331,
+    "Intercambiador Dosquebradas": 0.2422136154399963,
+    "Viaducto": 0.059717199899655536
+   },
+   "Centenario": {
+    "Intercambiador Cuba": 0.21869343137611366,
+    "San Fernando": 0.006520517246494147,
+    "Intercambiador El Viajero": 0.12402562216020654,
+    "Aeropuerto": 0.009021994451031544,
+    "Batallón": 0.011213764954054784,
+    "Maraya": 0.030001844059499308,
+    "El Jardín": 0.01956733746907117,
+    "Ucumarí": 0.01956733746907117,
+    "Consota": 0.01956733746907117,
+    "El Cafetero": 0.01734714882365623,
+    "Francisco Pereira": 0.014317411818532525,
+    "Condina": 0.09699123342849347,
+    "Ferrocarril": 0.06825657759460335,
+    "Villavicencio": 0.039051632701692374,
+    "La Popa": 0.06989842017250211,
+    "Santa Mónica": 0.04680224143702095,
+    "Milán": 0.029220430227986677,
+    "Fundadores": 0.02862854630953741,
+    "CAM": 0.024175122765713368,
+    "Intercambiador Dosquebradas": 0.10713204806564817
+   },
+   "El Lago": {
+    "Otún": 0.04950495049504949,
+    "Victoria": 0.05780037463205779,
+    "Del Café": 0.05780037463205779,
+    "Libertad": 0.08587071886660272,
+    "Villavicencio": 0.08587071886660272,
+    "La Popa": 0.08081950010974373,
+    "Santa Mónica": 0.04858791375645307,
+    "Milán": 0.049670317775779994,
+    "Fundadores": 0.06859234359512477,
+    "CAM": 0.11561678487921671,
+    "Intercambiador Dosquebradas": 0.2139952835247083,
+    "Viaducto": 0.08587071886660272
+   },
+   "Condina": {
+    "Ferrocarril": 0.12794650735835875,
+    "Villavicencio": 0.12712303688974336,
+    "La Popa": 0.16981636897486882,
+    "Santa Mónica": 0.08080065600257963,
+    "Milán": 0.06378804505799254,
+    "Fundadores": 0.030867718281795634,
+    "CAM": 0.07904391900286682,
+    "Intercambiador Dosquebradas": 0.3206137484317944
+   },
+   "Otún": {
+    "Victoria": 0.044066317626527046,
+    "Del Café": 0.044066317626527046,
+    "Libertad": 0.05962769051774288,
+    "Villavicencio": 0.05962769051774288,
+    "La Popa": 0.06980802792321116,
+    "Santa Mónica": 0.10762070971495054,
+    "Milán": 0.11416521233275158,
+    "Fundadores": 0.07538297459763428,
+    "CAM": 0.04629629629629629,
+    "Intercambiador Dosquebradas": 0.31971107232887336,
+    "Viaducto": 0.05962769051774288
+   },
+   "Victoria": {
+    "Intercambiador Cuba": 0.2046030359837885,
+    "San Fernando": 0.025983256194042844,
+    "Intercambiador El Viajero": 0.12713667681922358,
+    "Aeropuerto": 0.00870136951614458,
+    "Batallón": 0.00870136951614458,
+    "Maraya": 0.042816262698489205,
+    "La Ruana": 0.029280799006708748,
+    "Del Café": 0.016969684762388446,
+    "Libertad": 0.017563875504810356,
+    "Villavicencio": 0.017563875504810356,
+    "La Popa": 0.026829222674779125,
+    "Santa Mónica": 0.012729781329174478,
+    "Milán": 0.032066158031717994,
+    "Fundadores": 0.02661437404475086,
+    "CAM": 0.019443801017557646,
+    "Intercambiador Dosquebradas": 0.0447422272033854,
+    "Viaducto": 0.017563875504810356,
+    "Central": 0.05124139826174031,
+    "Claret": 0.05124139826174031,
+    "Cañarte": 0.07762749563708614,
+    "Las Flores": 0.04233285328092561,
+    "Banderas": 0.04233285328092561,
+    "Palacio de Justicia": 0.05591435596485498
+   },
+   "Del Café": {
+    "Intercambiador Cuba": 0.20813502168987866,
+    "San Fernando": 0.026431795430197233,
+    "Intercambiador El Viajero": 0.12933138973287203,
+    "Aeropuerto": 0.008851578004531168,
+    "Batallón": 0.008851578004531168,
+    "Maraya": 0.043555383831820026,
+    "La Ruana": 0.029786262491438214,
+    "Libertad": 0.017867074120257356,
+    "Villavicencio": 0.017867074120257356,
+    "La Popa": 0.0272923655139711,
+    "Santa Mónica": 0.012949530784406707,
+    "Milán": 0.032619704127809304,
+    "Fundadores": 0.027073808032377734,
+    "CAM": 0.01977945208419928,
+    "Intercambiador Dosquebradas": 0.045514595541817665,
+    "Viaducto": 0.017867074120257356,
+    "Central": 0.05212595936001687,
+    "Claret": 0.05212595936001687,
+    "Cañarte": 0.07896755006820166,
+    "Las Flores": 0.04306362949823496,
+    "Banderas": 0.04306362949823496,
+    "Palacio de Justicia": 0.05687958458467249
+   },
+   "Ferrocarril": {
+    "Intercambiador Cuba": 0.2964125979746738,
+    "San Fernando": 0.02034111349012284,
+    "Intercambiador El Viajero": 0.09952954135632198,
+    "Aeropuerto": 0.02194948060329534,
+    "Batallón": 0.02194948060329534,
+    "Maraya": 0.05514401530877153,
+    "El Jardín": 0.02783781622491008,
+    "Ucumarí": 0.02783781622491008,
+    "Consota": 0.02783781622491008,
+    "El Cafetero": 0.03587514656076371,
+    "Francisco Pereira": 0.011478199755140747,
+    "Centenario": 0.011478199755140747,
+    "Villavicencio": 0.07430025330655723,
+    "La Popa": 0.021003382301429164,
+    "Santa Mónica": 0.025103141609515944,
+    "Milán": 0.04024071443937479,
+    "Fundadores": 0.03092690226766997,
+    "CAM": 0.05558853133631503,
+    "Intercambiador Dosquebradas": 0.04511837679566265,
+    "Olaya": 0.050047473861218626
+   },
+   "Libertad": {
+    "Intercambiador Cuba": 0.32452722776680726,
+    "San Fernando": 0.0044831082884133015,
+    "Intercambiador El Viajero": 0.08667342690932381,
+    "Aeropuerto": 0.012577609364715095,
+    "Batallón": 0.012577609364715095,
+    "Maraya": 0.0422515166070698,
+    "La Ruana": 0.04349682446496238,
+    "Viaducto": 0.07845439504723276,
+    "Central": 0.08412054580064401,
+    "Claret": 0.08412054580064401,
+    "Cañarte": 0.14538969240895908,
+    "Las Flores": 0.024070021881838075,
+    "Banderas": 0.024070021881838075,
+    "Palacio de Justicia": 0.03318745441283735
+   },
+   "Villavicencio": {
+    "Intercambiador Cuba": 0.23973138310105332,
+    "San Fernando": 0.003311715192493446,
+    "Intercambiador El Viajero": 0.06402649372153994,
+    "Aeropuerto": 0.009291200956717722,
+    "Batallón": 0.009291200956717722,
+    "Maraya": 0.031211601516555294,
+    "El Jardín": 0.025074415028878947,
+    "Ucumarí": 0.025074415028878947,
+    "Consota": 0.025074415028878947,
+    "El Cafetero": 0.023438270023063736,
+    "Francisco Pereira": 0.01610518638254253,
+    "Centenario": 0.01610518638254253,
+    "Ferrocarril": 0.05013568833080355,
+    "La Popa": 0.09383193045398094,
+    "Santa Mónica": 0.0395565981325606,
+    "Milán": 0.050595648774205415,
+    "Fundadores": 0.05028900847860419,
+    "CAM": 0.062477960228753675,
+    "Intercambiador Dosquebradas": 0.0730570504269966,
+    "Olaya": 0.09232063185423195
+   },
+   "La Popa": {
+    "Intercambiador Cuba": 0.11054196985028426,
+    "San Fernando": 0.007247773642442145,
+    "Intercambiador El Viajero": 0.06667951751046773,
+    "Aeropuerto": 0.00021474884866495242,
+    "Batallón": 0.00037581048516366675,
+    "Maraya": 0.008684545701367183,
+    "El Jardín": 0.003332186301784512,
+    "La Ruana": 0.008559275539645963,
+    "Ucumarí": 0.003332186301784512,
+    "Consota": 0.003332186301784512,
+    "El Cafetero": 0.012995628838316104,
+    "Francisco Pereira": 0.0037572100647672306,
+    "Centenario": 0.0037572100647672306,
+    "Ferrocarril": 0.028601862281563355,
+    "Villavicencio": 0.05661316522929808,
+    "Santa Mónica": 0.06055917532351658,
+    "Milán": 0.018683149833850866,
+    "Fundadores": 0.017716780014858578,
+    "CAM": 0.034789313483722294,
+    "Intercambiador Dosquebradas": 0.14882095212481203,
+    "Viaducto": 0.05661316522929808,
+    "Central": 0.08666726659995817,
+    "Claret": 0.08666726659995817,
+    "Olaya": 0.05281479496853674,
+    "Cañarte": 0.07432994524415666,
+    "Las Flores": 0.010298741213832075,
+    "Banderas": 0.010298741213832075,
+    "Palacio de Justicia": 0.023715431187566246
+   },
+   "Santa Mónica": {
+    "Intercambiador Cuba": 0.11601515397706375,
+    "San Fernando": 0.0072349123002061,
+    "Intercambiador El Viajero": 0.03417341554565435,
+    "Aeropuerto": 0.0013340973035841036,
+    "Batallón": 0.0021037688248826247,
+    "Maraya": 0.013169934919996917,
+    "El Jardín": 0.007200704677037277,
+    "La Ruana": 0.027708174766746765,
+    "Ucumarí": 0.007200704677037277,
+    "Consota": 0.007200704677037277,
+    "El Cafetero": 0.009385716606945855,
+    "Francisco Pereira": 0.006858628445349045,
+    "Centenario": 0.006858628445349045,
+    "Ferrocarril": 0.033596161904680455,
+    "Villavicencio": 0.05823847844492145,
+    "La Popa": 0.06978355126439927,
+    "Milán": 0.02822128911427911,
+    "Fundadores": 0.027195060419214417,
+    "CAM": 0.04515406258284657,
+    "Intercambiador Dosquebradas": 0.09133435386075789,
+    "Viaducto": 0.05823847844492145,
+    "Central": 0.09781242249835374,
+    "Claret": 0.09781242249835374,
+    "Olaya": 0.057969093412466956,
+    "Cañarte": 0.05188868839420864,
+    "Las Flores": 0.007542780908725509,
+    "Banderas": 0.007542780908725509,
+    "Palacio de Justicia": 0.02122583017625478
+   },
+   "Milán": {
+    "Intercambiador Cuba": 0.1042871063151407,
+    "San Fernando": 0.0003718636912980453,
+    "Intercambiador El Viajero": 0.04127686973408303,
+    "Aeropuerto": 0.0007850455705180955,
+    "Batallón": 0.0010949319799331335,
+    "Maraya": 0.012636479139479871,
+    "El Jardín": 0.010563683378725954,
+    "La Ruana": 0.0059498190607687245,
+    "Ucumarí": 0.010563683378725954,
+    "Consota": 0.010563683378725954,
+    "El Cafetero": 0.011557041480017492,
+    "Francisco Pereira": 0.007817745473076036,
+    "Centenario": 0.007817745473076036,
+    "Ferrocarril": 0.073918238192467,
+    "Villavicencio": 0.05608944010412183,
+    "La Popa": 0.11527774430239403,
+    "Santa Mónica": 0.04772250704991581,
+    "Fundadores": 0.009916365101281207,
+    "CAM": 0.02200193506846768,
+    "Intercambiador Dosquebradas": 0.05361034882880152,
+    "Viaducto": 0.05608944010412183,
+    "Central": 0.10221603214555021,
+    "Claret": 0.10221603214555021,
+    "Olaya": 0.03621539171363741,
+    "Cañarte": 0.056476798115890625,
+    "Las Flores": 0.01282929734978256,
+    "Banderas": 0.01282929734978256,
+    "Palacio de Justicia": 0.01730543437466644
+   },
+   "Fundadores": {
+    "Intercambiador Cuba": 0.12900347296404316,
+    "San Fernando": 0.0002504111413083982,
+    "Intercambiador El Viajero": 0.04469838872354908,
+    "Aeropuerto": 0.0006677630434890619,
+    "Batallón": 0.0009807769701245597,
+    "Maraya": 0.011377807809449044,
+    "El Jardín": 0.010294680253789705,
+    "La Ruana": 0.012449011025046081,
+    "Ucumarí": 0.010294680253789705,
+    "Consota": 0.010294680253789705,
+    "El Cafetero": 0.009687532605617359,
+    "Francisco Pereira": 0.006034212919028763,
+    "Centenario": 0.006034212919028763,
+    "Ferrocarril": 0.06021344568711525,
+    "Villavicencio": 0.04783896178745858,
+    "La Popa": 0.10955487432242421,
+    "Santa Mónica": 0.041943866169156706,
+    "Milán": 0.026293169837381808,
+    "CAM": 0.015963710258410386,
+    "Intercambiador Dosquebradas": 0.09296513621074284,
+    "Viaducto": 0.04783896178745858,
+    "Central": 0.07927599381921706,
+    "Claret": 0.07927599381921706,
+    "Olaya": 0.05677029249412478,
+    "Cañarte": 0.04517834341105684,
+    "Las Flores": 0.01557915029140106,
+    "Banderas": 0.01557915029140106,
+    "Palacio de Justicia": 0.013661318931380392
+   },
+   "CAM": {
+    "Intercambiador Cuba": 0.11039338419264502,
+    "San Fernando": 0.00543240657015688,
+    "Intercambiador El Viajero": 0.04660562378740925,
+    "Aeropuerto": 0.0021139681675723604,
+    "Batallón": 0.0032201143017672007,
+    "Maraya": 0.00860335882151542,
+    "El Jardín": 0.007932647990940137,
+    "La Ruana": 0.015486045878727758,
+    "Ucumarí": 0.007932647990940137,
+    "Consota": 0.007932647990940137,
+    "El Cafetero": 0.007671328282517917,
+    "Francisco Pereira": 0.007318122360831894,
+    "Centenario": 0.007318122360831894,
+    "Ferrocarril": 0.03125682196607233,
+    "Villavicencio": 0.05170208967977362,
+    "La Popa": 0.10274868535409847,
+    "Santa Mónica": 0.06587714754760379,
+    "Milán": 0.024826835456373077,
+    "Fundadores": 0.02040225091959371,
+    "Intercambiador Dosquebradas": 0.10840232115109427,
+    "Viaducto": 0.05170208967977362,
+    "Central": 0.08801031232533572,
+    "Claret": 0.08801031232533572,
+    "Olaya": 0.05835447594132159,
+    "Cañarte": 0.04847583012170535,
+    "Las Flores": 0.0060715132254694545,
+    "Banderas": 0.0060715132254694545,
+    "Palacio de Justicia": 0.010127382384183866
+   },
+   "Intercambiador Dosquebradas": {
+    "Intercambiador Cuba": 0.09698347182206186,
+    "San Fernando": 0.003745712228599581,
+    "Intercambiador El Viajero": 0.0420322146681988,
+    "Aeropuerto": 0.0044207890978116594,
+    "Batallón": 0.006793202095328386,
+    "Maraya": 0.02100912694742456,
+    "El Jardín": 0.009533554948363969,
+    "La Ruana": 0.01185379874020553,
+    "Ucumarí": 0.009533554948363969,
+    "Consota": 0.009533554948363969,
+    "El Cafetero": 0.013755265255152884,
+    "Francisco Pereira": 0.007553329465341875,
+    "Centenario": 0.007553329465341875,
+    "Ferrocarril": 0.048401404196626835,
+    "Villavicencio": 0.051010094098367785,
+    "La Popa": 0.0985226470838654,
+    "Santa Mónica": 0.0654245925819247,
+    "Milán": 0.045789499643127736,
+    "Fundadores": 0.05728509433028195,
+    "CAM": 0.0569764877614993,
+    "Viaducto": 0.051010094098367785,
+    "Central": 0.07463617719491142,
+    "Claret": 0.07463617719491142,
+    "Olaya": 0.04833343727374019,
+    "Cañarte": 0.04740807680335763,
+    "Las Flores": 0.008455268901486446,
+    "Banderas": 0.008455268901486446,
+    "Palacio de Justicia": 0.019354775305486058
+   },
+   "Viaducto": {
+    "Intercambiador Cuba": 0.35215536379606577,
+    "San Fernando": 0.004864770950367755,
+    "Intercambiador El Viajero": 0.09405223837377659,
+    "Aeropuerto": 0.013648385166309535,
+    "Batallón": 0.013648385166309535,
+    "Maraya": 0.045848535742553244,
+    "La Ruana": 0.04719986100654428,
+    "Central": 0.09128202158259494,
+    "Claret": 0.09128202158259494,
+    "Cañarte": 0.1577672245709542,
+    "Las Flores": 0.02611918688828401,
+    "Banderas": 0.02611918688828401,
+    "Palacio de Justicia": 0.03601281828536129
+   },
+   "Central": {
+    "Intercambiador Cuba": 0.517380117858181,
+    "San Fernando": 0.002532533518472696,
+    "Intercambiador El Viajero": 0.14081289953707155,
+    "Aeropuerto": 0.01894523414283758,
+    "Batallón": 0.02197216663503602,
+    "Maraya": 0.05445595693107482,
+    "La Ruana": 0.060106230916511905,
+    "Claret": 0.04419489601525959,
+    "Cañarte": 0.06582737355950445,
+    "Las Flores": 0.01871797397318522,
+    "Banderas": 0.01871797397318522,
+    "Palacio de Justicia": 0.03633664293967997
+   },
+   "Claret": {
+    "Intercambiador Cuba": 0.5413029452356233,
+    "San Fernando": 0.0026496338091464397,
+    "Intercambiador El Viajero": 0.14732386231254074,
+    "Aeropuerto": 0.019821231403614734,
+    "Batallón": 0.022988124402594543,
+    "Maraya": 0.056973913095931986,
+    "La Ruana": 0.06288544669402762,
+    "Cañarte": 0.06887112580281368,
+    "Las Flores": 0.01958346308797704,
+    "Banderas": 0.01958346308797704,
+    "Palacio de Justicia": 0.03801679106775317
+   },
+   "Olaya": {
+    "Intercambiador Cuba": 0.44830975572736526,
+    "San Fernando": 0.003353203192240082,
+    "Intercambiador El Viajero": 0.2836343154403222,
+    "Aeropuerto": 0.017425192657110847,
+    "Batallón": 0.02160134315294099,
+    "Maraya": 0.04217093147750041,
+    "El Jardín": 0.024011695560968438,
+    "Ucumarí": 0.024011695560968438,
+    "Consota": 0.024011695560968438,
+    "El Cafetero": 0.03692617776656079,
+    "Francisco Pereira": 0.03727199695152712,
+    "Centenario": 0.03727199695152712
+   },
+   "Cañarte": {
+    "Intercambiador Cuba": 0.5834072402820486,
+    "San Fernando": 0.01614298314434271,
+    "Intercambiador El Viajero": 0.17488658125947185,
+    "Aeropuerto": 0.029787342907125768,
+    "Batallón": 0.03132233338043886,
+    "Maraya": 0.04704867625345373,
+    "La Ruana": 0.03954427838392305,
+    "Las Flores": 0.02097089365683461,
+    "Banderas": 0.02097089365683461,
+    "Palacio de Justicia": 0.03591877707552642
+   },
+   "Las Flores": {
+    "Intercambiador Cuba": 0.4270128352019446,
+    "San Fernando": 0.013150631555021594,
+    "Intercambiador El Viajero": 0.2108275852471716,
+    "Aeropuerto": 0.014611812838912882,
+    "Batallón": 0.014611812838912882,
+    "Maraya": 0.028852532018424797,
+    "La Ruana": 0.13952193859327672,
+    "Banderas": 0.09610398044336416,
+    "Palacio de Justicia": 0.05530687126297088
+   },
+   "Banderas": {
+    "Intercambiador Cuba": 0.47241366923088773,
+    "San Fernando": 0.01454883224452302,
+    "Intercambiador El Viajero": 0.23324318360267066,
+    "Aeropuerto": 0.01616536916058113,
+    "Batallón": 0.01616536916058113,
+    "Maraya": 0.03192018926311575,
+    "La Ruana": 0.15435618209903468,
+    "Palacio de Justicia": 0.06118720523860597
+   },
+   "Palacio de Justicia": {
+    "Intercambiador Cuba": 0.5727817036112054,
+    "San Fernando": 0.013452696313726623,
+    "Intercambiador El Viajero": 0.28800138587133056,
+    "Aeropuerto": 0.007578983838719224,
+    "Batallón": 0.009473729798399031,
+    "Maraya": 0.05415364404761045,
+    "La Ruana": 0.05455785651900882
+   }
+  }
+ },
+ "transfer_restrictions": [
+  {
+   "origin": "Egoyá",
+   "destination": "Central"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Claret"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "Egoyá",
+   "destination": "Intercambiador Cuba"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Central"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Claret"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "Coliseo",
+   "destination": "Intercambiador Cuba"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Central"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Claret"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "Ormaza",
+   "destination": "Intercambiador Cuba"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Central"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Claret"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "Mercados",
+   "destination": "Intercambiador Cuba"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Central"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Claret"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "El Lago",
+   "destination": "Intercambiador Cuba"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Central"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Claret"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Cañarte"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Las Flores"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Banderas"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Palacio de Justicia"
+  },
+  {
+   "origin": "Otún",
+   "destination": "La Ruana"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Maraya"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Batallón"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Aeropuerto"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Intercambiador El Viajero"
+  },
+  {
+   "origin": "Otún",
+   "destination": "San Fernando"
+  },
+  {
+   "origin": "Otún",
+   "destination": "Intercambiador Cuba"
+  }
+ ],
+ "landmarks": [
+  {
+   "name": "Cuba",
+   "x": 0
+  },
+  {
+   "name": "A",
+   "x": 3336
+  },
+  {
+   "name": "D",
+   "x": 6928
+  },
+  {
+   "name": "B",
+   "x": 7390
+  },
+  {
+   "name": "Intercambiador Dosquebradas",
+   "x": 10906
+  },
+  {
+   "name": "Intercambiador Dosquebradas",
+   "x": 19999
+  },
+  {
+   "name": "C",
+   "x": 23165
+  },
+  {
+   "name": "E",
+   "x": 23891
+  },
+  {
+   "name": "A",
+   "x": 27296
+  },
+  {
+   "name": "Cuba",
+   "x": 30554
+  }
+ ],
+ "params": {
+  "bus_lengths": [
+   17,
+   27
+  ],
+  "braking_probability": 0.15,
+  "braking_probability_stopped": 0.75,
+  "lane_change_penalty": 5,
+  "bus_capacity": 100,
+  "boarding_rate": 1,
+  "dwell_base": 10,
+  "dwell_per_passenger": 0.5,
+  "dwell_max": 30,
+  "insertion_period": 10,
+  "max_offset": 60
+ }
+}
