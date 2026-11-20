@@ -116,6 +116,15 @@ sim.run()
 ```
 All the positions in a scenario are given as a cell (one meter) and a lane, along the coordinate in which the buses always advance. The definitions are in `brtsim/model.py`.
 
+## Jumps
+The parts of a system that are not consecutive along the coordinate of the buses are connected with jumps: the buses reaching a cell continue from another cell and lane. To avoid collisions, a jump must follow two rules:
+
+1. No bus can reach the landing cell along the landing lane: the lane must start at the landing cell, so that a jumping bus never finds buses arriving from behind.
+2. No bus can change into the lane of the jump during the 50 cells before the jump, nor into the landing lane during the 50 cells after the landing. A service can change between two lanes wherever it may circulate on both.
+
+Jumps are created with `brtsim.add_jump(scenario, x, lane, to_x, to_lane)`, which raises `brtsim.ScenarioError` and leaves the scenario untouched if the jump breaks a rule. `brtsim.unsafe_jumps(scenario)` lists the jumps of a scenario that break them, it must be checked again after the lanes are modified.
+
+## The Megabus scenario
 `scenarios/megabus.json` was created from the original files by the importer, and the tests check that it compiles to exactly the configuration the scripts `layout_interpreter.py` and `routegenerator.py` write. After changing the spreadsheets or the files `IN.txt`, `OD_matrix.txt` or `service_data.txt`, the scenario is created again with:
 ```
 uv run python -m brtsim.legacy
