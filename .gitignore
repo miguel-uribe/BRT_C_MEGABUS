@@ -2,12 +2,10 @@
 build/
 .venv/
 .pytest_cache/
-tests/__pycache__/
 .vscode/
-layout/__pycache__/
+__pycache__/
 results/
 .ipynb_checkpoints
-src_python/__pycache__/
 
 # Prerequisites
 *.d
