@@ -7,30 +7,72 @@
 # include "tlC.h"
 # include <vector>
 # include <string>
+#include <array>
+#include <cmath>
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <sstream>
-#include <string>
+#include <stdexcept>
+
+// A depot is a place where buses are parked. Buses are introduced at the origin cell and are parked again when their service ends at the end cell.
+struct depotC
+{
+    std::string name;
+    int origin = 0; // the services starting at this cell take their buses from this depot
+    int end = 0; // the services ending at this cell leave their buses at this depot
+    int initial_buses = 0; // the number of buses parked at the beginning of the simulation
+};
 
 struct System
 {
-    std::vector<lineC> Lines;  
+    std::vector<lineC> Lines;
     std::vector<stationC> Stations;
     std::vector<tlC> Tlights;
     std::vector<std::array<int, 4>> Breaks;
+    std::vector<depotC> Depots;
+    SimParams Par;
 };
+
+// The counters gathered during a simulation, they do not affect its evolution
+struct Stats
+{
+    std::vector<int> st_entries; // passengers entering the system at each station
+    std::vector<int> st_boardings; // passengers boarding a bus at each station
+    std::vector<int> st_alightings; // passengers leaving the system at each station
+    std::vector<long long> st_waiting; // the sum over time of the passengers waiting at each station
+    std::vector<int> ln_departures; // buses introduced for each service
+    std::vector<int> ln_queued; // buses that could not be introduced on time for each service
+    std::vector<int> ln_arrivals; // buses finishing each service
+    std::vector<long long> ln_triptime; // the sum of the trip times of the buses finishing each service
+    std::vector<int> ln_boardings; // passengers boarding each service
+    long long traveltime = 0; // the sum of the travel times of the passengers leaving the system
+    int delivered = 0; // the number of passengers leaving the system
+    int nsteps = 0; // the number of simulated time steps
+
+    Stats(){}
+    Stats(int nstations, int nlines):
+        st_entries(nstations, 0), st_boardings(nstations, 0), st_alightings(nstations, 0), st_waiting(nstations, 0),
+        ln_departures(nlines, 0), ln_queued(nlines, 0), ln_arrivals(nlines, 0), ln_triptime(nlines, 0), ln_boardings(nlines, 0){}
+};
+
+// opening a configuration file, a missing file is an error
+std::ifstream openconffile(std::string filename){
+    std::ifstream file(filename);
+    if (!file.is_open()){
+        throw std::runtime_error("Unable to open the configuration file " + filename);
+    }
+    return file;
+}
 
 
 auto createsystem(std::string stationlist, std::string stationdefinition, std::string tldefinition, std::string servicelist, std::string servicedefinitions, std::string servicedata, std::string servicetls, std::string breaksdef, std::string servicebreaks, std::string servicechange){
-    
+
     // Creating the structure of the system
     System SYSTEM;
-    
+
     // creating the list of stations in the system
-    std::ifstream stationlist_f, stationdefinitions_f;
-    stationlist_f.open(stationlist);
-    stationdefinitions_f.open(stationdefinition);
+    std::ifstream stationlist_f = openconffile(stationlist);
+    std::ifstream stationdefinitions_f = openconffile(stationdefinition);
     std::string Line;
     std::string read;
     int ID;
@@ -61,8 +103,7 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
 
 
     // Reading the traffic lights information file
-    std::ifstream tllist_f;
-    tllist_f.open(tldefinition);
+    std::ifstream tllist_f = openconffile(tldefinition);
     std::string tlname;
     int offset, ndir, nphases;
     while (std::getline(tllist_f,Line)){
@@ -96,11 +137,11 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
         }
         iss>>read;
         nphases = std::stoi(read);
-        std::vector<std::vector<int>> phases; 
-        std::vector<int> durations; 
+        std::vector<std::vector<int>> phases;
+        std::vector<int> durations;
         for (int i=0; i<nphases; i++){ // reading all the phases
             iss>>read; // reading the duration
-            durations.push_back(std::stoi(read)); 
+            durations.push_back(std::stoi(read));
             std::vector<int> phasesaux;
             for (int j = 0; j<ndir; j++){ // reading all the phases
                 iss>>read;
@@ -119,21 +160,20 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
     }
 
     tllist_f.close();
-   
+
 
     // Creating the list of services in the system and loading their headways
-    std::ifstream servicelist_f, servicedefinitions_f, servicedata_f, servicetls_f, servicebreaks_f, breaksdef_f, servicechanges_f;
-    servicelist_f.open(servicelist);
-    servicedefinitions_f.open(servicedefinitions);
-    servicedata_f.open(servicedata);
-    breaksdef_f.open(breaksdef);
-    servicebreaks_f.open(servicebreaks);
-    servicetls_f.open(servicetls);
-    servicechanges_f.open(servicechange);
-    
+    std::ifstream servicelist_f = openconffile(servicelist);
+    std::ifstream servicedefinitions_f = openconffile(servicedefinitions);
+    std::ifstream servicedata_f = openconffile(servicedata);
+    std::ifstream breaksdef_f = openconffile(breaksdef);
+    std::ifstream servicebreaks_f = openconffile(servicebreaks);
+    std::ifstream servicetls_f = openconffile(servicetls);
+    std::ifstream servicechanges_f = openconffile(servicechange);
+
     // Opening the service list file
     std::string lName;
-    while (std::getline(servicelist_f,Line)){ 
+    while (std::getline(servicelist_f,Line)){
         std::istringstream iss(Line);
         iss>>read;
         ID = std::stoi(read);
@@ -141,7 +181,7 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
         SYSTEM.Lines.push_back(lineC(lName));
     }
 
-    
+
     // loading the headway and biarticulated information
     int headway;
     int biart;
@@ -186,15 +226,15 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
             SYSTEM.Lines[ID].stoptracks = stoptracks;
             SYSTEM.Lines[ID].setstopx(stationIDs, wagonIDs, SYSTEM.Stations);
         }
-        
+
     }
 
     // reading the service traffic light information
      // loading the information regarding the stops
     while (std::getline(servicetls_f,Line)){
-        std::vector<int> tls; 
-        std::vector<int> tldir; 
-        std::vector<int> tltracks; 
+        std::vector<int> tls;
+        std::vector<int> tldir;
+        std::vector<int> tltracks;
         std::istringstream iss(Line);
         iss>>read;
         ID = std::stoi(read); // reading the service id
@@ -263,15 +303,14 @@ auto createsystem(std::string stationlist, std::string stationdefinition, std::s
 }
 
 
-// this script loads the configuration files and creates the corresponding lane configuration when there are many different kinds of configuration files, the factor is a multiplying factor to be applied in case it is needed
-std::vector<std::vector<std::vector<int>>> loadconffilekind(std::string root, System SYSTEM, float factor){
+// this script loads the configuration files of a given kind, there is one file per service. The result is indexed as [service][lane][cell]
+std::vector<std::vector<std::vector<int>>> loadconffilekind(std::string dir, std::string root, System & SYSTEM){
     std::vector<std::vector<std::vector<int>>> conffile;
     // Loading the configuration file for each service
     for (int i = 0; i < SYSTEM.Lines.size(); i++ ){
-        std::string filename = "../conf/";
-        filename = filename + root +"_"+SYSTEM.Lines[i].name+".txt";
+        std::string filename = dir + root +"_"+SYSTEM.Lines[i].name+".txt";
         //std::cout<<filename<<std::endl;
-        std::ifstream file(filename);
+        std::ifstream file = openconffile(filename);
         std::string lane, read;
         // getting the number of lanes
         std::getline(file,lane);
@@ -296,14 +335,13 @@ std::vector<std::vector<std::vector<int>>> loadconffilekind(std::string root, Sy
 }
 
 
-// this script loads the maximal speed configuration file
-std::vector<std::vector<int>> loadspeedfile(std::string root){
+// this script loads the maximal speed configuration file. The result is indexed as [lane][cell]
+std::vector<std::vector<int>> loadspeedfile(std::string dir, std::string root){
     std::vector<std::vector<int>> V;
-    // Loading the configuration file 
-    std::string filename = "../conf/";
-    filename = filename + root +".txt";
+    // Loading the configuration file
+    std::string filename = dir + root +".txt";
     //std::cout<<filename<<std::endl;
-    std::ifstream file(filename);
+    std::ifstream file = openconffile(filename);
     std::string line, read;
     // getting the number of lanes
     std::getline(file,line);
@@ -320,7 +358,7 @@ std::vector<std::vector<int>> loadspeedfile(std::string root){
                 V[j].push_back(std::stoi(read));
         }
     }
-    
+
     file.close();
     return V;
 }

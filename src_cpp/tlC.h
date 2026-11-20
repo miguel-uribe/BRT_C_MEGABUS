@@ -2,6 +2,7 @@
 #define TL_C
 
 #include <cstdlib>
+#include <string>
 #include <vector>
 #include <random>
 
@@ -13,8 +14,8 @@ class tlC{
         std::vector<int> lengths; // A list of traffic directions
         std::vector<std::vector<int>> phases; // A list of phases, each phase is a list
         std::vector<int> durations; // A list of durations
-        int curr_phase; // The current phase
-        int phasetime; // The time elapsed since the last change
+        int curr_phase = 0; // The current phase
+        int phasetime = 0; // The time elapsed since the last change, its initial value is the offset of the traffic light
        
         // Dummy constructor
         tlC(){}

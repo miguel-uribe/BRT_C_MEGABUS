@@ -3,24 +3,26 @@
 
 #include <array>
 
-// This file defines all the system parameters
+// The structural constants of the engine
 const int Dt=1;     // This is the time unit
 const int Dx=1;     // This is the space unit
-const  std::array<int, 2> busL = {17, 27};    // The bus length, equivalent to 30m
-const float p=0.15;          // The random breaking probability
-const float p0=0.75;         // The random breaking probability when stopped
 const int Nparam = 28;    // Number of integer parameters for each bus
 const int Nparpass = 6; // The number of parameters for a passenger
-const int pentime = 5; // The number of seconds after leaving a stop where a bus cannot change lane
-const int fleet = 50; // The maximum numbers of moving buses
-//const int factor = 3600; // the average passenger influx to the system, pass/hour
-const int factor = 3600; // the average passenger influx to the system, pass/hour
-const int BusRate = 1; // the rate that modifies the boarding probability
-const int BusCap = 100; // the total bus capacity
-const int D0=10;           // The default dwell time
-const float D1=0.5;         // The dwell time for boarding or alightning passenger
-const int MaxDwell = 30;  // the maximum dwell time
-int Origins[2] = {0, 19999}; // the origin of buses in the system
-int Ends[2] = {30653,10943}; // the end of buses in the system, same depot order as Origins: 0 Cuba, 1 Dosquebradas
+
+// The parameters of the model, they can be different for each simulation
+struct SimParams
+{
+    std::array<int, 2> busL = {17, 27};    // The bus length, in cells, articulated and biarticulated
+    float p = 0.15;          // The random breaking probability
+    float p0 = 0.75;         // The random breaking probability when stopped
+    int pentime = 5; // The number of seconds after leaving a stop where a bus cannot change lane
+    int BusRate = 1; // the rate that modifies the boarding probability
+    int BusCap = 100; // the total bus capacity
+    int D0 = 10;           // The default dwell time
+    float D1 = 0.5;         // The dwell time for boarding or alightning passenger
+    int MaxDwell = 30;  // the maximum dwell time
+    int insertion_period = 10; // passengers are inserted every insertion_period time steps
+    int max_offset = 60; // the services without a fixed offset get a random one, smaller than max_offset
+};
 
 #endif

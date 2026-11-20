@@ -14,12 +14,12 @@ class lineC{
         std::vector<int> wagons; // A list with the wagon ID at each station where the service stops
         std::vector<int> stopx; // A list with the positions of the stops where the service stops
         std::vector<int> stoptracks; // A list with the track where each stop is located
-        int origin; // The position where buses serving this service are introduced
-        int end; // The position where the service ends
-        int or_lane; // The lane where the service starts
-        int headway; // The average headway for the service
-        int biart; // percentage of biarticulated buses
-        int offset; // time offset to insert buses
+        int origin = 0; // The position where buses serving this service are introduced
+        int end = 0; // The position where the service ends
+        int or_lane = 0; // The lane where the service starts
+        int headway = 1000000; // The headway of the service, in time steps
+        int biart = 0; // percentage of biarticulated buses
+        int offset = -1; // time offset to insert buses, a negative value means a random offset
         int change_pos = 1e6; // the position where the line changes to a different one
         int dest_line = -1; // the service to which the line transforms
         std::vector<int> breaks; // the origin of a break
@@ -64,6 +64,7 @@ std::string lineC::display (void){
 void lineC::setstopx(std::vector<int> &STATIONIDS, std::vector<int> &WAGONS, std::vector<stationC> &STATIONS){
     stationIDs = STATIONIDS;
     wagons = WAGONS;
+    stopx.clear();
     for (int i = 0; i< stationIDs.size(); i++){
         stopx.push_back(STATIONS[stationIDs[i]].stop_pos[wagons[i]]);
     }

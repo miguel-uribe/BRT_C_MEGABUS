@@ -6,11 +6,11 @@
 #include <algorithm>
 #include <functional>
 #include "parameters.h"
-//#include "fleetsize.h"
 #include "createsystem.h"
 #include "linesC.h"
 #include "routeC.h"
 #include "passengerC.h"
+#include "rng.h"
 #include <array>
 #include <cmath>
 #include <deque>
@@ -18,10 +18,16 @@
 #include <string>
 
 // creating a bus
-void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){  
-    // Determining whether the bus starts from Cuba or Dosquebradas
+void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::vector<std::deque<int>> & QUEUES, std::vector<std::vector<int>> & PARKED, rngC & RNG, Stats & STATS){  
+    // Determining the depot where the bus starts, it is the one whose origin is the origin of the line
     int origin = SYSTEM.Lines[lineID].origin;
-    int parkID = std::distance(std::begin(Origins),std::find(std::begin(Origins), std::end(Origins), origin));
+    int parkID = SYSTEM.Depots.size();
+    for (int i=0; i<SYSTEM.Depots.size(); i++){
+        if (SYSTEM.Depots[i].origin == origin){
+            parkID = i;
+            break;
+        }
+    }
     if (parkID>=PARKED.size()){
         std::cout<<"Unable to indentify the ParkID, no bus has been introduced"<<std::endl;
         return;
@@ -47,14 +53,14 @@ void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSES
         BUSESPAR[13].push_back(PARKED[parkID].back()); // The bus ID
         BUSESPAR[14].push_back(TIME); //the initial time
         if (SYSTEM.Lines[lineID].biart == 0){
-            BUSESPAR[15].push_back(busL[0]); // The size of the bus
+            BUSESPAR[15].push_back(SYSTEM.Par.busL[0]); // The size of the bus
         }
         else{
-            int r = (int) std::round(100.0*rand()/RAND_MAX);
+            int r = (int) std::round(100.0*RNG.uniform());
             if (r > SYSTEM.Lines[lineID].biart){
-                BUSESPAR[15].push_back(busL[0]);}
+                BUSESPAR[15].push_back(SYSTEM.Par.busL[0]);}
             else{
-                BUSESPAR[15].push_back(busL[1]);}
+                BUSESPAR[15].push_back(SYSTEM.Par.busL[1]);}
         }
 
 
@@ -102,10 +108,12 @@ void createbus(int TIME, int lineID, std::array<std::vector<int>,Nparam> & BUSES
         std::cout<<std::endl;*/
         // We remove the bus from the parked list
         PARKED[parkID].pop_back();
+        STATS.ln_departures[lineID]++;
     }
-    // If there are no buses, we must throw a warning
+    // If there are no buses, the service is added to the queue of the depot
     else{
         QUEUES[parkID].push_back(lineID);
+        STATS.ln_queued[lineID]++;
     }
 
 } 
@@ -130,27 +138,26 @@ void updatestop(int index, std::array<std::vector<int>,Nparam> & BUSESPAR, Syste
 }
 
 
-// This script initializes the buses as parked at the portals 
-void initializeBusArray(std::array<std::vector<int>,2> & PARKED, int FCUBA, int FDOSQ){
-    
-    for (int i=0; i<FCUBA; i++){
-        PARKED[0].push_back(i);
+// This script initializes the buses as parked at the depots, the bus IDs are consecutive
+void initializeBusArray(std::vector<std::vector<int>> & PARKED, System & SYSTEM){
+    int busID = 0;
+    for (int i=0; i<SYSTEM.Depots.size(); i++){
+        for (int j=0; j<SYSTEM.Depots[i].initial_buses; j++){
+            PARKED[i].push_back(busID);
+            busID++;
+        }
     }
-
-    for (int i=FCUBA; i<(FCUBA+FDOSQ); i++){
-        PARKED[1].push_back(i);
-    }    
 }
 
 
 // inserting the buses in the system
-void populate(int TIME, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::array<std::deque<int>,2> & QUEUES, std::array<std::vector<int>,2> & PARKED){
+void populate(int TIME, std::array<std::vector<int>,Nparam> & BUSESPAR, System & SYSTEM, std::vector<std::deque<int>> & QUEUES, std::vector<std::vector<int>> & PARKED, rngC & RNG, Stats & STATS){
     // Now we check and see whether it is time to populate
     // we scan over the lines   
     for (int i=0; i<SYSTEM.Lines.size(); i++){
        if (((TIME-SYSTEM.Lines[i].offset)%SYSTEM.Lines[i].headway)==0){
           //  std::cout<<"Ingresando bus a línea "<<i<<" en tiempo "<<TIME<<std::endl;
-            createbus(TIME, i, BUSESPAR, SYSTEM, QUEUES, PARKED);
+            createbus(TIME, i, BUSESPAR, SYSTEM, QUEUES, PARKED, RNG, STATS);
         }
     }
 }
@@ -434,7 +441,7 @@ void buschangelane(std::array<std::vector<int>,Nparam> & BUSESPAR, std::vector<s
 
 
 // making the buses move
-void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::array<std::vector<int>, fleet>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::array<std::vector<int>,2> & PARKED, std::array<std::deque<int>,2> & QUEUES, std::vector<std::vector<int>> & V, std::vector<std::vector<std::vector<routeC>>> & MATRIX, std::vector<std::vector<std::vector<double>>> &weightMatrix, std::default_random_engine &generator, std::vector<float> &bussp, float & cost){
+void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, int TIME, int & NACTIVEPASS, float &PASSSP, std::vector<std::vector<int>>& BUSPASSENGERS, std::vector<std::vector<int>>& STPASSENGERS, std::vector<std::array<int, Nparpass>> & PASSENGERS, std::vector<std::vector<int>> & PARKED, std::vector<std::deque<int>> & QUEUES, std::vector<std::vector<int>> & V, std::vector<std::vector<std::vector<double>>> &weightMatrix, rngC & RNG, std::vector<float> &bussp, float & cost, Stats & STATS){
     int pos, lane, lineID, dt, speed;
     float prand, mean, std;
     // we scan over all buses
@@ -452,15 +459,15 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
             // we implement the VDR-TCA model of Maerivoet
             // we determine the randomization parameter depending on the speed
             if (speed==0)
-                prand = p0;
+                prand = SYSTEM.Par.p0;
             else
-                prand = p;
+                prand = SYSTEM.Par.p;
             
             // we calculate the new speed, vnew=acc*min(acc*(v+acc),acc*gap,acc*vmax)
             BUSESPAR[2][i]=std::max(0,std::min((speed+1),std::min(BUSESPAR[3][i],V[lane][pos])));
             
             // we apply the randomization
-            float r = ((float) rand() / (RAND_MAX));
+            float r = RNG.uniformf();
             if (r<prand){BUSESPAR[2][i] = std::max(0,BUSESPAR[2][i]-1);}
             // now we update the position, and the relevant distances
             BUSESPAR[0][i]=pos+BUSESPAR[2][i];
@@ -476,7 +483,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 BUSESPAR[11][i]=0;
                 // we board and alight passengers, and set the dwell time
                 busdata results;
-                results=busArriving(BUSESPAR[13][i],BUSESPAR[0][i],BUSESPAR[8][i],BUSESPAR[10][i],TIME,NACTIVEPASS,PASSSP,BUSPASSENGERS,STPASSENGERS,PASSENGERS,SYSTEM, MATRIX,  weightMatrix, BUSESPAR[16][i]);
+                results=busArriving(BUSESPAR[13][i],BUSESPAR[0][i],BUSESPAR[8][i],BUSESPAR[10][i],TIME,NACTIVEPASS,PASSSP,BUSPASSENGERS,STPASSENGERS,PASSENGERS,SYSTEM, weightMatrix, BUSESPAR[16][i], RNG, STATS);
                 BUSESPAR[12][i] = results.dwelltime;
                 BUSESPAR[16][i] = results.busoccupation;
                 //std::cout<<results.dwelltime<<" "<<results.busoccupation<<std::endl;
@@ -541,6 +548,8 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 bussp.push_back(float(total_distance)/(TIME-BUSESPAR[14][i]));
                 // we update the cost value
                 cost+=TIME-BUSESPAR[14][i];
+                STATS.ln_arrivals[BUSESPAR[10][i]]++;
+                STATS.ln_triptime[BUSESPAR[10][i]]+=TIME-BUSESPAR[14][i];
 
                 // changing the line
                 int newline = SYSTEM.Lines[BUSESPAR[10][i]].dest_line;
@@ -592,6 +601,8 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 bussp.push_back(float(total_distance)/(TIME-BUSESPAR[14][i]));
                 // we update the cost value
                 cost+=TIME-BUSESPAR[14][i];
+                STATS.ln_arrivals[BUSESPAR[10][i]]++;
+                STATS.ln_triptime[BUSESPAR[10][i]]+=TIME-BUSESPAR[14][i];
 
                 // in case there are still passengers on board a warning must be displayed
                 if (BUSESPAR[16][i]>0){
@@ -601,17 +612,22 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
                 toremove.push_back(i);
                 int end = SYSTEM.Lines[lineID].end;
                 // the bus is parked at the depot where its line ends
-                auto endIt = std::find(std::begin(Ends), std::end(Ends), end);
-                if (endIt == std::end(Ends)){
-                    throw std::runtime_error("Line " + SYSTEM.Lines[lineID].name + " ends at cell " + std::to_string(end) + ", which is not listed in Ends (parameters.h)");
+                int parkID = -1;
+                for (int j=0; j<SYSTEM.Depots.size(); j++){
+                    if (SYSTEM.Depots[j].end == end){
+                        parkID = j;
+                        break;
+                    }
                 }
-                int parkID = endIt - std::begin(Ends);
+                if (parkID < 0){
+                    throw std::runtime_error("Line " + SYSTEM.Lines[lineID].name + " ends at cell " + std::to_string(end) + ", which is not the end of any depot");
+                }
                 PARKED[parkID].push_back(BUSESPAR[13][i]);
 
                 // we check if there are buses in the queues
                 if (!QUEUES[parkID].empty()){
                     // we create inmediately the bus to fulfill the demand
-                    createbus(TIME,QUEUES[parkID][0], BUSESPAR, SYSTEM, QUEUES, PARKED);
+                    createbus(TIME,QUEUES[parkID][0], BUSESPAR, SYSTEM, QUEUES, PARKED, RNG, STATS);
                     /*if (BUSESPAR[17][i]==1){
                         std::cout<<"Bus 75 transformed"<<std::endl;
                     }*/
@@ -629,7 +645,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
             if (BUSESPAR[11][i]>=BUSESPAR[12][i]){
                 // twe update the changing and the advancing
                 BUSESPAR[21][i]=1;
-                BUSESPAR[20][i]=pentime;
+                BUSESPAR[20][i]=SYSTEM.Par.pentime;
             }
         }   
 
