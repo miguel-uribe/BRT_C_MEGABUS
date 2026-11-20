@@ -33,8 +33,15 @@ def main(arguments=None):
     legacy = commands.add_parser("import-megabus", help="create the Megabus scenario from the spreadsheets in layout/ and the files in conf/")
     legacy.add_argument("--output", default="scenarios/megabus.json", help="the scenario file to write (default: scenarios/megabus.json)")
 
+    gui = commands.add_parser("gui", help="open the graphical user interface")
+    gui.add_argument("scenario", nargs="?", help="the scenario file to open")
+
     options = parser.parse_args(arguments)
     try:
+        if options.command == "gui":
+            from .gui import main as gui_main
+
+            return gui_main(options.scenario)
         if options.command == "run":
             return _run(options)
         if options.command == "validate":

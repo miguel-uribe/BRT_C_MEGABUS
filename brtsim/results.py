@@ -19,6 +19,26 @@ KPIS = {
     "passengers": "passengers that entered the system",
     "delivered": "passengers that reached their destination",
 }
+# The names of the indicators and metrics for the user
+LABELS = {
+    "bus_speed": "Bus speed (km/h)",
+    "passenger_speed": "Passenger speed (km/h)",
+    "travel_time": "Travel time (s)",
+    "waiting_passengers": "Passengers waiting per station",
+    "passenger_flow": "Passenger flow (pass/s)",
+    "bus_hours": "Bus-hours",
+    "bus_queue": "Departures waiting for a bus",
+    "passengers": "Passengers",
+    "delivered": "Passengers delivered",
+    "entries": "Entries",
+    "boardings": "Boardings",
+    "alightings": "Alightings",
+    "waiting": "Passengers waiting",
+    "departures": "Departures",
+    "queued": "Departures delayed",
+    "arrivals": "Arrivals",
+    "trip_time": "Trip time (s)",
+}
 STATION_METRICS = {
     "entries": "passengers that entered the system at the station",
     "boardings": "passengers that boarded a bus at the station",

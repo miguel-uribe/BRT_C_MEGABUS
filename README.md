@@ -131,6 +131,14 @@ for case, results in zip(cases, model.run_many(cases, seeds=20)):
 ```
 The parameters that can be replaced are the `headways` (seconds) or `frequencies` (buses per hour) and `offsets` of the services, the `fleet` of each depot, the demand (`demand_scale`, `demand`, `entries`), the model parameters (`params`) and the simulation window (`initial_time`, `final_time`); they are described in `Model.config` in `brtsim/api.py`. Any other change, such as the stops of a service, is made in the scenario, which compiles in a fraction of a second. `model.simulation(seed)` gives a simulation that advances step by step, as described above.
 
+## The user interface
+The scenario can be edited and simulated in a window, without touching any file by hand:
+```
+uv run python -m brtsim gui scenarios/megabus.json
+```
+The window has a page for each part of the scenario: the frequencies of the services, the fleet of each depot, the phases of the traffic lights, the demand (the passengers over time, the stations where they enter and their destinations) and the parameters of the model. Every change can be undone, the problems of the scenario are listed at the bottom of the window as it is edited, and the Run page simulates it with several seeds in the background and shows the averaged results, which can be exported. The network itself (lanes, stations, positions of the traffic lights and paths of the services) is shown but cannot be edited in the window yet.
+
+## The command line
 The same is available from the command line:
 ```
 uv run python -m brtsim run scenarios/megabus.json --seeds 20 --frequency 1E=15 --buses Cuba=30 --services --output results.json

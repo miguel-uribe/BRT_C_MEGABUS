@@ -27,14 +27,18 @@ from .results import Results, RunResult
 NO_SERVICE_HEADWAY = 2**30
 
 
+class Cancelled(Exception):
+    """The simulations were stopped before finishing."""
+
+
 def prepare(scenario: Scenario):
     """Checks and compiles a scenario, raises brtsim.ScenarioError if it is not valid."""
     return Model(scenario)
 
 
-def run(scenario: Scenario, seeds=1, workers=None, progress=None, **changes):
+def run(scenario: Scenario, seeds=1, workers=None, progress=None, cancelled=None, **changes):
     """Simulates a scenario with several seeds, see Model.run."""
-    return Model(scenario).run(seeds, workers=workers, progress=progress, **changes)
+    return Model(scenario).run(seeds, workers=workers, progress=progress, cancelled=cancelled, **changes)
 
 
 class Model:
@@ -127,17 +131,19 @@ class Model:
         """A simulation of the engine that can be advanced step by step, see the README. The changes are the ones of Model.config."""
         return self._engine.Simulation(self.config(**changes), int(seed), record)
 
-    def run(self, seeds=1, workers=None, progress=None, **changes):
+    def run(self, seeds=1, workers=None, progress=None, cancelled=None, **changes):
         """Simulates the scenario once for each seed and returns the Results.
 
         seeds: a list of seeds, or the number of seeds to use (1, 2, 3...).
         workers: the number of simulations running at the same time, by default the number of processors.
         progress: a function called as progress(done, total) every time a simulation finishes.
+        cancelled: a function called before each simulation starts, if it returns True the remaining ones are
+            skipped and brtsim.Cancelled is raised.
         changes: the parameters of the scenario to replace, see Model.config.
         """
-        return self.run_many([changes], seeds, workers=workers, progress=progress)[0]
+        return self.run_many([changes], seeds, workers=workers, progress=progress, cancelled=cancelled)[0]
 
-    def run_many(self, cases, seeds=1, workers=None, progress=None):
+    def run_many(self, cases, seeds=1, workers=None, progress=None, cancelled=None):
         """Simulates several cases with the same seeds, all the simulations share the workers.
 
         cases: a list of dictionaries with the changes of each case, see Model.config.
@@ -152,6 +158,8 @@ class Model:
 
         def simulate(task):
             case, seed = task
+            if cancelled is not None and cancelled():
+                raise Cancelled("The simulations were cancelled")
             simulation = self._engine.Simulation(configs[case], seed)
             simulation.run()  # the engine does not hold the interpreter lock while it runs
             return RunResult.from_engine(seed, simulation.results())

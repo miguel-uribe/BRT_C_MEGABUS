@@ -1,6 +1,11 @@
+import os
+
 import pytest
 
 import golden_tools as gt
+
+# the tests of the user interface run without a display
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 
 @pytest.fixture(scope="session")

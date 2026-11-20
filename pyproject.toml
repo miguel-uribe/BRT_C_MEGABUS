@@ -35,5 +35,3 @@ package = false
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
-# run the GUI tests without a display
-qt_qpa_platform = "offscreen"
