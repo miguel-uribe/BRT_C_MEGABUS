@@ -1,68 +1,43 @@
 # BRT_C_MEGABUS
 
 ## What the code does
-This code creates a full simulation of the Megabus BRT system in Pereira - Dosquebradas, Colombia. The simulation code is entirely written in c++. To use it, a Python module must be created using the `pybind11` library. Once this library is imported into the Python code, the c++ code can be run as a normal function in Python. The code is meant to run in a Linux machine.
+This code creates a full simulation of the Megabus BRT system in Pereira - Dosquebradas, Colombia. The simulation code is entirely written in c++. To use it, a Python module must be created using the `pybind11` library. Once this library is imported into the Python code, the c++ code can be run as a normal function in Python.
 
 ## Installing the prerequisites
+The code runs on Linux and on Windows. Three tools are required:
 
-### c++ compiler
-The first thing you need is a c++ compiler, which can be easily install in Ubuntu using the following lines from a terminal:
-```
-sudo apt update
-sudo apt install build-essential
-```
+- [uv](https://docs.astral.sh/uv/), which installs Python 3.12 and all the Python libraries of the project.
+- A c++ compiler. On Ubuntu: `sudo apt install build-essential`. On Windows: either Visual Studio Build Tools (C++ workload) or a MinGW-w64 GCC distribution such as [WinLibs](https://winlibs.com/) with its `bin` folder in the `PATH`.
+- CMake (3.18 or newer) and, optionally, Ninja. Both are included in WinLibs; on Ubuntu: `sudo apt install cmake ninja-build`.
 
-### python
-It is recommended that you create a separated Python environment for your project. Unfortunately the Python version in the official Ubuntu repositories does not update fast enough, it is therefore suggested that we include the `deadsnakes` repository to the package manager and then install an up-to-date Python version.
-
-First, we update the repositories and packages
+Once uv is installed, the Python environment is created from the repository root with:
 ```
-sudo apt update && sudo apt upgrade
+uv sync
 ```
-
-Next, we add the repository
-```
-sudo add-apt-repository ppa:deadsnakes/ppa
-```
-
-Now we can install a custom Python version, say Python 3.11
-```
-sudo apt install python3.11
-```
-We can verify that Python 3.11 is installed by executing
-```
-python3.11 --version
-```
-
-In addition to Python we will need the `venv` and the `python-config` modules which can be installed using:
-```
-sudo apt install python3.11-venv python3.11-dev
-```
-
-Use the same Python version you installed two steps above. Once these steps are completed we are ready to create a Python environment for the simulation project, this can be achieved as follows:
-
-```
-python3.11 -m venv /path/to/environment/folders/simulator
-```
-
-This command will create an environment called `simulator` located in an existing `/path/to/environment/folders` which should have been created beforehand. After this step, the environment can be activated with
-```
-source /path/to/environment/folders/simulater/bin/activate
-```
-
-Finally, we need to install the required libraries, `numpy` and `pybind11` are mandatories. `pandas`, `jupyter` or visualization libraries such as `matplotlib` and `seaborn` are optional and depend on the work that needs to be performed after the simulations.
-
-```
-pip install numpy pybind11 pandas jupyter matplotlib seaborn
-```
+The optional analysis libraries (`jupyter`, `matplotlib`, `seaborn`) are installed with `uv sync --group analysis`.
 
 ## Compiling the c++ source
-In order to compile the c++ code to create a Python module, the following line should be run from the `src_c++` folder.
+The c++ code is compiled into a Python module with CMake. From the repository root:
 ```
-g++ -O2 -Wall -shared -fPIC $(python -m pybind11 --includes) main.cpp -o simulator.so
+uv run cmake -S . -B build -G Ninja
+uv run cmake --build build
+```
+`-G Ninja` can be omitted on Linux. The commands must be run through `uv run` so that CMake finds the Python of the project environment.
+
+## Testing
+The regression tests check that the configuration files generated from the layout, and the results of the simulation for a list of fixed seeds, are exactly the ones recorded in `tests/golden/`. They are run from the repository root with:
+```
+uv run pytest
+```
+The tests need the configuration files in `conf/`, they are generated automatically if they are missing or older than the layout files (this takes about half a minute).
+
+The results of a given seed depend on the c++ standard library, so they are recorded per platform in `tests/golden/engine_results.json`. The `win-amd64` results were recorded with MinGW-w64 GCC 16.2; on a platform without recorded results those tests are skipped. When a change in the results is intended, the goldens are recorded again with:
+```
+uv run python tests/record_goldens.py
 ```
 
-This line should create the file `simulator.so` in the folder. The library contains the definition of a function called `simulate()` that receives three inputs:
+## The compiled module
+The compilation creates the `simulator` module in the `src_cpp` folder (`simulator.*.so` on Linux, `simulator.*.pyd` on Windows). The library contains the definition of a function called `simulate()` that receives three inputs:
 - (int) seed: the random generator seed
 - (int) print: this should be either 0 or 1. 1 if the detailed simulation data must be created, 0 otherwise (faster).
 - (float) Cfract: the fraction of the total fleet initially in the Cuba parking lot.
