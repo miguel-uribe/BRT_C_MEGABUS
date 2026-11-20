@@ -28,8 +28,8 @@ void insertPassenger(std::vector<std::vector<int>> & STPASSENGERS, std::vector<s
 }
 
 
-float boardingProbability(int capacity, int occupation, float rate){
-    float prob = 1/(1+std::exp((occupation-capacity)/rate));
+double boardingProbability(int capacity, int occupation, double rate){
+    double prob = 1/(1+std::exp((occupation-capacity)/rate));
     return prob;
 }
 
@@ -109,7 +109,7 @@ auto busArriving(int busID, int buspos, int stationID, int lineID, int TIME, int
         // check whether the bus works for the passenger
         destid = PASSENGERS[passid][1]; // the destination of the passenger
         weight = weightMatrix[stationID][destid][lineID]; // we calculate the weight for the service to destination
-        float dice = RNG.uniform(); // we throw the dice
+        double dice = RNG.uniform(); // we throw the dice
         if (dice<weight){
             toBoard.push_back(passid);
         }
@@ -119,9 +119,9 @@ auto busArriving(int busID, int buspos, int stationID, int lineID, int TIME, int
     // we scan over all the boarding passengers
     for(int i=0; i<toBoard.size(); i++){
         // we calculate the boarding probability
-        float prob=boardingProbability(SYSTEM.Par.BusCap,busOcc,SYSTEM.Par.BusRate);
+        double prob=boardingProbability(SYSTEM.Par.BusCap,busOcc,SYSTEM.Par.BusRate);
         // we throw the dice
-        float xi = RNG.uniform();
+        double xi = RNG.uniform();
         if (xi<prob){
             boardPassenger(toBoard[i],busID,stationID,lineID,BUSPASSENGERS,STPASSENGERS);
             PASSENGERS[toBoard[i]][4] = buspos; // Updating the starting position

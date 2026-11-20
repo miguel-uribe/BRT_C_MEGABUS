@@ -467,7 +467,7 @@ void busadvance(std::array<std::vector<int>,Nparam> & BUSESPAR, System& SYSTEM, 
             BUSESPAR[2][i]=std::max(0,std::min((speed+1),std::min(BUSESPAR[3][i],V[lane][pos])));
             
             // we apply the randomization
-            float r = RNG.uniformf();
+            double r = RNG.uniform();
             if (r<prand){BUSESPAR[2][i] = std::max(0,BUSESPAR[2][i]-1);}
             // now we update the position, and the relevant distances
             BUSESPAR[0][i]=pos+BUSESPAR[2][i];

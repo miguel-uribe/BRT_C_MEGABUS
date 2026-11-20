@@ -31,7 +31,7 @@ uv run pytest
 ```
 The tests need the configuration files in `conf/`, they are generated automatically if they are missing or older than the layout files (this takes about half a minute).
 
-The results of a given seed depend on the c++ standard library, so they are recorded per platform in `tests/golden/engine_results.json`. The `win-amd64` results were recorded with MinGW-w64 GCC 16.2; on a platform without recorded results those tests are skipped. When a change in the results is intended, the goldens are recorded again with:
+The engine draws all its random numbers from its own generator (`src_cpp/rng.h`), so a given seed is meant to give the same results with any compiler and operating system. When a change in the results is intended, the goldens are recorded again with:
 ```
 uv run python tests/record_goldens.py
 ```
@@ -68,6 +68,35 @@ import simulator
 data = simulator.simulate(1,0,0.5)
 print(data.BSP)  # The obtained average bus speed should be printed
 ```
+
+## Changing the configuration from Python
+The `simulate` function always reads the files in `conf/`. The module also allows to load the configuration once, modify it in memory, and run as many simulations as needed without writing any file:
+```
+config = simulator.load_config('../conf')
+
+config.lines[0].headway = 240           # the headway of the first service, in seconds
+config.depots[0].initial_buses = 30     # the buses initially parked at each depot
+config.depots[1].initial_buses = 20
+config.demand_rates = [1.2*rate for rate in config.demand_rates]   # passengers per hour, at the times in config.demand_times
+config.params.BusCap = 160              # the model parameters, formerly in parameters.h
+
+sim = simulator.Simulation(config, seed=1)
+sim.run()
+results = sim.results()
+```
+The configuration also gives access to `stations`, `traffic_lights`, `breaks`, the lane arrays (`EL`, `LC`, `RC`, `V`), the passenger matrices (`IN`, `OD`, `route_weights`) and the simulation window (`initial_time`, `final_time`). A copy of a configuration is created with `simulator.SimConfig(config)`. The simulations do not share any state, so they can run in parallel threads.
+
+In addition to the attributes listed above, the results include the number of `passengers` and `delivered` passengers, their average `travel_time`, and per-station (`station_entries`, `station_boardings`, `station_alightings`, `station_waiting`) and per-service (`line_departures`, `line_queued`, `line_arrivals`, `line_trip_time`, `line_boardings`) information.
+
+A simulation can also be advanced step by step, to look at the state of the system while it runs:
+```
+sim = simulator.Simulation(config, seed=1)
+while not sim.done:
+    sim.step(60)                        # advances 60 seconds
+    buses = sim.buses()                 # one row per bus, the columns are listed in simulator.BUS_COLUMNS
+    waiting = sim.station_passengers()  # the passengers waiting at each station
+```
+The detailed bus information of every time step is stored when the simulation is created with `record=True`, and retrieved with `sim.bus_data()`.
 
 # User Generated Files
 The entire simulation workflow relies on a series of user generated files with the basic information of the street layout, traffic lights, and service frequencies. These files must be generated manually.

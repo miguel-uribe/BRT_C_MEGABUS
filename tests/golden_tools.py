@@ -10,7 +10,6 @@ import json
 import os
 import subprocess
 import sys
-import sysconfig
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -38,11 +37,6 @@ ENGINE_CASES = [(1, 1.0), (2, 1.0), (3, 1.0), (1, 0.5), (7, 0.0)]
 # (seed, Cfract) of the simulation whose complete bus trajectory is pinned down
 TRAJECTORY_CASE = (1, 1.0)
 KPI_NAMES = ["BSP", "cost", "passp", "occ", "flow", "queue"]
-
-
-def platform_key():
-    """The engine results depend on the standard library of the compiler, so they are stored per platform."""
-    return sysconfig.get_platform()
 
 
 def conf_is_stale():

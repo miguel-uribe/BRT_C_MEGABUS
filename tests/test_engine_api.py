@@ -87,7 +87,7 @@ def test_fleet_and_demand_are_changed_in_memory(simulator, config):
     assert kpis(run(simulator, small_fleet)) != kpis(base)
 
     low_demand = simulator.SimConfig(config)
-    low_demand.demand_means = [mean / 2 for mean in config.demand_means]
+    low_demand.demand_rates = [rate / 2 for rate in config.demand_rates]
     assert run(simulator, low_demand).passengers < 0.6 * base.passengers
 
 
@@ -134,3 +134,43 @@ def test_simulate_rejects_an_invalid_print_argument(simulator):
 def test_missing_configuration_files_are_reported(simulator, tmp_path):
     with pytest.raises(RuntimeError, match="station_list.txt"):
         simulator.load_config(str(tmp_path))
+
+
+def test_passengers_follow_the_demand_profile(simulator, config):
+    """The number of passengers and the stations where they enter follow the configured demand."""
+    period = config.params.insertion_period
+    times = range(config.initial_time, config.final_time, period)
+    expected = sum(np.interp(times, config.demand_times, config.demand_rates)) * period / 3600
+
+    results = [run(simulator, config, seed) for seed in range(20, 28)]
+    passengers = np.mean([result.passengers for result in results])
+    assert passengers == pytest.approx(expected, rel=0.01)
+
+    entries = np.sum([result.station_entries for result in results], axis=0)
+    probabilities = np.array(config.IN) / np.sum(config.IN)
+    assert np.abs(entries / entries.sum() - probabilities).max() < 0.005
+
+
+def test_simulations_run_in_parallel_threads(simulator, config):
+    """The simulations do not share any state, running them at the same time does not change their results."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    seeds = [31, 32, 33, 34]
+    sequential = [kpis(run(simulator, config, seed)) for seed in seeds]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        parallel = list(pool.map(lambda seed: kpis(run(simulator, config, seed)), seeds))
+    assert parallel == sequential
+
+
+def test_fixed_offsets_remove_the_random_ones(simulator, config):
+    fixed = simulator.SimConfig(config)
+    for line in fixed.lines:
+        line.offset = 0
+    simulation = simulator.Simulation(fixed, SEED)
+    simulation.step(1)
+    # every service with a headway dividing the initial time asks for its first bus immediately
+    origins = [depot.origin for depot in fixed.depots]
+    expected = [int(fixed.initial_time % line.headway == 0 and line.origin in origins) for line in fixed.lines]
+    results = simulation.results()
+    assert sum(expected) > 0
+    assert [a + b for a, b in zip(results.line_departures, results.line_queued)] == expected

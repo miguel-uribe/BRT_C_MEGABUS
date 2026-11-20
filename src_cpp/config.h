@@ -20,9 +20,9 @@ struct SimConfig
     std::vector<std::vector<std::vector<double>>> route_weights; // the weight of each service to travel between two stations, indexed as [origin][destination][service]
     std::vector<std::vector<double>> OD; // the probability of each destination for each origin, indexed as [origin][destination]
     std::vector<double> IN; // the probability of entering the system at each station
-    // the demand profile: the average number of passengers entering the system at each insertion, linearly interpolated between the given times
+    // the demand profile: the number of passengers entering the system per hour, linearly interpolated between the given times
     std::vector<int> demand_times;
-    std::vector<double> demand_means;
+    std::vector<double> demand_rates;
     int initial_time = 4*3600; // the time when the simulation starts
     int final_time = 9*3600; // the time when the simulation ends
 };
@@ -56,7 +56,8 @@ const int megabus_factor = 3600; // the average passenger influx to the system, 
 const int megabus_initial_hour = 4;
 const int megabus_final_hour = 9;
 
-// The demand function, over time
+// The demand function, over time. It gives the average number of passengers entering the system every megabus_demand_period seconds
+const int megabus_demand_period = 10;
 double getPassengersDemand(int factor,int time){
     double demand=factor*(50/14958.5)*(1/(1+exp(-(time-6.8*3600)/(0.58*3600))))*(1.73*exp(-pow(((time-6.8*3600)/(1.29*3600)),2))+1);
     return demand;
@@ -99,7 +100,7 @@ SimConfig loadconfig(std::string dir){
     CONF.final_time = megabus_final_hour*3600;
     for (int TIME = CONF.initial_time; TIME <= CONF.final_time; TIME += CONF.system.Par.insertion_period){
         CONF.demand_times.push_back(TIME);
-        CONF.demand_means.push_back(getPassengersDemand(megabus_factor, TIME));
+        CONF.demand_rates.push_back(getPassengersDemand(megabus_factor, TIME)*3600.0/megabus_demand_period);
     }
     return CONF;
 }
@@ -214,12 +215,25 @@ void validateconfig(const SimConfig & CONF){
             confcheck(destination.size() == nlines, "route_weights must have one entry per service");
         }
     }
-    confcheck(CONF.demand_times.size() == CONF.demand_means.size(), "demand_times and demand_means must have the same size");
+    confcheck(CONF.demand_times.size() == CONF.demand_rates.size(), "demand_times and demand_rates must have the same size");
     confcheck(std::is_sorted(CONF.demand_times.begin(), CONF.demand_times.end()), "demand_times must be sorted");
     confcheck(std::adjacent_find(CONF.demand_times.begin(), CONF.demand_times.end()) == CONF.demand_times.end(), "demand_times must not have repeated values");
-    for (double mean: CONF.demand_means){
-        confcheck(mean >= 0, "demand_means must not be negative");
+    for (double rate: CONF.demand_rates){
+        confcheck(rate >= 0, "demand_rates must not be negative");
     }
+    // a passenger must always have somewhere to enter and somewhere to go
+    double totalin = 0;
+    for (int i = 0; i < nstations; i++){
+        confcheck(CONF.IN[i] >= 0, "IN must not be negative");
+        totalin += CONF.IN[i];
+        double totalod = 0;
+        for (double probability: CONF.OD[i]){
+            confcheck(probability >= 0, "OD must not be negative");
+            totalod += probability;
+        }
+        confcheck(CONF.IN[i] == 0 || totalod > 0, "station " + SYSTEM.Stations[i].name + " receives passengers but has no destinations in OD");
+    }
+    confcheck(totalin > 0, "IN must have at least one positive entry");
 }
 
 #endif

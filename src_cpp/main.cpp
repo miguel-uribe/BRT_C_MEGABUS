@@ -49,7 +49,10 @@ sim_results simulate (int seed, int print, float Cfract){
     CONF.system.Depots[1].initial_buses = fDosq;
 
     Simulation SIM (CONF, seed, print==1);
-    SIM.run();
+    {
+        py::gil_scoped_release release;
+        SIM.run();
+    }
     sim_results RESULTS = SIM.results();
     RESULTS.BusData = std::move(SIM.printdata);
     return RESULTS;
@@ -166,7 +169,7 @@ PYBIND11_MODULE(simulator, m) {
         .def_readwrite("OD", &SimConfig::OD)
         .def_readwrite("IN", &SimConfig::IN)
         .def_readwrite("demand_times", &SimConfig::demand_times)
-        .def_readwrite("demand_means", &SimConfig::demand_means)
+        .def_readwrite("demand_rates", &SimConfig::demand_rates)
         .def_readwrite("initial_time", &SimConfig::initial_time)
         .def_readwrite("final_time", &SimConfig::final_time)
         .def("validate", [](const SimConfig & CONF){validateconfig(CONF);}, "raises ValueError if the configuration is not consistent");
@@ -177,8 +180,15 @@ PYBIND11_MODULE(simulator, m) {
         .def_readonly("initial_time", &Simulation::initial_time)
         .def_readonly("final_time", &Simulation::final_time)
         .def_property_readonly("done", &Simulation::done)
-        .def("step", &Simulation::steps, py::arg("n") = 1, "advances the simulation n time steps")
-        .def("run", &Simulation::run, "advances the simulation until its final time")
+        // the simulations do not share any state, they can run in different threads at the same time
+        .def("step", [](Simulation & SIM, int n){
+            py::gil_scoped_release release;
+            SIM.steps(n);
+        }, py::arg("n") = 1, "advances the simulation n time steps")
+        .def("run", [](Simulation & SIM){
+            py::gil_scoped_release release;
+            SIM.run();
+        }, "advances the simulation until its final time")
         .def("results", &Simulation::results, "the results up to the current time")
         .def("buses", [](Simulation & SIM){
             // one row per bus, the columns are listed in BUS_COLUMNS

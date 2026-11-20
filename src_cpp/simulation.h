@@ -51,7 +51,7 @@ class Simulation{
         std::vector<std::vector<int>> V;
         std::vector<std::vector<std::vector<double>>> weightMatrix;
         std::vector<int> demand_times;
-        std::vector<double> demand_means;
+        std::vector<double> demand_rates;
         int initial_time;
         int final_time;
         int TIME; // the next time step to be simulated
@@ -95,7 +95,7 @@ class Simulation{
             V = CONF.V;
             weightMatrix = normalizeRouteWeights(CONF.route_weights);
             demand_times = CONF.demand_times;
-            demand_means = CONF.demand_means;
+            demand_rates = CONF.demand_rates;
             initial_time = CONF.initial_time;
             final_time = CONF.final_time;
             TIME = initial_time;
@@ -145,11 +145,9 @@ class Simulation{
             }
             // Inserting the passengers
             if (TIME%SYSTEM.Par.insertion_period==0){
-                double mean = interpolate(demand_times, demand_means, TIME);
-                int npass = 0;
-                if (mean > 0){
-                    npass = RNG.poisson(mean);
-                }
+                // the average number of passengers entering during one insertion period
+                double mean = interpolate(demand_times, demand_rates, TIME)*SYSTEM.Par.insertion_period/3600.0;
+                int npass = RNG.poisson(mean);
                 Nactivepass+=npass;
 
                 for (int j=0; j<npass;j++){

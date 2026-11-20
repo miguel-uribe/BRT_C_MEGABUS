@@ -22,11 +22,5 @@ def simulator(conf):
 
 @pytest.fixture(scope="session")
 def engine_golden():
-    """The engine results recorded for the current platform."""
-    goldens = gt.read_json(gt.ENGINE_GOLDEN)
-    if gt.platform_key() not in goldens:
-        pytest.skip(
-            f"No engine results recorded for platform {gt.platform_key()}, "
-            "record them with: uv run python tests/record_goldens.py"
-        )
-    return goldens[gt.platform_key()]
+    """The recorded engine results, they are the same on every platform."""
+    return gt.read_json(gt.ENGINE_GOLDEN)
